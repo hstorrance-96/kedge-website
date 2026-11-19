@@ -226,7 +226,7 @@ h1, h2, h3, .setcard .lift, .set .load, .ring span, .mealtop b { font-family: va
 .tabs button.seen i::after { transform: scaleX(1); background: #3A4766; }
 .tabs button[aria-selected="true"] { background: none; color: #fff; font-weight: 600; }
 .tabs button[aria-selected="true"] i::after { transform: scaleX(1); }
-.carousel.playing .tabs button[aria-selected="true"] i::after { animation: fillbar 4.5s linear forwards; }
+.carousel.playing .tabs button[aria-selected="true"] i::after { animation: fillbar 7.5s linear forwards; }
 .carousel.paused .tabs button[aria-selected="true"] i::after { animation-play-state: paused; }
 @keyframes fillbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (max-width: 480px) { .tabs { gap: 5px; } .tabs button { font-size: 11.5px; padding: 4px 0; } }
@@ -516,7 +516,7 @@ document.getElementById("waitlist").addEventListener("submit", function (e) {
   var slides = root.querySelectorAll(".slide"), cap = root.querySelector(".cap");
   function caption() { var s = slides[i]; if (!cap || !s) return; cap.classList.add("fade"); setTimeout(function () { document.getElementById("cap-title").textContent = s.dataset.title; document.getElementById("cap-text").textContent = s.dataset.text; cap.classList.remove("fade"); }, still ? 0 : 150); }
   function go(k) { var prev = i; i = (k + n) % n; if (prev !== i) caption(); track.style.transform = "translateX(" + (-100 * i) + "%)"; tabs.forEach(function (b, j) { b.setAttribute("aria-selected", j === i ? "true" : "false"); b.classList.toggle("seen", j < i); }); root.classList.remove("playing"); void root.offsetWidth; if (!still) root.classList.add("playing"); }
-  function start() { if (!still) { stop(); root.classList.remove("paused"); timer = setInterval(function () { go(i + 1); }, 4500); } }
+  function start() { if (!still) { stop(); root.classList.remove("paused"); timer = setInterval(function () { go(i + 1); }, 7500); } }
   function stop() { if (timer) clearInterval(timer); timer = null; root.classList.add("paused"); }
   tabs.forEach(function (b, j) { b.addEventListener("click", function () { go(j); start(); }); });
   root.addEventListener("mouseenter", stop); root.addEventListener("mouseleave", function () { go(i); start(); });
