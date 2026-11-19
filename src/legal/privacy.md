@@ -6,7 +6,7 @@ Effective date: [DATE]
 
 ## The short version
 
-- We collect what you give the app (workouts, meals, check-ins, chat, videos you film) and what you choose to connect (Apple Health, Oura, WHOOP).
+- We collect what you give the app (workouts, meals, check-ins, chat, frames from sets you film) and what you choose to connect (Apple Health, Oura, WHOOP).
 - We use it to coach you. That's it.
 - Your coach runs on Claude, an AI model made by Anthropic. With your permission, we send Anthropic what the coach needs to answer you. Anthropic does not train its models on it.
 - We never sell your data, never use your health data for advertising, and never share Apple Health data with advertisers or data brokers.
@@ -22,7 +22,7 @@ Effective date: [DATE]
 - Training data: workouts, sets, weights, reps, effort ratings, check-ins and energy scores.
 - Nutrition data: meals, food photos, barcodes you scan, saved foods.
 - Chat and voice: messages you type or speak to the coach. Voice is turned into text to answer you; we don't keep audio recordings after that.
-- Videos you film for form review. We extract still frames for review and delete the original video after [30] days unless you save it.
+- Still frames from sets you film for form review. Your videos stay on your phone; the app sends only still frames and body-position data for review, and we delete the frames after 90 days unless you save the review.
 
 **From services you connect (only if you turn them on):**
 
@@ -52,7 +52,7 @@ The coach is powered by Claude, from Anthropic, PBC. Before the coach works, the
 
 ## Other service providers
 
-We use a small number of providers to run the app, under contracts that limit them to providing that service: cloud hosting and database ([PROVIDER]), subscription management ([PROVIDER]), crash reporting and analytics ([PROVIDER]), email for support ([PROVIDER]), and the USDA FoodData Central database for food lookups (we send only the barcode or food name). On our website, Umami (a cookie-free analytics service) counts visits and which page version you saw; it doesn't identify you or follow you to other sites.
+We use a small number of providers to run the app, under contracts that limit them to providing that service: cloud hosting and database ([PROVIDER]), subscription management ([PROVIDER]), crash reporting and analytics ([PROVIDER]), email for support ([PROVIDER]), and the USDA FoodData Central database for food lookups (we send only the barcode or food name). On our website, the waitlist form is handled by Formspree, which passes your email address to us; we use it only to tell you about Kedge's launch and your waitlist offer, and you can unsubscribe from any email or ask us to delete it. Umami (a cookie-free analytics service) counts visits and which page version you saw; it doesn't identify you or follow you to other sites.
 
 We may also disclose data if required by law, to protect someone's safety, or as part of a sale or merger of our business, in which case this policy will continue to apply.
 
@@ -66,7 +66,7 @@ Some US states, including Washington, Nevada and Connecticut, give extra rights 
 
 ## How long we keep it
 
-We keep your data while your account is active. If you delete your account, we delete your data within [30] days, except what we must keep for legal, tax or fraud reasons. Backups clear within a further [35] days. Form-review videos are deleted after [30] days unless you save them.
+We keep your data while your account is active. If you delete your account, we delete your data within [30] days, except what we must keep for legal, tax or fraud reasons. Backups clear within a further [35] days. Form-review frames are deleted after 90 days unless you save the review.
 
 ## Your choices and rights
 

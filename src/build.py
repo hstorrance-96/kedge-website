@@ -15,14 +15,19 @@ REPL = [
     ("[MAILING ADDRESS]", ADDR_REQ),
     ("[PRIVACY EMAIL]", MAILTO),
     ("[SUPPORT EMAIL]", MAILTO),
-    (" ([PROVIDER])", ""),
-    ("Effective date: [DATE]", "Effective date: not yet in effect. This draft takes effect when the app launches."),
+    ("cloud hosting and database ([PROVIDER])", "cloud hosting and database (Supabase)"),
+    ("subscription management ([PROVIDER])", "subscription management (RevenueCat)"),
+    ("crash reporting and analytics ([PROVIDER])", "crash reporting (Sentry)"),
+    ("crash reporting ([PROVIDER])", "crash reporting (Sentry)"),
+    ("email for support ([PROVIDER])", "email for support (Brevo)"),
+    ("Effective date: [DATE]", "Effective date: November 19, 2026"),
+    ("[30]", "30"),
+    ("[35]", "35"),
 ]
 
 SUPPORT_BTN = ('\n\n<p><a class="btn-link" href="mailto:info@kedge.fit?subject=Mailing%20address%20request">'
                'Request our mailing address</a></p>\n')
 
-DRAFT = '<p class="draft">Draft. This page will be finalized and reviewed by a lawyer before the app launches.</p>'
 DOCS = [("privacy", "privacy.md"), ("terms", "terms.md"), ("health-data", "health-data.md"), ("support", "support.md")]
 
 
@@ -39,11 +44,10 @@ for slug, fn in DOCS:
         md = md.replace("We answer within 1–2 business days.",
                         "We answer within 1–2 business days." + SUPPORT_BTN, 1)
     html = markdown.markdown(md)
-    html = re.sub(r"(</h1>)", r"\1" + DRAFT, html, count=1)
     parts.append(f'<main class="doc" id="doc-{slug}" hidden>\n  <div class="wrap">\n'
                  f'    <a class="back" href="#">← Back to Kedge</a>\n{html}\n  </div>\n</main>')
 
 out = fill((ROOT / "template.html").read_text()).replace("<!--LEGAL-->", "\n".join(parts))
-left = sorted(set(re.findall(r"\[[A-Z][A-Z ,]*\]|\{\{\w+\}\}", out)))
+left = sorted(set(re.findall(r"\[(?:[A-Z][A-Z ,]*|\d\d)\]|\{\{\w+\}\}|\(\[PROVIDER\]\)", out)) - {"[HEADLINE]"})
 (ROOT.parent / "index.html").write_text(out)
 print("built index.html; leftover placeholders:", left)
