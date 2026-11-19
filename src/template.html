@@ -103,7 +103,13 @@ p { margin: 0; }
 .tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
 .tabs button { border: 1px solid var(--line); background: transparent; color: var(--muted); font: 500 13px var(--body); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
 .tabs button[aria-selected="true"] { background: var(--volt); border-color: var(--volt); color: #fff; }
+.stage { position: relative; }
 .viewport { overflow: hidden; border-radius: 28px; touch-action: pan-y; }
+.arrow { display: none; position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: rgba(11,13,18,.78); color: #fff; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: background .2s, border-color .2s; }
+.arrow:hover { background: var(--volt); border-color: var(--volt); }
+.arrow:focus-visible { outline: 2px solid var(--volt-soft); outline-offset: 2px; }
+.arrow.prev { left: -22px; } .arrow.next { right: -22px; }
+@media (hover: hover) and (pointer: fine) { .arrow { display: flex; } }
 .track { display: flex; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
 .slide { flex: 0 0 100%; box-sizing: border-box; min-height: 390px; box-shadow: none; }
 .frame.photo { display: grid; grid-template-columns: 46% 1fr; gap: 16px; align-items: center; }
@@ -360,6 +366,9 @@ section#pricing { border-top: 0; padding-top: 16px; }
           <button role="tab"><i></i>Rehab</button>
         </div>
         <div class="cap" aria-live="polite"><h3 id="cap-title">Adjusts every set</h3><p id="cap-text">Miss reps or feel off, and the rest of your workout changes.</p></div>
+        <div class="stage">
+        <button class="arrow prev" type="button" aria-label="Previous feature"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="arrow next" type="button" aria-label="Next feature"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
         <div class="viewport">
           <div class="track">
             <div class="setcard slide" role="group" aria-label="1 of 6: the coach adjusting a bench press set" data-title="Adjusts every set" data-text="Miss reps or feel off, and the rest of your workout changes.">
@@ -427,6 +436,7 @@ section#pricing { border-top: 0; padding-top: 16px; }
               <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Pain is down from 6 to 2 this week. Bench comes back Monday at 185.</span></div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -521,9 +531,32 @@ document.getElementById("waitlist").addEventListener("submit", function (e) {
   tabs.forEach(function (b, j) { b.addEventListener("click", function () { go(j); start(); }); });
   root.addEventListener("mouseenter", stop); root.addEventListener("mouseleave", function () { go(i); start(); });
   root.addEventListener("focusin", stop); root.addEventListener("focusout", function () { go(i); start(); });
-  var x0 = null;
-  root.querySelector(".viewport").addEventListener("pointerdown", function (e) { x0 = e.clientX; });
-  root.querySelector(".viewport").addEventListener("pointerup", function (e) { if (x0 === null) return; var dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { go(i + (dx < 0 ? 1 : -1)); start(); } });
+  root.querySelector(".arrow.prev").addEventListener("click", function () { go(i - 1); start(); });
+  root.querySelector(".arrow.next").addEventListener("click", function () { go(i + 1); start(); });
+  root.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") { go(i - 1); start(); } else if (e.key === "ArrowRight") { go(i + 1); start(); } });
+  // Thumb swipe: the slide follows the finger, then snaps to the next or previous one.
+  var vp = root.querySelector(".viewport"), sx = 0, sy = 0, dx = 0, dir = null;
+  vp.addEventListener("touchstart", function (e) { var t = e.touches[0]; sx = t.clientX; sy = t.clientY; dx = 0; dir = null; stop(); }, { passive: true });
+  vp.addEventListener("touchmove", function (e) {
+    var t = e.touches[0], mx = t.clientX - sx, my = t.clientY - sy;
+    if (!dir && (Math.abs(mx) > 8 || Math.abs(my) > 8)) { dir = Math.abs(mx) > Math.abs(my) ? "x" : "y"; if (dir === "x") track.style.transition = "none"; }
+    if (dir !== "x") return;
+    e.preventDefault(); dx = mx;
+    track.style.transform = "translateX(calc(" + (-100 * i) + "% + " + dx + "px))";
+  }, { passive: false });
+  function release() {
+    if (dir === "x") {
+      track.style.transition = still ? "none" : "";
+      var w = vp.offsetWidth || 1;
+      if (Math.abs(dx) > Math.min(60, w * 0.18)) go(i + (dx < 0 ? 1 : -1)); else go(i);
+    }
+    dir = null; dx = 0; start();
+  }
+  vp.addEventListener("touchend", release); vp.addEventListener("touchcancel", release);
+  // Mouse drag on desktop too.
+  var mx0 = null;
+  vp.addEventListener("pointerdown", function (e) { if (e.pointerType === "mouse") mx0 = e.clientX; });
+  vp.addEventListener("pointerup", function (e) { if (mx0 === null) return; var d = e.clientX - mx0; mx0 = null; if (Math.abs(d) > 40) { go(i + (d < 0 ? 1 : -1)); start(); } });
   go(0); start();
 })();
 </script>
