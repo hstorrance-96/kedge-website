@@ -479,6 +479,14 @@ section#pricing { border-top: 0; padding-top: 16px; }
 <script>
 // Set to your signup service's endpoint (Formspree, Buttondown, ConvertKit...) once the site is on your own domain.
 var WAITLIST_ENDPOINT = "https://formspree.io/f/mzergwlr";
+// Brevo sign-up form: adds the address to the "Kedge waitlist" list and sends the confirmation email.
+var CONFIRM_ENDPOINT = "https://48b38bc2.sibforms.com/serve/MUIFAEtvbe2baBI70JU-SbP471J9niIaaEMWNz7MsgoPi-wZw1QSai1xpr97WIeTk7BIpFlwbA6fWW1PftnUBf3umRalk1nkQFkMl5MFC25FKp7t4bQvzerPG3w2FqW2DnSJdXNvo-7h8zkJxH9oQUeeNodJX-nywvjyohVr0mXzX7EBTEz2q8UoCSKJn7y6Y46KhXNOrmunzrbcEA==";
+function sendConfirmation(email) {
+  if (!CONFIRM_ENDPOINT) return;
+  var fd = new FormData();
+  fd.append("EMAIL", email); fd.append("email_address_check", ""); fd.append("locale", "en"); fd.append("html_type", "simple");
+  fetch(CONFIRM_ENDPOINT, { method: "POST", mode: "no-cors", body: fd }).catch(function () {});
+}
 // Umami Cloud website ID (free Hobby plan). Counts visits and signups per headline. Empty = analytics off.
 var UMAMI_ID = "c7f8feaa-1248-434c-9dfb-aab343dc529a";
 function track(name, data) { try { if (window.umami) window.umami.track(name, data); } catch (e) {} }
@@ -514,7 +522,7 @@ document.getElementById("waitlist").addEventListener("submit", function (e) {
   if (!WAITLIST_ENDPOINT) { note.textContent = "Preview only: this form isn't connected to a signup service yet, so nothing was saved."; return; }
   note.textContent = "Adding you…";
   fetch(WAITLIST_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email: v, headline: HEADLINE.toUpperCase() + ": " + HEADLINES[HEADLINE], _gotcha: trap }) })
-    .then(function (r) { if (!r.ok) throw new Error(); track("waitlist-signup", { headline: HEADLINE.toUpperCase() }); note.textContent = "You're in. We'll email your free-month code at launch."; note.classList.add("ok"); input.value = ""; })
+    .then(function (r) { if (!r.ok) throw new Error(); sendConfirmation(v); track("waitlist-signup", { headline: HEADLINE.toUpperCase() }); note.textContent = "You're in. Check your inbox for your confirmation; your free-month code comes at launch."; note.classList.add("ok"); input.value = ""; })
     .catch(function () { note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
 });
 
