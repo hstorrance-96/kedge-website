@@ -34,7 +34,7 @@
 
 **How do I turn off AI sharing?** Account › AI coaching data. The coach pauses until you turn it back on.
 
-**How do I export my data?** Account › Export my data. You get a .zip with spreadsheets that open in Excel, Numbers or Google Sheets, a complete copy in JSON, and your form-review stills. It's free for everyone.
+**How do I export my data?** Account › Export my data. You get a .zip with spreadsheets that open in Excel, Numbers or Google Sheets, a complete copy in JSON, and your form-review stills. One-tap export comes with a subscription; anyone can email info@kedge.fit for a free copy.
 
 **How do I delete my account?** Account › Delete account. This deletes your data within 30 days. It's free and doesn't require contacting us. Remember to cancel your subscription in Apple settings too.
 
