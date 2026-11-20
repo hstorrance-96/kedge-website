@@ -1,5 +1,5 @@
 """Build index.html from template.html + legal/*.md."""
-import pathlib, re, markdown
+import os, pathlib, re, markdown
 
 ROOT = pathlib.Path(__file__).parent  # src/; writes ../index.html
 EMAIL = "info@kedge.fit"
@@ -47,7 +47,10 @@ for slug, fn in DOCS:
     parts.append(f'<main class="doc" id="doc-{slug}" hidden>\n  <div class="wrap">\n'
                  f'    <a class="back" href="#">← Back to Kedge</a>\n{html}\n  </div>\n</main>')
 
-out = fill((ROOT / "template.html").read_text()).replace("<!--LEGAL-->", "\n".join(parts))
+TEMPLATE = os.environ.get("KEDGE_TEMPLATE", "template.html")
+OUT = os.environ.get("KEDGE_OUT", "index.html")
+out = fill((ROOT / TEMPLATE).read_text()).replace("<!--LEGAL-->", "\n".join(parts))
 left = sorted(set(re.findall(r"\[(?:[A-Z][A-Z ,]*|\d\d)\]|\{\{\w+\}\}|\(\[PROVIDER\]\)", out)) - {"[HEADLINE]"})
-(ROOT.parent / "index.html").write_text(out)
-print("built index.html; leftover placeholders:", left)
+(ROOT.parent / OUT).parent.mkdir(parents=True, exist_ok=True)
+(ROOT.parent / OUT).write_text(out)
+print(f"built {OUT}; leftover placeholders:", left)
