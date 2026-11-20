@@ -70,7 +70,7 @@ We keep your data while your account is active. If you delete your account, we d
 
 ## Your choices and rights
 
-- **In the app:** edit your profile, disconnect any service, turn off AI sharing, turn off notifications, export your data (paid subscribers), and delete your account (everyone, free).
+- **In the app:** edit your profile, disconnect any service, turn off AI sharing, turn off notifications, export your data, and delete your account (both free for everyone). The export is a .zip with spreadsheets (CSV) and a complete copy in JSON. For anything we keep only on our servers, such as usage records, email us.
 - **By request:** depending on where you live (for example California, Colorado, Virginia, Washington, the EU or UK), you may have rights to access, correct, delete or port your data, and to opt out of certain processing. Email [PRIVACY EMAIL] and we'll respond within the time the law requires (usually 30–45 days). We won't treat you differently for using these rights.
 
 ## Security
