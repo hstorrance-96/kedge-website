@@ -319,6 +319,11 @@ main { overflow-x: clip; }
 .call .wrap { position: relative; z-index: 1; }
 .call::after { content: ""; position: absolute; right: -300px; bottom: -380px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, var(--blue) 0 7%, rgba(0,0,0,.2) 7% 9%, #1D43C6 9% 38%, rgba(0,0,0,.16) 38% 41%, #1D43C6 41% 85%, rgba(255,255,255,.14) 85% 88%, #1D43C6 88%); }
 @media (max-width: 900px) { .call::after { right: -420px; bottom: -520px; } }
+
+.week li > div { background: var(--paper); padding: 10px 18px 14px 14px; border-radius: 12px; box-shadow: 0 10px 24px -16px rgba(21,23,26,.45); }
+.week .disc { box-shadow: 0 8px 14px rgba(21,23,26,.28); }
+.call::after { right: -400px; bottom: -480px; }
+@media (max-width: 900px) { .week li { border-top: 0; padding: 10px 0; } .week li > div { flex: 1; } .call::after { right: -520px; bottom: -600px; } }
 </style>
 </head>
 <body>
