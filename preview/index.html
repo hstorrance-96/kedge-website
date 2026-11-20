@@ -61,7 +61,7 @@ p { margin: 0; }
 .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 72px; align-items: center; }
 .hero h1 { font-size: clamp(60px, 7.6vw, 116px); font-weight: 900; letter-spacing: -.005em; line-height: .86; max-width: 7.2em; }
 .lede { margin-top: 28px; max-width: 30em; font-size: 21px; line-height: 1.5; color: var(--graphite); }
-@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; gap: 56px; } .hero { padding: 24px 0 88px; } .hero .phone { margin: 0 auto; } }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; gap: 56px; } .hero { padding: 24px 0 88px; } }
 
 /* waitlist form */
 .signup { margin-top: 36px; display: flex; max-width: 500px; border: 2px solid var(--ink); border-radius: 14px; background: var(--paper); padding: 5px; }
@@ -81,19 +81,19 @@ p { margin: 0; }
 
 /* a phone showing one app screen */
 .phone { width: 100%; max-width: 340px; background: var(--app); color: var(--app-text); border-radius: 36px; padding: 26px 22px 24px; box-shadow: 0 30px 60px -30px rgba(21,23,26,.55); font: 400 15px/1.45 var(--body); display: flex; flex-direction: column; gap: 14px; }
-.phone .row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--app-muted); }
-.phone .lift { font: 700 24px/1 var(--display); color: var(--app-text); letter-spacing: .01em; }
-.phone .set { display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: 10px; padding: 12px 0; border-top: 1px solid var(--app-line); font-variant-numeric: tabular-nums; }
-.phone .set:last-of-type { border-bottom: 1px solid var(--app-line); }
-.phone .set .n { font-size: 12px; color: var(--app-muted); }
-.phone .set .load { font: 700 28px/1 var(--display); letter-spacing: .01em; }
-.phone .set .tag { font-size: 12.5px; color: var(--app-muted); white-space: nowrap; }
-.phone .set.missed .load { color: #5F6878; text-decoration: line-through; text-decoration-color: var(--app-warn); text-decoration-thickness: 2px; }
-.phone .set.missed .tag { color: var(--app-warn); }
-.phone .set.next { margin: 0 -22px; padding: 12px 22px; background: linear-gradient(90deg, rgba(61,107,245,.25), rgba(61,107,245,0) 85%); box-shadow: inset 3px 0 0 var(--app-blue); border-top-color: transparent; }
-.phone .set.next .tag { color: #9DB4FF; font-weight: 600; }
-.phone .set.done .n { color: var(--app-go); font-size: 15px; }
-.phone .set.small .load { font-size: 20px; }
+.slide .row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--app-muted); }
+.slide .lift { font: 700 24px/1 var(--display); color: var(--app-text); letter-spacing: .01em; }
+.slide .set { display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: 10px; padding: 12px 0; border-top: 1px solid var(--app-line); font-variant-numeric: tabular-nums; }
+.slide .set:last-of-type { border-bottom: 1px solid var(--app-line); }
+.slide .set .n { font-size: 12px; color: var(--app-muted); }
+.slide .set .load { font: 700 28px/1 var(--display); letter-spacing: .01em; }
+.slide .set .tag { font-size: 12.5px; color: var(--app-muted); white-space: nowrap; }
+.slide .set.missed .load { color: #5F6878; text-decoration: line-through; text-decoration-color: var(--app-warn); text-decoration-thickness: 2px; }
+.slide .set.missed .tag { color: var(--app-warn); }
+.slide .set.next { margin: 0 -22px; padding: 12px 22px; background: linear-gradient(90deg, rgba(61,107,245,.25), rgba(61,107,245,0) 85%); box-shadow: inset 3px 0 0 var(--app-blue); border-top-color: transparent; }
+.slide .set.next .tag { color: #9DB4FF; font-weight: 600; }
+.slide .set.done .n { color: var(--app-go); font-size: 15px; }
+.slide .set.small .load { font-size: 20px; }
 .coachline { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: var(--app-row); font-size: 14px; color: #D5DAE3; }
 .coachline .dot { flex: none; width: 22px; height: 22px; border-radius: 6px; background: var(--app-blue); color: #fff; display: grid; place-items: center; font: 800 12px var(--display); }
 .bubble { align-self: flex-end; max-width: 85%; background: var(--app-blue); color: #fff; padding: 9px 13px; border-radius: 16px 16px 4px 16px; font-size: 14px; }
@@ -118,7 +118,7 @@ p { margin: 0; }
 .recov ul { list-style: none; margin: 0; padding: 0; flex: 1; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
 .recov li { display: flex; justify-content: space-between; border-bottom: 1px solid var(--app-line); padding-bottom: 6px; } .recov li span { color: var(--app-muted); } .recov b.w { color: var(--app-warn); }
 @media (prefers-reduced-motion: no-preference) {
-  .hero .set.next { animation: arrive 900ms 700ms cubic-bezier(.2,.8,.2,1) both; }
+  .slide .set.next { animation: arrive 900ms 700ms cubic-bezier(.2,.8,.2,1) both; }
   @keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 }
 
@@ -144,31 +144,55 @@ section { padding: 120px 0; }
 
 /* 2. the guide and the week */
 .week-head { max-width: 880px; }
-.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; font-size: 15px; color: var(--graphite); }
-.legend span { display: inline-flex; align-items: center; gap: 8px; }
-.plate { width: 16px; height: 16px; border-radius: 50%; background: var(--plate); box-shadow: inset 0 0 0 4px rgba(0,0,0,.14); flex: none; }
-.week { list-style: none; margin: 72px 0 0; padding: 0; position: relative; }
-.week::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 8px; margin-left: -4px; border-radius: 4px; background: linear-gradient(90deg, #A8ABA5, #D9DBD6 45%, #9C9F99); }
-.day { display: grid; grid-template-columns: 1fr 120px 1fr; align-items: center; padding: 40px 0; }
-.day .text { grid-column: 1; text-align: right; }
-.day .phone { grid-column: 3; }
-.day:nth-child(even) .text { grid-column: 3; grid-row: 1; text-align: left; }
-.day:nth-child(even) .phone { grid-column: 1; grid-row: 1; justify-self: end; }
-.day .disc { grid-column: 2; grid-row: 1; justify-self: center; width: 64px; height: 64px; border-radius: 50%; background: var(--plate); box-shadow: inset 0 0 0 9px rgba(0,0,0,.16), 0 0 0 6px var(--concrete); display: grid; place-items: center; position: relative; z-index: 1; }
-.day .disc::after { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--concrete); }
-.day h3 { font-size: clamp(44px, 5vw, 64px); }
-.day .moment { margin-top: 10px; font-size: 22px; font-weight: 600; line-height: 1.35; }
-.day .did { margin-top: 10px; font-size: 18px; color: var(--graphite); }
-.day .text > * { max-width: 26em; margin-left: auto; }
-.day:nth-child(even) .text > * { margin-left: 0; }
-@media (max-width: 900px) {
-  .week::before { left: 31px; }
-  .day { grid-template-columns: 64px 1fr; column-gap: 24px; row-gap: 28px; padding: 32px 0; align-items: start; }
-  .day .disc, .day:nth-child(even) .disc { grid-column: 1; grid-row: 1; }
-  .day .text, .day:nth-child(even) .text { grid-column: 2; grid-row: 1; text-align: left; }
-  .day .phone, .day:nth-child(even) .phone { grid-column: 2; grid-row: 2; justify-self: start; }
-  .day .text > * { margin-left: 0; }
+.week { list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0 28px; position: relative; }
+.week::before { content: ""; position: absolute; left: -28px; right: -28px; top: 27px; height: 8px; border-radius: 4px; background: linear-gradient(180deg, #A8ABA5, #DCDED9 45%, #9C9F99); }
+.week li { position: relative; display: flex; flex-direction: column; }
+.week .disc { width: 62px; height: 62px; border-radius: 50%; background: var(--plate); box-shadow: inset 0 0 0 9px rgba(0,0,0,.16), 0 0 0 6px var(--concrete); display: grid; place-items: center; position: relative; z-index: 1; }
+.week .disc::after { content: ""; width: 13px; height: 13px; border-radius: 50%; background: var(--concrete); }
+.week h3 { margin-top: 22px; font-size: 44px; }
+.week .moment { margin-top: 8px; font-size: 18px; font-weight: 600; line-height: 1.35; }
+.week .did { margin-top: 6px; font-size: 16px; line-height: 1.45; color: var(--graphite); }
+.week .kind { margin-top: 12px; font-size: 14px; font-weight: 600; color: var(--plate); filter: brightness(.8); }
+@media (max-width: 1000px) { .week { grid-template-columns: repeat(3, 1fr); gap: 48px 28px; } .week::before { display: none; } }
+@media (max-width: 600px) {
+  .week { grid-template-columns: 1fr; gap: 0; margin-top: 48px; }
+  .week li { display: grid; grid-template-columns: 62px 1fr; column-gap: 20px; padding: 18px 0; border-top: 1px solid var(--rule); }
+  .week .disc { grid-row: 1 / span 4; width: 52px; height: 52px; }
+  .week h3 { margin-top: 0; font-size: 32px; } .week .kind { margin-top: 6px; }
 }
+
+/* hero carousel: tabs fill as each screen plays; the viewport is the phone */
+.carousel { min-width: 0; width: 100%; max-width: 400px; justify-self: end; }
+@media (max-width: 900px) { .carousel { justify-self: stretch; margin: 0 auto; } }
+.tabs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 16px; }
+.tabs button { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; padding: 2px 0; border: 0; background: none; color: var(--graphite); font: 600 13px var(--body); text-align: left; cursor: pointer; }
+.tabs button i { display: block; width: 100%; height: 4px; border-radius: 2px; background: var(--rule); position: relative; overflow: hidden; }
+.tabs button i::after { content: ""; position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; }
+.tabs button.seen i::after { transform: scaleX(1); background: #9A9D97; }
+.tabs button[aria-selected="true"] { color: var(--ink); }
+.tabs button[aria-selected="true"] i::after { transform: scaleX(1); }
+.carousel.playing .tabs button[aria-selected="true"] i::after { animation: fillbar 7.5s linear forwards; }
+.carousel.paused .tabs button[aria-selected="true"] i::after { animation-play-state: paused; }
+@keyframes fillbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.cap { min-height: 76px; margin-bottom: 14px; transition: opacity .25s; }
+.cap.fade { opacity: 0; }
+.cap h3 { font-size: 30px; font-weight: 800; line-height: 1; }
+.cap p { margin-top: 6px; font-size: 16px; color: var(--graphite); line-height: 1.45; }
+.stage { position: relative; }
+.viewport { overflow: hidden; border-radius: 34px; background: var(--app); box-shadow: 0 30px 60px -30px rgba(21,23,26,.55); touch-action: pan-y; }
+.track { display: flex; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.slide { flex: 0 0 100%; min-height: 380px; padding: 26px 22px 24px; color: var(--app-text); font: 400 15px/1.45 var(--body); display: flex; flex-direction: column; gap: 14px; }
+.arrow { display: none; position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--ink); color: #fff; align-items: center; justify-content: center; cursor: pointer; }
+.arrow:hover { background: var(--blue); }
+.arrow.prev { left: -22px; } .arrow.next { right: -22px; }
+@media (hover: hover) and (pointer: fine) { .arrow { display: flex; } }
+.voice { margin-top: auto; display: flex; align-items: center; gap: 12px; padding: 8px 14px 8px 8px; border-radius: 999px; background: var(--app-row); }
+.mic { width: 32px; height: 32px; border-radius: 50%; background: var(--app-blue); display: grid; place-items: center; flex: none; } .mic svg { width: 17px; height: 17px; }
+.wave { display: flex; align-items: center; gap: 3px; height: 20px; } .wave b { width: 3px; border-radius: 2px; background: #8FA9FF; height: 30%; }
+.wave b:nth-child(3n) { height: 80%; } .wave b:nth-child(3n+1) { height: 50%; } .wave b:nth-child(4n) { height: 100%; }
+.vlabel { font-size: 13px; color: var(--app-muted); }
+@media (prefers-reduced-motion: no-preference) { .wave b { animation: wv 1.1s ease-in-out infinite; } .wave b:nth-child(2n) { animation-delay: -.4s; } .wave b:nth-child(3n) { animation-delay: -.7s; } @keyframes wv { 50% { transform: scaleY(.35); } } }
+@media (max-width: 480px) { .tabs button { font-size: 11.5px; } .slide { min-height: 360px; padding: 22px 18px; } .slide .set.next { margin: 0 -18px; padding: 12px 18px; } }
 
 /* 3. the outcome */
 .outcome .wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 72px; align-items: center; }
@@ -256,16 +280,92 @@ footer a { color: var(--graphite); }
           <button type="submit">Claim my free month</button>
         </form>
         <p class="form-note" role="status" aria-live="polite"></p>
-        <p class="fine">Waitlist members get the first month free at launch. iPhone and Apple Watch.</p>
+        <p class="fine">Waitlist members get the first month free at launch. For iPhone; Apple Watch optional.</p>
       </div>
-      <div class="phone" role="img" aria-label="The Kedge app adjusting a bench press set: set 2 missed three reps, so set 3 drops from 225 to 205 pounds">
-        <div class="row"><span class="lift">Bench press</span><span>3 × 5</span></div>
-        <div>
-          <div class="set"><span class="n">Set 1</span><span class="load">225 × 5</span><span class="tag">RPE 8</span></div>
-          <div class="set missed"><span class="n">Set 2</span><span class="load">225 × 2</span><span class="tag">Missed 3</span></div>
-          <div class="set next"><span class="n">Set 3</span><span class="load">205 × 5</span><span class="tag">Adjusted</span></div>
+      <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="What Kedge does">
+        <div class="tabs" role="tablist">
+          <button role="tab" aria-selected="true"><i></i>Sets</button>
+          <button role="tab"><i></i>Chat</button>
+          <button role="tab"><i></i>Form</button>
+          <button role="tab"><i></i>Food</button>
+          <button role="tab"><i></i>Recovery</button>
+          <button role="tab"><i></i>Rehab</button>
         </div>
-        <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Rep 2 slowed down. Dropping 20 lb to keep you at 5 reps.</span></div>
+        <div class="cap" aria-live="polite"><h3 id="cap-title">Adjusts every set</h3><p id="cap-text">Miss reps or feel off, and the rest of your workout changes.</p></div>
+        <div class="stage">
+          <button class="arrow prev" type="button" aria-label="Previous feature"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="arrow next" type="button" aria-label="Next feature"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          <div class="viewport">
+            <div class="track">
+              <div class="slide" role="group" aria-label="1 of 6: the coach adjusting a bench press set" data-title="Adjusts every set" data-text="Miss reps or feel off, and the rest of your workout changes.">
+                <div class="row"><span class="lift">Bench press</span><span>3 × 5</span></div>
+                <div>
+                  <div class="set"><span class="n">Set 1</span><span class="load">225 × 5</span><span class="tag">RPE 8</span></div>
+                  <div class="set missed"><span class="n">Set 2</span><span class="load">225 × 2</span><span class="tag">Missed 3</span></div>
+                  <div class="set next"><span class="n">Set 3</span><span class="load">205 × 5</span><span class="tag">Adjusted</span></div>
+                </div>
+                <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Rep 2 slowed down. Dropping 20 lb to keep you at 5 reps.</span></div>
+              </div>
+
+              <div class="slide" role="group" aria-label="2 of 6: chatting with the coach mid-workout" data-title="Talks with you" data-text="Ask anything mid-workout by text or voice, and the plan changes on the spot.">
+                <div class="row"><span class="lift">Coach</span><span class="live"><i></i>Deadlift, set 2</span></div>
+                <div class="chat">
+                  <div class="bubble">Lower back feels tight. Should I keep going?</div>
+                  <div class="reply">Stop deadlifts for today. Switching to pull-ups, 3 × 8. We'll retest Thursday.</div>
+                  <div class="sys">✓ Plan updated: Deadlift → Pull-ups</div>
+                </div>
+                <div class="voice"><span class="mic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="#fff"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span><span class="vlabel">Or just talk</span></div>
+              </div>
+
+              <div class="slide" role="group" aria-label="3 of 6: a form review with the fault flagged" data-title="Checks your form" data-text="Film a set. Get the fix, rep by rep.">
+                <div class="row"><span class="lift">Form review</span><span>Back squat</span></div>
+                <div class="photo">
+                  <!-- Photo: Rachel Moore on Unsplash (Unsplash License) -->
+                  <img src="https://images.unsplash.com/photo-1662045010188-b5e91a7f504b?w=600&q=75&auto=format" alt="Woman at the bottom of a barbell back squat" loading="lazy">
+                  <ul class="checks">
+                    <li class="ok"><b>Depth</b><span>Below parallel</span></li>
+                    <li class="ok"><b>Knees</b><span>Tracking out</span></li>
+                    <li class="fix"><b>Chest</b><span>Dipped on rep 4</span></li>
+                  </ul>
+                </div>
+                <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Drive your upper back into the bar so your chest stays up.</span></div>
+              </div>
+
+              <div class="slide" role="group" aria-label="4 of 6: logging a meal from a sentence" data-title="Logs your food" data-text="Photo, barcode or just say what you ate.">
+                <div class="row"><span class="lift">Food log</span><span>Lunch</span></div>
+                <div class="bubble">I had my chicken burrito bowl</div>
+                <div class="meal">
+                  <div class="mealtop"><span>Chicken burrito bowl</span><b>590 kcal</b></div>
+                  <div class="macros">
+                    <span><i style="width:60%"></i>Protein 45g</span>
+                    <span><i style="width:82%"></i>Carbs 62g</span>
+                    <span><i style="width:34%"></i>Fat 18g</span>
+                  </div>
+                </div>
+                <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Logged. 45g of protein to go today.</span></div>
+              </div>
+
+              <div class="slide" role="group" aria-label="5 of 6: a morning check-in changing today's plan" data-title="Reads your recovery" data-text="A ten-second morning check-in, plus sleep and heart rate if you wear a watch, decides how hard today should be.">
+                <div class="row"><span class="lift">Morning check-in</span><span>Today</span></div>
+                <div class="recov">
+                  <div class="ring" style="--p:48"><span>48</span><small>Energy</small></div>
+                  <ul><li><span>Sleep</span><b class="w">Poor</b></li><li><span>Stress</span><b class="w">High</b></li><li><span>Sore</span><b>Legs</b></li></ul>
+                </div>
+                <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Squats drop to 3 sets today. Heavy day moves to Saturday.</span></div>
+              </div>
+
+              <div class="slide" role="group" aria-label="6 of 6: a shoulder rehab plan" data-title="Builds your rehab" data-text="Tap Painful on any set and get a plan that brings the lift back safely.">
+                <div class="row"><span class="lift">Shoulder rehab</span><span>Day 6 of 14</span></div>
+                <div>
+                  <div class="set done small"><span class="n">✓</span><span class="load">Band pull&#8209;aparts</span><span class="tag">3 × 15</span></div>
+                  <div class="set done small"><span class="n">✓</span><span class="load">External rotations</span><span class="tag">3 × 12</span></div>
+                  <div class="set next small"><span class="n">Next</span><span class="load">Face pulls</span><span class="tag">3 × 15</span></div>
+                </div>
+                <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Pain is down from 6 to 2. Bench comes back Monday at 185.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -294,128 +394,15 @@ footer a { color: var(--graphite); }
     <div class="wrap">
       <div class="week-head">
         <h2 class="big">Same week. Now with a coach.</h2>
-        <p class="sub">Kedge knows your plan, reads your recovery from Apple Watch, and changes the next set, the next session or the next week. Then it tells you why.</p>
-        <div class="legend" aria-label="Plate colour shows how hard each day is">
-          <span><i class="plate" style="--plate: var(--red)"></i>Heavy</span>
-          <span><i class="plate" style="--plate: var(--blue)"></i>Normal</span>
-          <span><i class="plate" style="--plate: var(--yellow)"></i>Light</span>
-          <span><i class="plate" style="--plate: var(--green)"></i>Recovery</span>
-        </div>
+        <p class="sub">Kedge knows your plan, listens to how you feel, and changes the next set, the next session or the next week. Then it tells you why.</p>
       </div>
-
-      <ol class="week">
-        <li class="day" style="--plate: var(--red)">
-          <span class="disc" aria-label="Heavy day"></span>
-          <div class="text">
-            <h3>Monday</h3>
-            <p class="moment">Set 2 of bench stalls at two reps.</p>
-            <p class="did">Kedge drops set 3 by 20 lb so you still get quality reps, and nudges next week's numbers to match.</p>
-          </div>
-          <div class="phone" role="img" aria-label="Next week's bench press adjusted: Monday starts at 220 instead of 230">
-            <div class="row"><span class="lift">Next week</span><span>Updated</span></div>
-            <div>
-              <div class="set next"><span class="n">Mon</span><span class="load">220 × 5</span><span class="tag">was 230</span></div>
-              <div class="set"><span class="n">Thu</span><span class="load">205 × 8</span><span class="tag">No change</span></div>
-            </div>
-            <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Today was a grind, so next Monday starts a little lighter. We'll build back up from there.</span></div>
-          </div>
-        </li>
-
-        <li class="day" style="--plate: var(--blue)">
-          <span class="disc" aria-label="Normal day"></span>
-          <div class="text">
-            <h3>Tuesday</h3>
-            <p class="moment">Your lower back tightens up mid-deadlift.</p>
-            <p class="did">Say it out loud through your AirPods. Kedge stops the deadlifts, swaps in pull-ups and books a retest for Thursday.</p>
-          </div>
-          <div class="phone" role="img" aria-label="Chat: the athlete says their lower back feels tight; the coach switches deadlifts to pull-ups">
-            <div class="row"><span class="lift">Coach</span><span class="live"><i></i>Deadlift, set 2</span></div>
-            <div class="chat">
-              <div class="bubble">Lower back feels tight. Should I keep going?</div>
-              <div class="reply">Stop deadlifts for today. Switching to pull-ups, 3 × 8. We'll retest Thursday.</div>
-              <div class="sys">✓ Plan updated: Deadlift → Pull-ups</div>
-            </div>
-          </div>
-        </li>
-
-        <li class="day" style="--plate: var(--blue)">
-          <span class="disc" aria-label="Normal day"></span>
-          <div class="text">
-            <h3>Wednesday</h3>
-            <p class="moment">You're not sure your squat looks right.</p>
-            <p class="did">Film a set. Kedge checks depth, knees and back angle rep by rep, and gives you one thing to fix.</p>
-          </div>
-          <div class="phone" role="img" aria-label="Form review of a back squat: depth and knees good, chest dipped on rep 4">
-            <div class="row"><span class="lift">Form review</span><span>Back squat</span></div>
-            <div class="photo">
-              <!-- Photo: Rachel Moore on Unsplash (Unsplash License) -->
-              <img src="https://images.unsplash.com/photo-1662045010188-b5e91a7f504b?w=600&q=75&auto=format" alt="" loading="lazy">
-              <ul class="checks">
-                <li class="ok"><b>Depth</b><span>Below parallel</span></li>
-                <li class="ok"><b>Knees</b><span>Tracking out</span></li>
-                <li class="fix"><b>Chest</b><span>Dipped on rep 4</span></li>
-              </ul>
-            </div>
-            <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Drive your upper back into the bar so your chest stays up.</span></div>
-          </div>
-        </li>
-
-        <li class="day" style="--plate: var(--green)">
-          <span class="disc" aria-label="Recovery day"></span>
-          <div class="text">
-            <h3>Thursday</h3>
-            <p class="moment">Rest day, and you're eating on the run.</p>
-            <p class="did">Type what you had, snap a photo or scan the barcode. Kedge logs it and tells you what's left for the day.</p>
-          </div>
-          <div class="phone" role="img" aria-label="Food log: a chicken burrito bowl logged at 590 calories with 45 grams of protein">
-            <div class="row"><span class="lift">Food log</span><span>Lunch</span></div>
-            <div class="bubble">I had my chicken burrito bowl</div>
-            <div class="meal">
-              <div class="mealtop"><span>Chicken burrito bowl</span><b>590 kcal</b></div>
-              <div class="macros">
-                <span><i style="width:60%"></i>Protein 45g</span>
-                <span><i style="width:82%"></i>Carbs 62g</span>
-                <span><i style="width:34%"></i>Fat 18g</span>
-              </div>
-            </div>
-            <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Logged. 45g of protein to go today.</span></div>
-          </div>
-        </li>
-
-        <li class="day" style="--plate: var(--yellow)">
-          <span class="disc" aria-label="Light day"></span>
-          <div class="text">
-            <h3>Friday</h3>
-            <p class="moment">Five hours of sleep and a high resting heart rate.</p>
-            <p class="did">Kedge sees it on your watch before you do. Today gets lighter, and the heavy squats move to Saturday.</p>
-          </div>
-          <div class="phone" role="img" aria-label="Recovery check-in: energy 48 out of 100 after 5 hours 40 minutes of sleep; squats drop to 3 sets">
-            <div class="row"><span class="lift">Check-in</span><span>Apple Watch</span></div>
-            <div class="recov">
-              <div class="ring" style="--p:48"><span>48</span><small>Energy</small></div>
-              <ul><li><span>Sleep</span><b>5h 40m</b></li><li><span>Resting HR</span><b class="w">+6 bpm</b></li><li><span>Sore</span><b>Legs</b></li></ul>
-            </div>
-            <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Squats drop to 3 sets today. Heavy day moves to Saturday.</span></div>
-          </div>
-        </li>
-
-        <li class="day" style="--plate: var(--green)">
-          <span class="disc" aria-label="Recovery day"></span>
-          <div class="text">
-            <h3>Sunday</h3>
-            <p class="moment">Your shoulder has been sore all week.</p>
-            <p class="did">You tapped Painful on Monday. Kedge built a two-week rehab plan, tracks the pain, and brings bench back when it's ready.</p>
-          </div>
-          <div class="phone" role="img" aria-label="Shoulder rehab, day 6 of 14: pain down from 6 to 2, bench returns Monday at 185">
-            <div class="row"><span class="lift">Shoulder rehab</span><span>Day 6 of 14</span></div>
-            <div>
-              <div class="set done small"><span class="n">✓</span><span class="load">Band pull&#8209;aparts</span><span class="tag">3 × 15</span></div>
-              <div class="set done small"><span class="n">✓</span><span class="load">External rotations</span><span class="tag">3 × 12</span></div>
-              <div class="set next small"><span class="n">Next</span><span class="load">Face pulls</span><span class="tag">3 × 15</span></div>
-            </div>
-            <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Pain is down from 6 to 2. Bench comes back Monday at 185.</span></div>
-          </div>
-        </li>
+      <ol class="week" aria-label="A week of training with Kedge. Plate colour shows how hard each day is.">
+        <li style="--plate: var(--red)"><span class="disc"></span><h3>Mon</h3><p class="moment">Bench stalls at two reps.</p><p class="did">Set 3 drops 20 lb. Next week starts a touch lighter.</p><span class="kind">Heavy</span></li>
+        <li style="--plate: var(--blue)"><span class="disc"></span><h3>Tue</h3><p class="moment">Lower back tightens on deadlifts.</p><p class="did">Swapped to pull-ups, retest Thursday.</p><span class="kind">Normal</span></li>
+        <li style="--plate: var(--blue)"><span class="disc"></span><h3>Wed</h3><p class="moment">Not sure your squat looks right.</p><p class="did">Film a set, get one thing to fix.</p><span class="kind">Normal</span></li>
+        <li style="--plate: var(--green)"><span class="disc"></span><h3>Thu</h3><p class="moment">Rest day, eating on the run.</p><p class="did">Say what you ate. It's logged.</p><span class="kind">Recovery</span></li>
+        <li style="--plate: var(--yellow)"><span class="disc"></span><h3>Fri</h3><p class="moment">Five hours of sleep.</p><p class="did">Lighter today, heavy squats move to Saturday.</p><span class="kind">Light</span></li>
+        <li style="--plate: var(--green)"><span class="disc"></span><h3>Sun</h3><p class="moment">Shoulder still sore.</p><p class="did">A two-week rehab plan brings bench back safely.</p><span class="kind">Recovery</span></li>
       </ol>
     </div>
   </section>
@@ -478,7 +465,7 @@ footer a { color: var(--graphite); }
       <div class="prices" aria-label="Prices after the free month">
         <div class="price"><b>Yearly</b><span class="amt">$16.67<small>/mo</small></span><span class="note">$199.99 billed once a year</span><span class="save">Save 44%</span></div>
         <div class="price"><b>Monthly</b><span class="amt">$29.99<small>/mo</small></span><span class="note">Cancel anytime</span></div>
-        <p class="fine">After launch, both plans start with a 7-day free trial. Works with iPhone, Apple Watch and Apple Health; Oura and WHOOP are coming. Your data is never sold.</p>
+        <p class="fine">After launch, both plans start with a 7-day free trial. Needs an iPhone. Apple Watch and Apple Health make it smarter but are optional; Oura and WHOOP are coming. Your data is never sold.</p>
       </div>
     </div>
   </section>
@@ -772,6 +759,36 @@ Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function 
       .catch(function () { note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
   });
 });
+
+(function () {
+  var root = document.getElementById("carousel"); if (!root) return;
+  var track = root.querySelector(".track"), tabs = root.querySelectorAll(".tabs button"), slides = root.querySelectorAll(".slide"), cap = root.querySelector(".cap");
+  var n = tabs.length, i = 0, timer = null;
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (still) track.style.transition = "none";
+  function caption() { var s = slides[i]; cap.classList.add("fade"); setTimeout(function () { document.getElementById("cap-title").textContent = s.dataset.title; document.getElementById("cap-text").textContent = s.dataset.text; cap.classList.remove("fade"); }, still ? 0 : 150); }
+  function go(k) { var prev = i; i = (k + n) % n; if (prev !== i) caption(); track.style.transform = "translateX(" + (-100 * i) + "%)"; Array.prototype.forEach.call(tabs, function (b, j) { b.setAttribute("aria-selected", j === i ? "true" : "false"); b.classList.toggle("seen", j < i); }); Array.prototype.forEach.call(slides, function (s, j) { s.setAttribute("aria-hidden", j === i ? "false" : "true"); }); root.classList.remove("playing"); void root.offsetWidth; if (!still) root.classList.add("playing"); }
+  function stop() { if (timer) clearInterval(timer); timer = null; root.classList.add("paused"); }
+  function start() { if (still) return; stop(); root.classList.remove("paused"); timer = setInterval(function () { go(i + 1); }, 7500); }
+  Array.prototype.forEach.call(tabs, function (b, j) { b.addEventListener("click", function () { go(j); start(); }); });
+  root.addEventListener("mouseenter", stop); root.addEventListener("mouseleave", start);
+  root.addEventListener("focusin", stop); root.addEventListener("focusout", start);
+  root.querySelector(".arrow.prev").addEventListener("click", function () { go(i - 1); start(); });
+  root.querySelector(".arrow.next").addEventListener("click", function () { go(i + 1); start(); });
+  root.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") { go(i - 1); start(); } else if (e.key === "ArrowRight") { go(i + 1); start(); } });
+  // Swipe on phones: the screen follows the thumb, then snaps.
+  var vp = root.querySelector(".viewport"), sx = 0, sy = 0, dx = 0, dir = null;
+  vp.addEventListener("touchstart", function (e) { var t = e.touches[0]; sx = t.clientX; sy = t.clientY; dx = 0; dir = null; stop(); }, { passive: true });
+  vp.addEventListener("touchmove", function (e) {
+    var t = e.touches[0], mx = t.clientX - sx, my = t.clientY - sy;
+    if (!dir && (Math.abs(mx) > 8 || Math.abs(my) > 8)) { dir = Math.abs(mx) > Math.abs(my) ? "x" : "y"; if (dir === "x") track.style.transition = "none"; }
+    if (dir !== "x") return;
+    e.preventDefault(); dx = mx; track.style.transform = "translateX(calc(" + (-100 * i) + "% + " + dx + "px))";
+  }, { passive: false });
+  function release() { if (dir === "x") { track.style.transition = still ? "none" : ""; var w = vp.offsetWidth || 1; if (Math.abs(dx) > Math.min(60, w * 0.18)) go(i + (dx < 0 ? 1 : -1)); else go(i); } dir = null; dx = 0; start(); }
+  vp.addEventListener("touchend", release); vp.addEventListener("touchcancel", release);
+  go(0); start();
+})();
 </script>
 </body>
 </html>
