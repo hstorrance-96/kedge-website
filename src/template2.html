@@ -334,6 +334,13 @@ body { background-image: none; }
 .chart { box-shadow: none; }
 .plate-big { filter: none; }
 @media (max-width: 900px) { .week .disc { width: 48px; height: 48px; } }
+
+/* phones: nothing may widen the page; the carousel stays centred */
+html, body { overflow-x: clip; }
+.hero .wrap > * { min-width: 0; }
+.rig { min-width: 0; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .rig { margin-left: auto; margin-right: auto; } }
+.plate-big { transform: translate(calc(-50% + var(--x, 0px)), -50%) rotate(var(--r, -18deg)); will-change: transform; }
 </style>
 </head>
 <body>
@@ -385,6 +392,7 @@ body { background-image: none; }
           <circle cx="300" cy="300" r="150" fill="none" stroke="#A81C24" stroke-width="8"/>
           <circle cx="300" cy="300" r="62" fill="#9FA29C"/><circle cx="300" cy="300" r="62" fill="none" stroke="#7E817B" stroke-width="6"/>
           <circle cx="300" cy="300" r="30" fill="#E6E7E2"/>
+          <g font-family="Big Shoulders Display, Arial Narrow, sans-serif" font-weight="900" font-size="46" fill="#F3B9BC" text-anchor="middle" letter-spacing="3"><text x="300" y="118">KEDGE</text><text x="300" y="118" transform="rotate(180 300 300)">45 LB</text></g>
         </svg>
         <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="What Kedge does">
         <div class="stage">
@@ -704,7 +712,22 @@ Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function 
 (function () {
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var plate = document.querySelector(".plate-big");
-  if (plate && !still) { var tick = false; window.addEventListener("scroll", function () { if (tick) return; tick = true; requestAnimationFrame(function () { plate.style.setProperty("--r", (-18 + window.scrollY * 0.07) + "deg"); tick = false; }); }, { passive: true }); }
+  var rig = document.querySelector(".rig");
+  if (plate && rig && !still) {
+    // The plate rolls across behind the app screens as the hero scrolls by: it turns exactly as far as it travels.
+    var tick = false;
+    var roll = function () {
+      tick = false;
+      var r = rig.getBoundingClientRect(), vh = window.innerHeight, vw = window.innerWidth;
+      var p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+      var p0 = Math.max(0, Math.min(1, (vh - (r.top + window.scrollY)) / (vh + r.height)));
+      var travel = vw < 900 ? vw * 1.7 : 1100, x = (p - (vw < 900 ? 0.5 : p0)) * travel;
+      plate.style.setProperty("--x", x.toFixed(1) + "px");
+      plate.style.setProperty("--r", (x / (plate.getBoundingClientRect().width ? plate.clientWidth / 2 || 300 : 300) * 57.3 - 18).toFixed(1) + "deg");
+    };
+    window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(roll); } }, { passive: true });
+    window.addEventListener("resize", roll); roll();
+  }
   if (!("IntersectionObserver" in window)) return;
   Array.prototype.forEach.call(document.querySelectorAll(".sheet, .chart"), function (el) {
     el.classList.add("anim");
