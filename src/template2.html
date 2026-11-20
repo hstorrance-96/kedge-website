@@ -283,15 +283,6 @@ footer a { color: var(--graphite); }
         <p class="fine">Waitlist members get the first month free at launch. For iPhone; Apple Watch optional.</p>
       </div>
       <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="What Kedge does">
-        <div class="tabs" role="tablist">
-          <button role="tab" aria-selected="true"><i></i>Sets</button>
-          <button role="tab"><i></i>Chat</button>
-          <button role="tab"><i></i>Form</button>
-          <button role="tab"><i></i>Food</button>
-          <button role="tab"><i></i>Recovery</button>
-          <button role="tab"><i></i>Rehab</button>
-        </div>
-        <div class="cap" aria-live="polite"><h3 id="cap-title">Adjusts every set</h3><p id="cap-text">Miss reps or feel off, and the rest of your workout changes.</p></div>
         <div class="stage">
           <button class="arrow prev" type="button" aria-label="Previous feature"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
           <button class="arrow next" type="button" aria-label="Next feature"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -537,15 +528,13 @@ Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function 
 
 (function () {
   var root = document.getElementById("carousel"); if (!root) return;
-  var track = root.querySelector(".track"), tabs = root.querySelectorAll(".tabs button"), slides = root.querySelectorAll(".slide"), cap = root.querySelector(".cap");
-  var n = tabs.length, i = 0, timer = null;
+  var track = root.querySelector(".track"), slides = root.querySelectorAll(".slide");
+  var n = slides.length, i = 0, timer = null;
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (still) track.style.transition = "none";
-  function caption() { var s = slides[i]; cap.classList.add("fade"); setTimeout(function () { document.getElementById("cap-title").textContent = s.dataset.title; document.getElementById("cap-text").textContent = s.dataset.text; cap.classList.remove("fade"); }, still ? 0 : 150); }
-  function go(k) { var prev = i; i = (k + n) % n; if (prev !== i) caption(); track.style.transform = "translateX(" + (-100 * i) + "%)"; Array.prototype.forEach.call(tabs, function (b, j) { b.setAttribute("aria-selected", j === i ? "true" : "false"); b.classList.toggle("seen", j < i); }); Array.prototype.forEach.call(slides, function (s, j) { s.setAttribute("aria-hidden", j === i ? "false" : "true"); }); root.classList.remove("playing"); void root.offsetWidth; if (!still) root.classList.add("playing"); }
-  function stop() { if (timer) clearInterval(timer); timer = null; root.classList.add("paused"); }
-  function start() { if (still) return; stop(); root.classList.remove("paused"); timer = setInterval(function () { go(i + 1); }, 7500); }
-  Array.prototype.forEach.call(tabs, function (b, j) { b.addEventListener("click", function () { go(j); start(); }); });
+  function go(k) { i = (k + n) % n; track.style.transform = "translateX(" + (-100 * i) + "%)"; Array.prototype.forEach.call(slides, function (s, j) { s.setAttribute("aria-hidden", j === i ? "false" : "true"); }); }
+  function stop() { if (timer) clearInterval(timer); timer = null; }
+  function start() { if (still) return; stop(); timer = setInterval(function () { go(i + 1); }, 7500); }
   root.addEventListener("mouseenter", stop); root.addEventListener("mouseleave", start);
   root.addEventListener("focusin", stop); root.addEventListener("focusout", start);
   root.querySelector(".arrow.prev").addEventListener("click", function () { go(i - 1); start(); });
