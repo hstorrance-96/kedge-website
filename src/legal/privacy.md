@@ -33,7 +33,7 @@ Effective date: [DATE]
 
 **Automatically:**
 
-- Device type, app version, crash reports and basic usage (which screens are used), so we can fix bugs and improve the app.
+- Device type, app version and crash reports, so we can fix bugs.
 - Subscription status from Apple. We never see your payment card.
 
 We don't collect your precise location, contacts or advertising identifiers, and we don't track you across other apps or websites.
@@ -43,7 +43,7 @@ We don't collect your precise location, contacts or advertising identifiers, and
 - To build and adjust your training and nutrition plan, answer your questions and review your form.
 - To keep you safe, for example by avoiding exercises that conflict with an injury or condition you've told us about.
 - To run the app: accounts, subscriptions, reminders you've allowed, support and security.
-- To improve the coaching: we review a small sample of coach replies, with names and contact details removed, to check quality. You can opt out in Account.
+- To improve the coaching: we look at group statistics, such as how often people finish planned workouts or how hard sets feel, only for groups of 20 or more people and with no names, contact details, messages or individual records. Coach replies you report to us are reviewed to fix mistakes.
 
 We don't use your data for advertising, and we don't sell or rent it.
 
