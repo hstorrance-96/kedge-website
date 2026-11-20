@@ -289,14 +289,14 @@ section#pricing { border-top: 0; padding-top: 16px; }
 .cap h3 { font-size: 19px; font-weight: 700; margin-bottom: 4px; }
 .cap p { color: var(--muted); font-size: 15.5px; }
 .plans { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
-.plan-row { display: grid; grid-template-columns: 140px 1fr 130px; align-items: center; gap: 22px; padding: 18px 22px; border-radius: 18px; border: 1px solid var(--line); }
+.plan-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: center; gap: 22px; padding: 18px 22px; border-radius: 18px; border: 1px solid var(--line); }
 .plan-row.best { border-color: #3B5BD6; background: linear-gradient(90deg, rgba(47,99,242,.16), rgba(47,99,242,.04)); }
 .plan-name { display: flex; flex-direction: column; } .plan-name b { font-size: 18px; } .plan-name span { font-size: 13px; color: var(--muted); }
 .bar { height: 14px; border-radius: 8px; background: #19233A; position: relative; }
 .bar i { display: block; height: 100%; border-radius: 8px; background: #3A4766; position: relative; }
 .best .bar i { background: linear-gradient(90deg, var(--volt), var(--volt-soft)); }
 .bar em { position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%); white-space: nowrap; font-style: normal; font-size: 13px; font-weight: 700; color: var(--go); }
-.plan-price { text-align: right; } .plan-price b { font-family: var(--display); font-variation-settings: "wdth" 118; font-weight: 800; font-size: 34px; line-height: 1; } .plan-price span { color: var(--muted); font-size: 14px; margin-left: 2px; }
+.plan-price { text-align: right; white-space: nowrap; min-width: 130px; } .plan-price b { font-family: var(--display); font-variation-settings: "wdth" 118; font-weight: 800; font-size: 34px; line-height: 1; } .plan-price span { color: var(--muted); font-size: 14px; margin-left: 2px; }
 .plan-row:not(.best) .plan-price b { font-size: 26px; color: #C4CCDD; }
 @media (max-width: 600px) { .plan-row { grid-template-columns: 1fr auto; row-gap: 12px; } .bar { grid-column: 1 / -1; grid-row: 2; } }
 #pricing .fine { margin-top: 18px; }
