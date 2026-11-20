@@ -26,7 +26,7 @@ You agree to give accurate answers in the health check and to tell the coach abo
 
 ## 6. Subscriptions and billing
 
-- {{APP}} is offered as an auto-renewing subscription (currently $29.99 a month or $179.99 a year, in the US) after a 7-day free trial. Prices may vary by country and may change; we'll give notice before a price change affects you.
+- {{APP}} is offered as an auto-renewing subscription (currently $29.99 a month or $199.99 a year, in the US) after a 7-day free trial. Prices may vary by country and may change; we'll give notice before a price change affects you.
 - Payment is charged to your Apple ID at confirmation of purchase. The subscription renews automatically unless you cancel at least 24 hours before the end of the current period. Manage or cancel in your Apple ID settings.
 - If you cancel during the trial, you won't be charged. Starting a history import during the trial starts the paid subscription right away.
 - Refunds are handled by Apple under its policies.

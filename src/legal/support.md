@@ -6,7 +6,7 @@
 
 ## Subscriptions and billing
 
-**How much does it cost?** $29.99 a month or $179.99 a year (US prices), after a 7-day free trial. One plan, everything included.
+**How much does it cost?** $29.99 a month or $199.99 a year (US prices), after a 7-day free trial. One plan, everything included.
 
 **How do I cancel?** Subscriptions are managed by Apple. On your iPhone, go to Settings › [your name] › Subscriptions › {{APP}} › Cancel Subscription. Cancel at least 24 hours before renewal to avoid the next charge. Deleting the app or your account doesn't cancel the subscription.
 
