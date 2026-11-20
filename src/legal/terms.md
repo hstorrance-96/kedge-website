@@ -43,7 +43,7 @@ Don't misuse the app: no illegal activity, no attempts to break, reverse-enginee
 
 ## 9. Third-party services
 
-Connections to Apple Health, Apple Watch, Oura, WHOOP, Strava and others are governed by those companies' own terms. We're not responsible for their services or data.
+Connections to Apple Health, Apple Watch, Oura, WHOOP and others are governed by those companies' own terms. We're not responsible for their services or data.
 
 ## 10. Changes and availability
 

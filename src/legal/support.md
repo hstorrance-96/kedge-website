@@ -40,6 +40,6 @@
 
 ## Devices
 
-**Which devices work?** iPhone, Apple Watch, Apple Health, Oura and WHOOP. Garmin is coming. Runs and rides tracked for Strava come in through Apple Health.
+**Which devices work?** iPhone, Apple Watch and Apple Health. Oura and WHOOP are coming. Runs and rides you record in apps like Strava or Garmin Connect come in through Apple Health when that app saves workouts to Health.
 
 **My wearable isn't syncing.** Open Account › Devices, turn the connection off and on again, and make sure the device's own app has synced recently.
