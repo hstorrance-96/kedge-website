@@ -324,6 +324,16 @@ main { overflow-x: clip; }
 .week .disc { box-shadow: 0 8px 14px rgba(21,23,26,.28); }
 .call::after { right: -400px; bottom: -480px; }
 @media (max-width: 900px) { .week li { border-top: 0; padding: 10px 0; } .week li > div { flex: 1; } .call::after { right: -520px; bottom: -600px; } }
+
+/* ---- calm pass: one bold object (the hero plate), everything else quiet ---- */
+body { background-image: none; }
+.problem { background-image: none; background-color: var(--ink); }
+.call::after { display: none; }
+.week li > div { background: var(--concrete); box-shadow: none; padding: 2px 10px 6px 6px; border-radius: 8px; }
+.week .disc { width: 58px; height: 58px; box-shadow: 0 0 0 6px var(--concrete); }
+.chart { box-shadow: none; }
+.plate-big { filter: none; }
+@media (max-width: 900px) { .week .disc { width: 48px; height: 48px; } }
 </style>
 </head>
 <body>
@@ -375,7 +385,6 @@ main { overflow-x: clip; }
           <circle cx="300" cy="300" r="150" fill="none" stroke="#A81C24" stroke-width="8"/>
           <circle cx="300" cy="300" r="62" fill="#9FA29C"/><circle cx="300" cy="300" r="62" fill="none" stroke="#7E817B" stroke-width="6"/>
           <circle cx="300" cy="300" r="30" fill="#E6E7E2"/>
-          <text font-family="Big Shoulders Display, Arial Narrow, sans-serif" font-weight="900" font-size="64" fill="#F3B9BC" letter-spacing="4"><textPath href="#ring" textLength="1270">KEDGE · 45 LB · ADAPTS EVERY SET · 20.4 KG ·</textPath></text>
         </svg>
         <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="What Kedge does">
         <div class="stage">
@@ -483,7 +492,6 @@ main { overflow-x: clip; }
       <div class="week-head">
         <h2 class="big">Same week. Now with a coach.</h2>
         <p class="sub">Kedge knows your plan, listens to how you feel, and changes the next set, the next session or the next week. Then it tells you why.</p>
-        <div class="legend" aria-hidden="true"><span><i class="plate" style="--plate: var(--red)"></i>Heavy</span><span><i class="plate" style="--plate: var(--blue)"></i>Normal</span><span><i class="plate" style="--plate: var(--yellow)"></i>Light</span><span><i class="plate" style="--plate: var(--green)"></i>Recovery</span></div>
       </div>
       <div class="week-diag">
         <span class="bar" aria-hidden="true"></span>
@@ -524,7 +532,6 @@ main { overflow-x: clip; }
       <div>
         <h2 class="mid">Progress was never a straight line.</h2>
         <p class="sub">Bad weeks still happen. The difference is that they bend the plan instead of breaking it, so twelve weeks later you're still training, and still stronger.</p>
-        <p class="jump" aria-hidden="true"><span>185</span><i></i><b>225</b><small>lb</small></p>
       </div>
       <figure class="chart">
         <svg viewBox="0 0 600 300" role="img" aria-label="Example bench press top set over 12 weeks, rising from 185 to 225 pounds with dips in weeks 5 and 9">
