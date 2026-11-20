@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src https://jkaszobhblvpupaayyoy.supabase.co; frame-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Kedge admin</title>
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header class="top">
+  <strong class="brand">Kedge</strong><span class="where">Admin</span>
+  <span class="spacer"></span>
+  <button id="refresh" class="ghost" hidden>Refresh</button>
+  <button id="signout" class="ghost" hidden>Lock</button>
+</header>
+
+<main id="locked" class="locked" hidden>
+  <h1>Admin</h1>
+  <p>Enter your admin password (the ADMIN_TOKEN you saved in Supabase).</p>
+  <form id="unlock">
+    <input id="token" type="password" autocomplete="current-password" placeholder="Admin password" required minlength="24">
+    <label class="check"><input id="remember" type="checkbox"> Remember on this device</label>
+    <button type="submit">Open dashboard</button>
+    <p id="lockmsg" class="msg" role="alert"></p>
+  </form>
+</main>
+
+<main id="app" hidden>
+  <section>
+    <h2>Waiting for you <span id="waitcount" class="count"></span></h2>
+    <div id="waiting" class="items"></div>
+  </section>
+
+  <section>
+    <h2>Numbers <span id="asof" class="muted small"></span></h2>
+    <div id="cards" class="cards"></div>
+    <div class="charts">
+      <figure><figcaption>Users (last 30 days)</figcaption><div id="chart-users"></div></figure>
+      <figure><figcaption>AI spend this month, $</figcaption><div id="chart-spend"></div></figure>
+    </div>
+    <div class="grid2">
+      <div><h3>AI spend by plan</h3><table id="spend"></table></div>
+      <div><h3>Crashes, last 24 hours</h3><div id="crashes"></div></div>
+    </div>
+    <h3>Coaching stats (groups of 20+ people)</h3>
+    <div id="coaching"></div>
+  </section>
+
+  <section>
+    <h2>Agents</h2>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-agent="all" aria-selected="true">All</button>
+      <button role="tab" data-agent="ops">App ops</button>
+      <button role="tab" data-agent="trainer">Trainer</button>
+      <button role="tab" data-agent="marketing">Marketing</button>
+    </div>
+    <div id="feed" class="items"></div>
+  </section>
+
+  <section>
+    <h2>Connections</h2>
+    <ul id="connections" class="connections"></ul>
+    <div class="row">
+      <button id="run-collect" class="ghost">Collect numbers now</button>
+      <button id="run-inbox" class="ghost">Check agent inbox now</button>
+      <span id="runmsg" class="muted small"></span>
+    </div>
+  </section>
+</main>
+
+<template id="item-tpl">
+  <article class="item">
+    <header><span class="agent"></span><span class="status"></span><time></time></header>
+    <h3 class="title"></h3>
+    <div class="pr muted small"></div>
+    <div class="body"></div>
+    <div class="action"></div>
+    <div class="result muted small"></div>
+    <div class="decide">
+      <textarea rows="2" placeholder="Note or feedback for the agent (optional)"></textarea>
+      <div class="row">
+        <button class="approve"></button>
+        <button class="reject ghost">Reject</button>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="admin.js"></script>
+</body>
+</html>
