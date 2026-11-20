@@ -11,7 +11,7 @@ This policy is for people in Washington, Nevada, Connecticut and other states wi
 - **Health screening answers:** age, pregnancy or recent birth, and conditions you tell us about (for example heart conditions, high blood pressure, diabetes, asthma, joint or back problems, recent surgery or injury, medication for a chronic condition, or an eating disorder).
 - **Injuries and symptoms:** pain, soreness and injuries you report in check-ins, the pain check or chat.
 - **Body measurements:** height, weight and body-weight trends.
-- **Biometric and wearable data you connect:** heart rate, heart-rate variability, sleep, recovery and readiness scores, and activity from Apple Health, Apple Watch, Oura or WHOOP.
+- **Biometric and wearable data you connect:** heart rate, heart-rate variability, sleep, recovery and readiness scores, and activity from Apple Health, Apple Watch, Oura or WHOOP, plus breathing rate, wrist temperature, body fat and VO2 max from Apple Health. We use these to suggest lighter days and to set calorie and protein targets; they are never sold or used for ads.
 - **Exercise and nutrition data:** workouts, effort ratings, energy check-ins, meals, food photos and calorie and macro estimates, to the extent they reveal information about your health.
 - **Form-review media:** video frames of you lifting, and body-position (pose) data extracted from them on your phone.
 

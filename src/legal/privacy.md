@@ -28,6 +28,7 @@ Effective date: [DATE]
 
 - Apple Health: workouts, steps, heart rate, sleep, body weight and similar data you allow.
 - Oura and WHOOP: sleep, recovery, readiness and heart-rate data.
+- Apple Health, if you connect it: sleep, heart rate, resting heart rate, HRV, breathing rate, wrist temperature, weight, body fat, VO2 max, workouts from other apps, and (only if you turn it on) meals other apps logged. Kedge writes one thing back: your finished Kedge workouts, which you can turn off in Connected devices.
 - Apple Watch: heart rate and motion during workouts.
 
 **Automatically:**
