@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kedge: Your Training Partner</title>
-<meta name="description" content="Kedge is an AI strength coach that watches every set and rewrites your plan when sleep, soreness or a bad day gets in the way. Join the waitlist and get your first month free.">
+<meta name="description" content="Kedge is an AI strength coach for iPhone. Miss reps, sleep badly or run short on time, and it rewrites the rest of your workout on the spot. First month free for the waitlist.">
 <meta name="theme-color" content="#E6E7E2">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -371,6 +371,34 @@ html, body { overflow-x: clip; }
 h2, .big, .mid { line-height: 1.04; }
 .hero h1 { line-height: 1.02; }
 .steps h3, .week h3 { line-height: 1.05; }
+
+/* ================= /new: design spec =================
+   Type     Big Shoulders Display 900 (h1) / 800 (h2, h3); Barlow 400 body, 600 emphasis. Body 18/1.55, measure <= 32em.
+   Scale    h1 clamp(60,7.6vw,116) / h2.big clamp(44,6vw,84) / h2.mid clamp(38,4.6vw,60) / h3 30-40 / lede 21 / small 14.
+   Space    8px base. Sections 128 desktop, 80 phone. Heading to body 24. Blocks 64.
+   Colour   concrete page, ink type, graphite secondary; blue = action only; red = the hero plate and the marker pen only.
+   Rule     in every pair of lines, the thing Kedge does is the loud one; the problem is the quiet one. */
+::selection { background: var(--blue); color: #fff; }
+section { padding: 128px 0; }
+.hero { padding: 40px 0 128px; }
+.big { font-size: clamp(44px, 6vw, 84px); }
+.mid { font-size: clamp(38px, 4.6vw, 60px); }
+.sub, .lede { max-width: 32em; }
+.top { position: sticky; top: 0; z-index: 20; background: rgba(230,231,226,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.top .wrap { height: 64px; }
+.top .join { border: 0; padding: 9px 18px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 15px; }
+.top .join:hover { background: var(--blue); color: #fff; }
+.week .moment { margin-top: 6px; font-size: 17px; font-weight: 400; color: var(--graphite); }
+.week .did { margin-top: 6px; font-size: 19px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+.also { list-style: none; margin: 96px 0 0; padding: 32px 0 0; border-top: 2px solid var(--ink); display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+.also h3 { font-size: 28px; line-height: 1.05; }
+.also p { margin-top: 10px; color: var(--graphite); }
+.start { border-top: 0; padding-top: 0; }
+.how { padding-top: 0; }
+@media (max-width: 900px) {
+  section { padding: 80px 0; } .hero { padding: 24px 0 80px; } .how { padding-top: 0; }
+  .also { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; }
+}
 </style>
 </head>
 <body>
@@ -380,7 +408,7 @@ h2, .big, .mid { line-height: 1.04; }
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 9h24" stroke="#15171A" stroke-width="3.4" stroke-linecap="round"/><path d="M16 9v13" stroke="#2450E0" stroke-width="3.4" stroke-linecap="round"/><path d="M8 19c2 5 5 8 8 8s6-3 8-8" fill="none" stroke="#15171A" stroke-width="3.4" stroke-linecap="round"/></svg>
       Kedge
     </a>
-    <a class="join" href="#join">Get a free month</a>
+    <a class="join" href="#join">Get my free month</a>
   </div>
 </header>
 
@@ -388,29 +416,21 @@ h2, .big, .mid { line-height: 1.04; }
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1 id="headline">Life happens. Your coach adapts.</h1>
+        <h1 id="headline">Train the day you actually have.</h1>
         <script>
-        // Headline A/B/C test: each visitor gets one version at random and keeps it; signups record which one they saw.
-        var HEADLINES = { a: "The coach that changes your next set.", b: "Life happens. Your coach adapts.", c: "Plans break. Progress doesn’t." };
-        var HEADLINE = (function () {
-          var forced = (location.search.match(/[?&]h=([abc])/) || [])[1];
-          if (forced) return forced;
-          var v = null;
-          try { v = localStorage.getItem("kedge_h"); } catch (e) {}
-          if (!HEADLINES[v]) { v = "abc".charAt(Math.floor(Math.random() * 3)); try { localStorage.setItem("kedge_h", v); } catch (e) {} }
-          return v;
-        })();
-        document.getElementById("headline").textContent = HEADLINES[HEADLINE];
+        // This version has one headline; signups from it are tagged "N".
+        var HEADLINES = { n: "Train the day you actually have." };
+        var HEADLINE = "n";
         </script>
-        <p class="lede">Kedge is an AI strength coach that watches every set and rewrites your plan when sleep, soreness or a bad day gets in the way.</p>
+        <p class="lede">Kedge is an AI strength coach for iPhone. Miss reps, sleep badly or run short on time, and it rewrites the rest of your workout on the spot. Then it tells you why.</p>
         <form class="signup" novalidate>
           <label for="email1">Email address</label>
           <input id="email1" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
           <div class="hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
-          <button type="submit">Claim my free month</button>
+          <button type="submit">Get my free month</button>
         </form>
         <p class="form-note" role="status" aria-live="polite"></p>
-        <p class="fine">Waitlist members get the first month free at launch. For iPhone; Apple Watch optional.</p>
+        <p class="fine">First month free for the waitlist. No card needed. Apple Watch optional.</p>
       </div>
       <div class="rig">
         <div class="plate-big" aria-hidden="true">
@@ -517,17 +537,17 @@ h2, .big, .mid { line-height: 1.04; }
   <section class="problem">
     <div class="wrap">
       <div>
-        <h2 class="big">Your program assumes a perfect week.</h2>
-        <p class="sub">Eight hours of sleep. Fresh shoulders. Nothing running late. Real weeks don't look like that, so most programs quietly fall apart by week three, and it feels like your fault.</p>
+        <h2 class="big">Every program is written for a perfect week.</h2>
+        <p class="sub">You've never had one. So around week three the plan and your life stop agreeing, and it feels like you failed. You didn't. The plan just couldn't move.</p>
       </div>
       <div class="sheet" role="img" aria-label="A printed training program with every day crossed out by real life">
         <h3>Week 3</h3>
         <ol>
-          <li><span class="d">Mon</span><span class="w">Bench 3 × 5 @ 225</span><span class="why">Failed set 2. Now what?</span></li>
+          <li><span class="d">Mon</span><span class="w">Bench 3 × 5 @ 225</span><span class="why">Missed set 2. Now what?</span></li>
           <li><span class="d">Tue</span><span class="w">Deadlift 3 × 5 @ 315</span><span class="why">Had to leave early.</span></li>
-          <li><span class="d">Wed</span><span class="w">Squat 5 × 5 @ 275</span><span class="why">Was my form even right?</span></li>
+          <li><span class="d">Wed</span><span class="w">Squat 5 × 5 @ 275</span><span class="why">Is my form even right?</span></li>
         </ol>
-        <p class="end">A spreadsheet can't see any of this.</p>
+        <p class="end">Paper can't answer back.</p>
       </div>
     </div>
   </section>
@@ -535,15 +555,15 @@ h2, .big, .mid { line-height: 1.04; }
   <section class="guide">
     <div class="wrap">
       <div class="week-head">
-        <h2 class="big">Same week. Now with a coach.</h2>
-        <p class="sub">Kedge knows your plan, listens to how you feel, and changes the next set, the next session or the next week. Then it tells you why.</p>
+        <h2 class="big">Same week. This time the plan answers back.</h2>
+        <p class="sub">Kedge knows your program and listens to how the session is going. When something changes, so does what comes next, and you always get the reason.</p>
       </div>
       <div class="week-diag">
         <span class="bar" aria-hidden="true"></span>
         <ol class="week" aria-label="A week of training with Kedge. Plate colour shows how hard each day is.">
-          <li style="--plate: var(--red); --i: 0"><span class="disc"></span><div><h3>Mon</h3><p class="moment">Bench stalls at two reps.</p><p class="did">Set 3 drops 20 lb. Next week starts a touch lighter.</p></div></li>
-          <li style="--plate: var(--blue); --i: 1"><span class="disc"></span><div><h3>Tue</h3><p class="moment">Had to leave early.</p><p class="did">Tell the coach how much time you have. It cuts the session down to fit.</p></div></li>
-          <li style="--plate: var(--blue); --i: 2"><span class="disc"></span><div><h3>Wed</h3><p class="moment">Not sure your squat looks right.</p><p class="did">Film a set, get one thing to fix.</p></div></li>
+          <li style="--plate: var(--red); --i: 0"><span class="disc"></span><div><h3>Mon</h3><p class="moment">You miss reps on set 2.</p><p class="did">Set 3 drops 20 lb so you still finish strong. Next week adjusts to match.</p></div></li>
+          <li style="--plate: var(--blue); --i: 1"><span class="disc"></span><div><h3>Tue</h3><p class="moment">You have to leave early.</p><p class="did">Tell the coach how long you've got. It cuts the session to fit.</p></div></li>
+          <li style="--plate: var(--blue); --i: 2"><span class="disc"></span><div><h3>Wed</h3><p class="moment">You're not sure about your squat.</p><p class="did">Film one set. Get the one fix that matters.</p></div></li>
         </ol>
         <div class="phone shot shot-a" role="img" aria-label="Form review of a back squat: depth and knees good, chest dipped on rep 4">
           <div class="row"><span class="lift">Form review</span><span>Back squat</span></div>
@@ -558,17 +578,22 @@ h2, .big, .mid { line-height: 1.04; }
           <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Drive your upper back into the bar so your chest stays up.</span></div>
         </div>
       </div>
+      <ul class="also" aria-label="What else Kedge does">
+        <li><h3>Food, logged in a sentence</h3><p>Say it, snap it or scan it. Kedge does the math.</p></li>
+        <li><h3>A ten-second morning check-in</h3><p>Sleep, stress and soreness decide how hard today should be.</p></li>
+        <li><h3>A way back from pain</h3><p>Tap Painful on any set and get a rehab plan that brings the lift back.</p></li>
+      </ul>
     </div>
   </section>
 
   <section class="how">
     <div class="wrap">
       <div class="start">
-        <h2 class="mid">Getting started takes five minutes.</h2>
+        <h2 class="mid">Lifting in five minutes.</h2>
         <ol class="steps">
-          <li><h3>Tell it about you</h3><p>Your goal, your gym, how many days you can train, and anything that hurts. It builds your first week from that.</p></li>
-          <li><h3>Train</h3><p>Log sets with a tap or your voice. It adjusts as you go and explains every change.</p></li>
-          <li><h3>Check in on Sunday</h3><p>A two-minute look back. Next week is planned around how this one really went.</p></li>
+          <li><h3>Tell it about you</h3><p>Your goal, your gym, your schedule and anything that hurts. Your first week is built from that.</p></li>
+          <li><h3>Lift</h3><p>Log each set with a tap or your voice. The plan adjusts as you go.</p></li>
+          <li><h3>Look back on Sunday</h3><p>Two minutes on how the week really went. Next week is built on that.</p></li>
         </ol>
       </div>
     </div>
@@ -578,19 +603,19 @@ h2, .big, .mid { line-height: 1.04; }
     <div class="wrap">
       <div>
         <h2 class="big">Your first month is on us.</h2>
-        <p class="sub">Join the waitlist and we'll send your free month when Kedge launches. No card needed to join.</p>
+        <p class="sub">Join the waitlist now. When Kedge launches, your first month is free. No card needed to join.</p>
         <form class="signup" novalidate>
           <label for="email2">Email address</label>
           <input id="email2" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
           <div class="hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
-          <button type="submit">Claim my free month</button>
+          <button type="submit">Get my free month</button>
         </form>
         <p class="form-note" role="status" aria-live="polite"></p>
       </div>
       <div class="prices" aria-label="Prices after the free month">
-        <div class="price"><b>Yearly</b><span class="amt">$16.67<small>/mo</small></span><span class="note">$199.99 billed once a year</span><span class="save">Save 44%</span></div>
+        <div class="price"><b>Yearly</b><span class="amt">$16.67<small>/mo</small></span><span class="note">$199.99 billed yearly</span><span class="save">Save 44%</span></div>
         <div class="price"><b>Monthly</b><span class="amt">$29.99<small>/mo</small></span><span class="note">Cancel anytime</span></div>
-        <p class="fine">After launch, both plans start with a 7-day free trial. Needs an iPhone. Apple Watch and Apple Health make it smarter but are optional; Oura and WHOOP are coming. Your data is never sold.</p>
+        <p class="fine">After launch, both plans start with a 7-day free trial. Needs an iPhone. Apple Watch and Apple Health are optional. Oura and WHOOP are coming. Your data is never sold.</p>
       </div>
     </div>
   </section>
@@ -623,7 +648,7 @@ function sendConfirmation(email) {
 // Umami Cloud: counts visits and signups per headline.
 var UMAMI_ID = "c7f8feaa-1248-434c-9dfb-aab343dc529a";
 function track(name, data) { try { if (window.umami) window.umami.track(name, data); } catch (e) {} }
-if (UMAMI_ID && !/\/preview\//.test(location.pathname)) {
+if (UMAMI_ID && !/\/(preview|new)\//.test(location.pathname)) {
   var um = document.createElement("script");
   um.defer = true; um.src = "https://cloud.umami.is/script.js"; um.setAttribute("data-website-id", UMAMI_ID);
   um.onload = function () { track("headline-view", { headline: HEADLINE.toUpperCase() }); };

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kedge: Your Training Partner</title>
-<meta name="description" content="Kedge is an AI strength coach for iPhone. Miss reps, sleep badly or run short on time, and it rewrites the rest of your workout on the spot. First month free for the waitlist.">
+<meta name="description" content="Kedge is an AI strength coach that watches every set and rewrites your plan when sleep, soreness or a bad day gets in the way. Join the waitlist and get your first month free.">
 <meta name="theme-color" content="#E6E7E2">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -371,34 +371,6 @@ html, body { overflow-x: clip; }
 h2, .big, .mid { line-height: 1.04; }
 .hero h1 { line-height: 1.02; }
 .steps h3, .week h3 { line-height: 1.05; }
-
-/* ================= /new: design spec =================
-   Type     Big Shoulders Display 900 (h1) / 800 (h2, h3); Barlow 400 body, 600 emphasis. Body 18/1.55, measure <= 32em.
-   Scale    h1 clamp(60,7.6vw,116) / h2.big clamp(44,6vw,84) / h2.mid clamp(38,4.6vw,60) / h3 30-40 / lede 21 / small 14.
-   Space    8px base. Sections 128 desktop, 80 phone. Heading to body 24. Blocks 64.
-   Colour   concrete page, ink type, graphite secondary; blue = action only; red = the hero plate and the marker pen only.
-   Rule     in every pair of lines, the thing Kedge does is the loud one; the problem is the quiet one. */
-::selection { background: var(--blue); color: #fff; }
-section { padding: 128px 0; }
-.hero { padding: 40px 0 128px; }
-.big { font-size: clamp(44px, 6vw, 84px); }
-.mid { font-size: clamp(38px, 4.6vw, 60px); }
-.sub, .lede { max-width: 32em; }
-.top { position: sticky; top: 0; z-index: 20; background: rgba(230,231,226,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.top .wrap { height: 64px; }
-.top .join { border: 0; padding: 9px 18px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 15px; }
-.top .join:hover { background: var(--blue); color: #fff; }
-.week .moment { margin-top: 6px; font-size: 17px; font-weight: 400; color: var(--graphite); }
-.week .did { margin-top: 6px; font-size: 19px; font-weight: 600; line-height: 1.4; color: var(--ink); }
-.also { list-style: none; margin: 96px 0 0; padding: 32px 0 0; border-top: 2px solid var(--ink); display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
-.also h3 { font-size: 28px; line-height: 1.05; }
-.also p { margin-top: 10px; color: var(--graphite); }
-.start { border-top: 0; padding-top: 0; }
-.how { padding-top: 0; }
-@media (max-width: 900px) {
-  section { padding: 80px 0; } .hero { padding: 24px 0 80px; } .how { padding-top: 0; }
-  .also { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; }
-}
 </style>
 </head>
 <body>
@@ -408,7 +380,7 @@ section { padding: 128px 0; }
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 9h24" stroke="#15171A" stroke-width="3.4" stroke-linecap="round"/><path d="M16 9v13" stroke="#2450E0" stroke-width="3.4" stroke-linecap="round"/><path d="M8 19c2 5 5 8 8 8s6-3 8-8" fill="none" stroke="#15171A" stroke-width="3.4" stroke-linecap="round"/></svg>
       Kedge
     </a>
-    <a class="join" href="#join">Get my free month</a>
+    <a class="join" href="#join">Get a free month</a>
   </div>
 </header>
 
@@ -416,21 +388,29 @@ section { padding: 128px 0; }
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1 id="headline">Train the day you actually have.</h1>
+        <h1 id="headline">Life happens. Your coach adapts.</h1>
         <script>
-        // This version has one headline; signups from it are tagged "N".
-        var HEADLINES = { n: "Train the day you actually have." };
-        var HEADLINE = "n";
+        // Headline A/B/C test: each visitor gets one version at random and keeps it; signups record which one they saw.
+        var HEADLINES = { a: "The coach that changes your next set.", b: "Life happens. Your coach adapts.", c: "Plans break. Progress doesn’t." };
+        var HEADLINE = (function () {
+          var forced = (location.search.match(/[?&]h=([abc])/) || [])[1];
+          if (forced) return forced;
+          var v = null;
+          try { v = localStorage.getItem("kedge_h"); } catch (e) {}
+          if (!HEADLINES[v]) { v = "abc".charAt(Math.floor(Math.random() * 3)); try { localStorage.setItem("kedge_h", v); } catch (e) {} }
+          return v;
+        })();
+        document.getElementById("headline").textContent = HEADLINES[HEADLINE];
         </script>
-        <p class="lede">Kedge is an AI strength coach for iPhone. Miss reps, sleep badly or run short on time, and it rewrites the rest of your workout on the spot. Then it tells you why.</p>
+        <p class="lede">Kedge is an AI strength coach that watches every set and rewrites your plan when sleep, soreness or a bad day gets in the way.</p>
         <form class="signup" novalidate>
           <label for="email1">Email address</label>
           <input id="email1" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
           <div class="hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
-          <button type="submit">Get my free month</button>
+          <button type="submit">Claim my free month</button>
         </form>
         <p class="form-note" role="status" aria-live="polite"></p>
-        <p class="fine">First month free for the waitlist. No card needed. Apple Watch optional.</p>
+        <p class="fine">Waitlist members get the first month free at launch. For iPhone; Apple Watch optional.</p>
       </div>
       <div class="rig">
         <div class="plate-big" aria-hidden="true">
@@ -537,17 +517,17 @@ section { padding: 128px 0; }
   <section class="problem">
     <div class="wrap">
       <div>
-        <h2 class="big">Every program is written for a perfect week.</h2>
-        <p class="sub">You've never had one. So around week three the plan and your life stop agreeing, and it feels like you failed. You didn't. The plan just couldn't move.</p>
+        <h2 class="big">Your program assumes a perfect week.</h2>
+        <p class="sub">Eight hours of sleep. Fresh shoulders. Nothing running late. Real weeks don't look like that, so most programs quietly fall apart by week three, and it feels like your fault.</p>
       </div>
       <div class="sheet" role="img" aria-label="A printed training program with every day crossed out by real life">
         <h3>Week 3</h3>
         <ol>
-          <li><span class="d">Mon</span><span class="w">Bench 3 × 5 @ 225</span><span class="why">Missed set 2. Now what?</span></li>
+          <li><span class="d">Mon</span><span class="w">Bench 3 × 5 @ 225</span><span class="why">Failed set 2. Now what?</span></li>
           <li><span class="d">Tue</span><span class="w">Deadlift 3 × 5 @ 315</span><span class="why">Had to leave early.</span></li>
-          <li><span class="d">Wed</span><span class="w">Squat 5 × 5 @ 275</span><span class="why">Is my form even right?</span></li>
+          <li><span class="d">Wed</span><span class="w">Squat 5 × 5 @ 275</span><span class="why">Was my form even right?</span></li>
         </ol>
-        <p class="end">Paper can't answer back.</p>
+        <p class="end">A spreadsheet can't see any of this.</p>
       </div>
     </div>
   </section>
@@ -555,15 +535,15 @@ section { padding: 128px 0; }
   <section class="guide">
     <div class="wrap">
       <div class="week-head">
-        <h2 class="big">Same week. This time the plan answers back.</h2>
-        <p class="sub">Kedge knows your program and listens to how the session is going. When something changes, so does what comes next, and you always get the reason.</p>
+        <h2 class="big">Same week. Now with a coach.</h2>
+        <p class="sub">Kedge knows your plan, listens to how you feel, and changes the next set, the next session or the next week. Then it tells you why.</p>
       </div>
       <div class="week-diag">
         <span class="bar" aria-hidden="true"></span>
         <ol class="week" aria-label="A week of training with Kedge. Plate colour shows how hard each day is.">
-          <li style="--plate: var(--red); --i: 0"><span class="disc"></span><div><h3>Mon</h3><p class="moment">You miss reps on set 2.</p><p class="did">Set 3 drops 20 lb so you still finish strong. Next week adjusts to match.</p></div></li>
-          <li style="--plate: var(--blue); --i: 1"><span class="disc"></span><div><h3>Tue</h3><p class="moment">You have to leave early.</p><p class="did">Tell the coach how long you've got. It cuts the session to fit.</p></div></li>
-          <li style="--plate: var(--blue); --i: 2"><span class="disc"></span><div><h3>Wed</h3><p class="moment">You're not sure about your squat.</p><p class="did">Film one set. Get the one fix that matters.</p></div></li>
+          <li style="--plate: var(--red); --i: 0"><span class="disc"></span><div><h3>Mon</h3><p class="moment">Bench stalls at two reps.</p><p class="did">Set 3 drops 20 lb. Next week starts a touch lighter.</p></div></li>
+          <li style="--plate: var(--blue); --i: 1"><span class="disc"></span><div><h3>Tue</h3><p class="moment">Had to leave early.</p><p class="did">Tell the coach how much time you have. It cuts the session down to fit.</p></div></li>
+          <li style="--plate: var(--blue); --i: 2"><span class="disc"></span><div><h3>Wed</h3><p class="moment">Not sure your squat looks right.</p><p class="did">Film a set, get one thing to fix.</p></div></li>
         </ol>
         <div class="phone shot shot-a" role="img" aria-label="Form review of a back squat: depth and knees good, chest dipped on rep 4">
           <div class="row"><span class="lift">Form review</span><span>Back squat</span></div>
@@ -578,22 +558,17 @@ section { padding: 128px 0; }
           <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Drive your upper back into the bar so your chest stays up.</span></div>
         </div>
       </div>
-      <ul class="also" aria-label="What else Kedge does">
-        <li><h3>Food, logged in a sentence</h3><p>Say it, snap it or scan it. Kedge does the math.</p></li>
-        <li><h3>A ten-second morning check-in</h3><p>Sleep, stress and soreness decide how hard today should be.</p></li>
-        <li><h3>A way back from pain</h3><p>Tap Painful on any set and get a rehab plan that brings the lift back.</p></li>
-      </ul>
     </div>
   </section>
 
   <section class="how">
     <div class="wrap">
       <div class="start">
-        <h2 class="mid">Lifting in five minutes.</h2>
+        <h2 class="mid">Getting started takes five minutes.</h2>
         <ol class="steps">
-          <li><h3>Tell it about you</h3><p>Your goal, your gym, your schedule and anything that hurts. Your first week is built from that.</p></li>
-          <li><h3>Lift</h3><p>Log each set with a tap or your voice. The plan adjusts as you go.</p></li>
-          <li><h3>Look back on Sunday</h3><p>Two minutes on how the week really went. Next week is built on that.</p></li>
+          <li><h3>Tell it about you</h3><p>Your goal, your gym, how many days you can train, and anything that hurts. It builds your first week from that.</p></li>
+          <li><h3>Train</h3><p>Log sets with a tap or your voice. It adjusts as you go and explains every change.</p></li>
+          <li><h3>Check in on Sunday</h3><p>A two-minute look back. Next week is planned around how this one really went.</p></li>
         </ol>
       </div>
     </div>
@@ -603,254 +578,29 @@ section { padding: 128px 0; }
     <div class="wrap">
       <div>
         <h2 class="big">Your first month is on us.</h2>
-        <p class="sub">Join the waitlist now. When Kedge launches, your first month is free. No card needed to join.</p>
+        <p class="sub">Join the waitlist and we'll send your free month when Kedge launches. No card needed to join.</p>
         <form class="signup" novalidate>
           <label for="email2">Email address</label>
           <input id="email2" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
           <div class="hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
-          <button type="submit">Get my free month</button>
+          <button type="submit">Claim my free month</button>
         </form>
         <p class="form-note" role="status" aria-live="polite"></p>
       </div>
       <div class="prices" aria-label="Prices after the free month">
-        <div class="price"><b>Yearly</b><span class="amt">$16.67<small>/mo</small></span><span class="note">$199.99 billed yearly</span><span class="save">Save 44%</span></div>
+        <div class="price"><b>Yearly</b><span class="amt">$16.67<small>/mo</small></span><span class="note">$199.99 billed once a year</span><span class="save">Save 44%</span></div>
         <div class="price"><b>Monthly</b><span class="amt">$29.99<small>/mo</small></span><span class="note">Cancel anytime</span></div>
-        <p class="fine">After launch, both plans start with a 7-day free trial. Needs an iPhone. Apple Watch and Apple Health are optional. Oura and WHOOP are coming. Your data is never sold.</p>
+        <p class="fine">After launch, both plans start with a 7-day free trial. Needs an iPhone. Apple Watch and Apple Health make it smarter but are optional; Oura and WHOOP are coming. Your data is never sold.</p>
       </div>
     </div>
   </section>
 </main>
 
-<main class="doc" id="doc-privacy" hidden>
-  <div class="wrap">
-    <a class="back" href="#">← Back to Kedge</a>
-<h1>Privacy Policy</h1>
-<p>Effective date: November 19, 2026</p>
-<p>Kedge Fit LLC ("we", "us") makes the Kedge app, an AI fitness and nutrition coach for adults. This policy explains what we collect, why, who we share it with, and the choices you have.</p>
-<h2>The short version</h2>
-<ul>
-<li>We collect what you give the app (workouts, meals, check-ins, chat, frames from sets you film) and what you choose to connect (Apple Health, Oura, WHOOP).</li>
-<li>We use it to coach you. That's it.</li>
-<li>Your coach runs on Claude, an AI model made by Anthropic. With your permission, we send Anthropic what the coach needs to answer you. Anthropic does not train its models on it.</li>
-<li>We never sell your data, never use your health data for advertising, and never share Apple Health data with advertisers or data brokers.</li>
-<li>You can turn off AI sharing, export your data, or delete your account at any time in the app.</li>
-</ul>
-<h2>What we collect</h2>
-<p><strong>You give us:</strong></p>
-<ul>
-<li>Account details: name, email (or an Apple private relay email if you use Sign in with Apple).</li>
-<li>Profile and goals: age, height, weight, experience, goals, equipment, schedule, food habits and dislikes.</li>
-<li>Health screening answers: pregnancy status, health conditions, injuries and anything you tell the coach about pain or soreness.</li>
-<li>Training data: workouts, sets, weights, reps, effort ratings, check-ins and energy scores.</li>
-<li>Nutrition data: meals, food photos, barcodes you scan, saved foods.</li>
-<li>Chat and voice: messages you type or speak to the coach. Voice is turned into text to answer you; we don't keep audio recordings after that.</li>
-<li>Still frames from sets you film for form review. Your videos stay on your phone; the app sends only still frames and body-position data for review, and we delete the frames after 90 days unless you save the review.</li>
-</ul>
-<p><strong>From services you connect (only if you turn them on):</strong></p>
-<ul>
-<li>Apple Health: workouts, steps, heart rate, sleep, body weight and similar data you allow.</li>
-<li>Oura and WHOOP: sleep, recovery, readiness and heart-rate data.</li>
-<li>Apple Health, if you connect it: sleep, heart rate, resting heart rate, HRV, breathing rate, wrist temperature, weight, body fat, VO2 max, workouts from other apps, and (only if you turn it on) meals other apps logged. Kedge writes one thing back: your finished Kedge workouts, which you can turn off in Connected devices.</li>
-<li>Apple Watch: heart rate and motion during workouts.</li>
-</ul>
-<p><strong>Automatically:</strong></p>
-<ul>
-<li>Device type, app version and crash reports, so we can fix bugs.</li>
-<li>Subscription status from Apple. We never see your payment card.</li>
-</ul>
-<p>We don't collect your precise location, contacts or advertising identifiers, and we don't track you across other apps or websites.</p>
-<h2>How we use it</h2>
-<ul>
-<li>To build and adjust your training and nutrition plan, answer your questions and review your form.</li>
-<li>To keep you safe, for example by avoiding exercises that conflict with an injury or condition you've told us about.</li>
-<li>To run the app: accounts, subscriptions, reminders you've allowed, support and security.</li>
-<li>To improve the coaching: we look at group statistics, such as how often people finish planned workouts or how hard sets feel, only for groups of 20 or more people and with no names, contact details, messages or individual records. Coach replies you report to us are reviewed to fix mistakes.</li>
-</ul>
-<p>We don't use your data for advertising, and we don't sell or rent it.</p>
-<h2>Sharing with Anthropic (third-party AI)</h2>
-<p>The coach is powered by Claude, from Anthropic, PBC. Before the coach works, the app asks your explicit permission to send Anthropic the data it needs: your messages, workouts, meals and food photos, check-ins, health answers, connected wearable data, and frames from videos you film. Anthropic processes it only to produce the coach's replies, under terms that prohibit training its models on it. You can turn this off in Account at any time; the coach pauses until you turn it back on.</p>
-<h2>Other service providers</h2>
-<p>We use a small number of providers to run the app, under contracts that limit them to providing that service: cloud hosting and database (Supabase), subscription management (RevenueCat, which receives your purchase records from Apple), crash reporting (Sentry, which receives technical details about crashes but no account, workout, food, health or chat data), email for support (Brevo), and the USDA FoodData Central database for food lookups (we send only the barcode or food name). On our website, the waitlist form is handled by Formspree, and Brevo stores your email address to send your confirmation and launch emails; we use it only to tell you about Kedge's launch and your waitlist offer, and you can unsubscribe from any email or ask us to delete it. Umami (a cookie-free analytics service) counts visits and which page version you saw; it doesn't identify you or follow you to other sites.</p>
-<p>We may also disclose data if required by law, to protect someone's safety, or as part of a sale or merger of our business, in which case this policy will continue to apply.</p>
-<h2>Apple Health (HealthKit) data</h2>
-<p>Data we read from Apple Health is used only to coach you. We never use it for advertising or marketing, never sell it, never share it with data brokers, and never store it in iCloud. It's shared with Anthropic only as described above and only with your permission.</p>
-<h2>Consumer health data</h2>
-<p>Some US states, including Washington, Nevada and Connecticut, give extra rights over health data. We collect consumer health data only to provide the coaching you ask for, with your consent, and share it only with Anthropic and our service providers as described above. See our <a href="#health-data">Consumer Health Data Privacy Policy</a> for details and how to use your rights.</p>
-<h2>How long we keep it</h2>
-<p>We keep your data while your account is active. If you delete your account, we delete your data within 30 days, except what we must keep for legal, tax or fraud reasons. Backups clear within a further 35 days. Form-review frames are deleted after 90 days unless you save the review.</p>
-<h2>Your choices and rights</h2>
-<ul>
-<li><strong>In the app:</strong> edit your profile, disconnect any service, turn off AI sharing, turn off notifications, export your data (paid subscribers; it comes as a .zip with spreadsheets and a complete JSON copy), and delete your account (everyone, free). Anyone, subscribed or not, can email us for a free copy of their data, including anything we keep only on our servers.</li>
-<li><strong>By request:</strong> depending on where you live (for example California, Colorado, Virginia, Washington, the EU or UK), you may have rights to access, correct, delete or port your data, and to opt out of certain processing. Email <a href="mailto:info@kedge.fit">info@kedge.fit</a> and we'll respond within the time the law requires (usually 30–45 days). We won't treat you differently for using these rights.</li>
-</ul>
-<h2>Security</h2>
-<p>We encrypt data in transit and at rest, keep health data separate and encrypted, limit who can access it, and keep the AI service key on our servers, never in the app. No system is perfectly secure; if a breach affects you, we'll notify you as the law requires.</p>
-<h2>Age limit</h2>
-<p>Kedge is for adults 18 and older. We don't knowingly collect data from anyone under 18. If we learn we have, we'll delete it.</p>
-<h2>Changes</h2>
-<p>If we make important changes, we'll tell you in the app before they take effect.</p>
-<h2>Contact</h2>
-<p>Kedge Fit LLC · <a href="mailto:info@kedge.fit?subject=Mailing%20address%20request">mailing address available on request</a> · <a href="mailto:info@kedge.fit">info@kedge.fit</a></p>
-  </div>
-</main>
-<main class="doc" id="doc-terms" hidden>
-  <div class="wrap">
-    <a class="back" href="#">← Back to Kedge</a>
-<h1>Terms of Service</h1>
-<p>Effective date: November 19, 2026</p>
-<p>These terms are an agreement between you and Kedge Fit LLC ("we", "us") for using the Kedge app. By creating an account or using the app, you agree to them. <strong>Section 13 has a binding arbitration agreement and class action waiver.</strong> Please read it.</p>
-<h2>1. Who can use it</h2>
-<p>You must be at least 18 and able to form a binding contract. The app is for personal, non-commercial use.</p>
-<h2>2. Not medical advice</h2>
-<p>Kedge provides general fitness and nutrition guidance generated by artificial intelligence. It is <strong>not</strong> medical advice, diagnosis or treatment, and the coach is not a doctor, physical therapist, registered dietitian or certified trainer. Always talk to your doctor before starting a new exercise or nutrition program, especially if you are pregnant or recently gave birth, have a heart condition, high blood pressure, diabetes, an injury, an eating disorder or any other medical condition, or take medication. Never ignore professional medical advice or delay getting it because of something in the app. <strong>If you have chest pain, faint, feel dizzy, or have a medical emergency, stop exercising and call 911 or your local emergency number.</strong></p>
-<h2>3. Assumption of risk and release</h2>
-<p>Exercise and changes to your diet carry real risks, including injury, illness and, rarely, death. You choose whether and how to follow any suggestion, you're responsible for using proper form, safe equipment, a spotter when needed and your own judgment, and you should stop if anything hurts. <strong>To the fullest extent the law allows, you voluntarily assume these risks and release Kedge Fit LLC, its owners, employees and contractors from claims arising from your exercise, nutrition or use of the app's guidance</strong>, except where caused by our gross negligence or willful misconduct.</p>
-<h2>4. AI-generated content</h2>
-<p>Coaching, meal estimates, form reviews and other content are generated by AI (Claude, by Anthropic) and can be wrong, incomplete or not right for you. Calorie and macro estimates from photos and descriptions are approximate. Check anything important, and don't rely on the app for decisions where an error could hurt you.</p>
-<h2>5. Your health information</h2>
-<p>You agree to give accurate answers in the health check and to tell the coach about injuries, pain or changes in your health. The coach can only work with what you tell it. Our <a href="#privacy">Privacy Policy</a> explains how we handle your data, including sharing with Anthropic with your permission.</p>
-<h2>6. Subscriptions and billing</h2>
-<ul>
-<li>Kedge is offered as an auto-renewing subscription (currently $29.99 a month or $199.99 a year, in the US) after a 7-day free trial. Prices may vary by country and may change; we'll give notice before a price change affects you.</li>
-<li>Payment is charged to your Apple ID at confirmation of purchase. The subscription renews automatically unless you cancel at least 24 hours before the end of the current period. Manage or cancel in your Apple ID settings.</li>
-<li>If you cancel during the trial, you won't be charged. Starting a history import during the trial starts the paid subscription right away.</li>
-<li>Refunds are handled by Apple under its policies.</li>
-<li>Usage limits apply, including a monthly chat allowance and a monthly number of video form reviews. Extra form reviews can be bought as one-time purchases and don't roll over.</li>
-<li>Referral rewards and promotional offers are subject to the terms shown when offered and may end at any time.</li>
-</ul>
-<h2>7. Your content</h2>
-<p>You keep ownership of what you put in the app (videos, photos, messages, logs). You give us a limited license to store, process and transmit it, including to our AI provider, only to run and improve the app for you as described in the Privacy Policy. Only film yourself, or people who have agreed to be filmed, and follow your gym's rules about filming.</p>
-<h2>8. Acceptable use</h2>
-<p>Don't misuse the app: no illegal activity, no attempts to break, reverse-engineer, scrape or overload it, no using it to harass anyone, no uploading content you don't have the right to, and no trying to make the AI produce harmful content. We may limit or suspend accounts that do.</p>
-<h2>9. Third-party services</h2>
-<p>Connections to Apple Health, Apple Watch, Oura, WHOOP and others are governed by those companies' own terms. We're not responsible for their services or data.</p>
-<h2>10. Changes and availability</h2>
-<p>We may change, add or remove features. We'll try to give notice of significant changes. The app may sometimes be unavailable.</p>
-<h2>11. Disclaimers</h2>
-<p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, INCLUDING FITNESS FOR A PARTICULAR PURPOSE, ACCURACY OR NON-INFRINGEMENT, TO THE FULLEST EXTENT PERMITTED BY LAW. WE DON'T GUARANTEE ANY PARTICULAR FITNESS, WEIGHT, STRENGTH OR HEALTH RESULT.</p>
-<h2>12. Limitation of liability</h2>
-<p>TO THE FULLEST EXTENT PERMITTED BY LAW, WE WON'T BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, AND OUR TOTAL LIABILITY FOR ANY CLAIM IS LIMITED TO THE GREATER OF WHAT YOU PAID US IN THE 12 MONTHS BEFORE THE CLAIM OR $100. Some places don't allow these limits, so they may not fully apply to you.</p>
-<h2>13. Disputes, arbitration and class action waiver</h2>
-<p>If you have a problem, email <a href="mailto:info@kedge.fit">info@kedge.fit</a> first; most issues get solved that way. If we can't resolve it within 60 days, any dispute will be resolved by individual binding arbitration under the American Arbitration Association's Consumer Rules, not in court, except that either of us may bring an individual claim in small claims court. <strong>You and we each waive the right to a jury trial and to take part in a class or representative action.</strong> You can opt out of this section within 30 days of first accepting these terms by emailing <a href="mailto:info@kedge.fit">info@kedge.fit</a> with your name and the words "arbitration opt-out".</p>
-<h2>14. Indemnity</h2>
-<p>You agree to cover our losses from claims caused by your breach of these terms or misuse of the app.</p>
-<h2>15. Ending your account</h2>
-<p>You can delete your account at any time in the app. Deleting your account doesn't cancel an Apple subscription; cancel that in your Apple ID settings. We may suspend or end accounts that break these terms. Sections 2–4, 7 and 11–16 survive termination.</p>
-<h2>16. General</h2>
-<p>These terms are governed by the laws of the State of Michigan, without regard to conflict-of-law rules. If part is unenforceable, the rest stays in effect. Not enforcing a term isn't a waiver. These terms, the Privacy Policy and any offer terms are the whole agreement.</p>
-<h2>Apple-specific terms</h2>
-<p>These terms are between you and us, not Apple. Apple isn't responsible for the app or its content, has no obligation to provide support, and isn't responsible for any claims about the app (including product liability, legal compliance or intellectual property). If the app fails to meet a warranty, you may notify Apple for a refund of the purchase price, if any; Apple has no other warranty obligation. Apple and its subsidiaries are third-party beneficiaries of these terms and may enforce them. You confirm you're not in a US-embargoed country or on a US prohibited-party list.</p>
-<h2>Contact</h2>
-<p>Kedge Fit LLC · <a href="mailto:info@kedge.fit?subject=Mailing%20address%20request">mailing address available on request</a> · <a href="mailto:info@kedge.fit">info@kedge.fit</a></p>
-  </div>
-</main>
-<main class="doc" id="doc-health-data" hidden>
-  <div class="wrap">
-    <a class="back" href="#">← Back to Kedge</a>
-<h1>Consumer Health Data Privacy Policy</h1>
-<p>Effective date: November 19, 2026</p>
-<p>This policy is for people in Washington, Nevada, Connecticut and other states with consumer health data laws, including Washington's My Health My Data Act. It applies to everyone who uses Kedge, wherever they live, and supplements our main <a href="#privacy">Privacy Policy</a>. If the two conflict on consumer health data, this policy wins.</p>
-<p>"Consumer health data" means personal information that identifies, or could reasonably identify, you and relates to your past, present or future physical or mental health.</p>
-<h2>Consumer health data we collect</h2>
-<ul>
-<li><strong>Health screening answers:</strong> age, pregnancy or recent birth, and conditions you tell us about (for example heart conditions, high blood pressure, diabetes, asthma, joint or back problems, recent surgery or injury, medication for a chronic condition, or an eating disorder).</li>
-<li><strong>Injuries and symptoms:</strong> pain, soreness and injuries you report in check-ins, the pain check or chat.</li>
-<li><strong>Body measurements:</strong> height, weight and body-weight trends.</li>
-<li><strong>Biometric and wearable data you connect:</strong> heart rate, heart-rate variability, sleep, recovery and readiness scores, and activity from Apple Health, Apple Watch, Oura or WHOOP, plus breathing rate, wrist temperature, body fat and VO2 max from Apple Health. We use these to suggest lighter days and to set calorie and protein targets; they are never sold or used for ads.</li>
-<li><strong>Exercise and nutrition data:</strong> workouts, effort ratings, energy check-ins, meals, food photos and calorie and macro estimates, to the extent they reveal information about your health.</li>
-<li><strong>Form-review media:</strong> video frames of you lifting, and body-position (pose) data extracted from them on your phone.</li>
-</ul>
-<p>We don't collect precise location, genetic data or biometric identifiers used to recognize you (such as face geometry), and we don't use geofences around health care facilities.</p>
-<h2>Where it comes from</h2>
-<ul>
-<li>Directly from you, in the app.</li>
-<li>From services you choose to connect: Apple Health, Apple Watch, Oura and WHOOP.</li>
-<li>Created by the app from your data, such as readiness scores, form-review findings and the coach's notes about you.</li>
-</ul>
-<h2>Why we collect and use it</h2>
-<p>Only to provide the coaching you ask for:</p>
-<ul>
-<li>building and adjusting your training and nutrition plan;</li>
-<li>keeping you safe, such as avoiding exercises that conflict with an injury or condition, and suggesting you see a doctor when something sounds serious;</li>
-<li>reviewing your form when you film a set;</li>
-<li>running and securing your account, and providing support you request.</li>
-</ul>
-<p>We don't use consumer health data for advertising or marketing, and we don't use it for any purpose you haven't consented to.</p>
-<h2>Who we share it with</h2>
-<p>We share consumer health data only with your consent, and only with:</p>
-<ul>
-<li><strong>Anthropic, PBC</strong>, which provides the Claude AI model that powers the coach. It processes your data only to generate the coach's replies and doesn't train its models on it.</li>
-<li><strong>Service providers (processors)</strong> that run the app for us under contracts limiting them to that purpose: cloud hosting and database (Supabase), subscription management (RevenueCat) and crash reporting (Sentry).</li>
-<li><strong>Authorities</strong>, if the law requires it, or to protect someone's life or safety.</li>
-</ul>
-<p>We have no affiliates that receive consumer health data. <strong>We do not sell consumer health data</strong>, and we would never do so without your separate, signed written authorization as the law requires.</p>
-<h2>Your consent</h2>
-<p>We ask for your consent in the app before collecting consumer health data and before sharing it with Anthropic. You can withdraw consent at any time:</p>
-<ul>
-<li>turn off <strong>Account › AI coaching data</strong> to stop sharing with Anthropic;</li>
-<li>disconnect any wearable in <strong>Account › Devices</strong>;</li>
-<li>or delete your account.</li>
-</ul>
-<p>Withdrawing consent stops future collection or sharing. Some features, like the AI coach, can't work without it.</p>
-<h2>Your rights</h2>
-<p>You have the right to:</p>
-<ul>
-<li><strong>Confirm and access:</strong> find out whether we collect, share or sell your consumer health data, get a copy of it, and get a list of all third parties and affiliates we've shared it with (with their contact details).</li>
-<li><strong>Delete:</strong> have your consumer health data deleted, including from our service providers and from Anthropic to the extent it retains any. Deleting your account in the app does this.</li>
-<li><strong>Withdraw consent:</strong> as described above.</li>
-<li><strong>Not be discriminated against</strong> for using any of these rights.</li>
-</ul>
-<h2>How to make a request</h2>
-<ul>
-<li><strong>In the app:</strong> Account › Delete account, or Account › Export my data.</li>
-<li><strong>By email:</strong> <a href="mailto:info@kedge.fit">info@kedge.fit</a>, subject line "Health data request".</li>
-<li><strong>By mail:</strong> email <a href="mailto:info@kedge.fit">info@kedge.fit</a> and we'll send you our mailing address.</li>
-</ul>
-<p>We'll verify your identity (usually by confirming from the email on your account) and respond within 45 days. If we need more time, we'll tell you why, and we may extend by another 45 days when reasonably necessary.</p>
-<h2>Appeals</h2>
-<p>If we decline your request, you can appeal by emailing <a href="mailto:info@kedge.fit">info@kedge.fit</a> with the subject line "Health data appeal" within 45 days of our decision. We'll respond in writing within 45 days, explaining what we did and why. If you're unhappy with the result, you may contact your state's Attorney General: Washington residents at atg.wa.gov, Nevada residents at ag.nv.gov, and Connecticut residents at portal.ct.gov/ag.</p>
-<h2>Security and retention</h2>
-<p>Consumer health data is encrypted in transit and at rest, kept separate from other account data, and accessible only to people who need it to run the service. We keep it while your account is active and delete it within 30 days of account deletion (backups within a further 35 days).</p>
-<h2>Changes</h2>
-<p>We'll tell you in the app before any material change to how we collect, use or share consumer health data, and ask again for consent where the law requires it.</p>
-<h2>Contact</h2>
-<p>Kedge Fit LLC · <a href="mailto:info@kedge.fit?subject=Mailing%20address%20request">mailing address available on request</a> · <a href="mailto:info@kedge.fit">info@kedge.fit</a></p>
-  </div>
-</main>
-<main class="doc" id="doc-support" hidden>
-  <div class="wrap">
-    <a class="back" href="#">← Back to Kedge</a>
-<h1>Support</h1>
-<p><strong>Contact us:</strong> <a href="mailto:info@kedge.fit">info@kedge.fit</a>. We answer within 1–2 business days.</p>
-<p><a class="btn-link" href="mailto:info@kedge.fit?subject=Mailing%20address%20request">Request our mailing address</a></p>
-
-<p><strong>Medical emergency?</strong> Stop exercising and call 911 or your local emergency number. The app can't help in an emergency.</p>
-<h2>Subscriptions and billing</h2>
-<p><strong>How much does it cost?</strong> $29.99 a month or $199.99 a year (US prices), after a 7-day free trial. One plan, everything included.</p>
-<p><strong>How do I cancel?</strong> Subscriptions are managed by Apple. On your iPhone, go to Settings › [your name] › Subscriptions › Kedge › Cancel Subscription. Cancel at least 24 hours before renewal to avoid the next charge. Deleting the app or your account doesn't cancel the subscription.</p>
-<p><strong>Can I get a refund?</strong> Apple handles all refunds. Request one at reportaproblem.apple.com.</p>
-<p><strong>Can I pause instead?</strong> Yes: Account › Pause my plan. Your plan, history and notes are saved for when you come back.</p>
-<p><strong>I bought on another device and don't see it.</strong> Open the paywall or Account and tap Restore purchases, signed in with the same Apple ID.</p>
-<p><strong>Why did my chat pause?</strong> Each plan includes a monthly chat allowance, shown as a meter in Account. Workouts, set changes and meal logging keep working when it runs out, and chat resets when your plan renews. Safety questions are always answered.</p>
-<h2>Your coach</h2>
-<p><strong>Is this medical advice?</strong> No. The coach gives general fitness and nutrition guidance. Check with your doctor before starting, especially if you have a health condition, an injury, or are pregnant.</p>
-<p><strong>Something hurts during a workout.</strong> Stop the set and tap Painful on the set screen. The coach will change today's plan and suggest rehab work. For sharp pain, chest pain, dizziness or fainting, stop and get medical help.</p>
-<p><strong>The coach got something wrong.</strong> Tell it in chat, or long-press the reply and choose Report. Reports go straight to us and help improve the coaching.</p>
-<p><strong>How do form reviews work?</strong> Film a set from the side, about 6–10 feet away, with your whole body in frame. The coach reviews key frames and marks what to fix. Your plan includes 60 a month, and you can buy 20 more anytime.</p>
-<h2>Data and privacy</h2>
-<p><strong>Who sees my data?</strong> Your coach runs on Claude, made by Anthropic. With your permission, the app sends Anthropic what it needs to coach you, and Anthropic doesn't train its models on it. We never sell your data. Full details are in the <a href="#privacy">Privacy Policy</a> and <a href="#health-data">Consumer Health Data Privacy Policy</a>.</p>
-<p><strong>How do I turn off AI sharing?</strong> Account › AI coaching data. The coach pauses until you turn it back on.</p>
-<p><strong>How do I export my data?</strong> Account › Export my data. You get a .zip with spreadsheets that open in Excel, Numbers or Google Sheets, a complete copy in JSON, and your form-review stills. One-tap export comes with a subscription; anyone can email info@kedge.fit for a free copy.</p>
-<p><strong>How do I delete my account?</strong> Account › Delete account. This deletes your data within 30 days. It's free and doesn't require contacting us. Remember to cancel your subscription in Apple settings too.</p>
-<h2>Devices</h2>
-<p><strong>Which devices work?</strong> iPhone, Apple Watch and Apple Health. Oura and WHOOP are coming. Runs and rides you record in apps like Strava or Garmin Connect come in through Apple Health when that app saves workouts to Health.</p>
-<p><strong>My wearable isn't syncing.</strong> Open Account › Devices, turn the connection off and on again, and make sure the device's own app has synced recently.</p>
-  </div>
-</main>
+<!--LEGAL-->
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Kedge Fit LLC</span>
+    <span>© 2026 [COMPANY NAME, LLC]</span>
     <nav aria-label="Legal">
       <a href="#privacy">Privacy Policy</a>
       <a href="#health-data">Consumer Health Data</a>
@@ -873,7 +623,7 @@ function sendConfirmation(email) {
 // Umami Cloud: counts visits and signups per headline.
 var UMAMI_ID = "c7f8feaa-1248-434c-9dfb-aab343dc529a";
 function track(name, data) { try { if (window.umami) window.umami.track(name, data); } catch (e) {} }
-if (UMAMI_ID && !/\/(preview|new)\//.test(location.pathname)) {
+if (UMAMI_ID && !/\/(preview|v1)\//.test(location.pathname)) {
   var um = document.createElement("script");
   um.defer = true; um.src = "https://cloud.umami.is/script.js"; um.setAttribute("data-website-id", UMAMI_ID);
   um.onload = function () { track("headline-view", { headline: HEADLINE.toUpperCase() }); };
