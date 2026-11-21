@@ -351,6 +351,9 @@ html, body { overflow-x: clip; }
 .week li:nth-child(1) { grid-column: 1 / span 4; } .week li:nth-child(2) { grid-column: 3 / span 4; } .week li:nth-child(3) { grid-column: 5 / span 4; }
 .week li { padding: 22px 0; }
 @media (max-width: 900px) { .shot-a { display: flex; order: 0; } .week li { padding: 10px 0; } }
+
+.outcome .shot { max-width: 340px; justify-self: center; }
+@media (max-width: 900px) { .outcome .shot { margin: 0 auto; } }
 </style>
 </head>
 <body>
@@ -547,26 +550,14 @@ html, body { overflow-x: clip; }
         <h2 class="mid">Progress was never a straight line.</h2>
         <p class="sub">Bad weeks still happen. The difference is that they bend the plan instead of breaking it, so twelve weeks later you're still training, and still stronger.</p>
       </div>
-      <figure class="chart">
-        <svg viewBox="0 0 600 300" role="img" aria-label="Example bench press top set over 12 weeks, rising from 185 to 225 pounds with dips in weeks 5 and 9">
-          <g stroke="#C6C8C1" stroke-width="1">
-            <line x1="40" y1="40" x2="590" y2="40"/><line x1="40" y1="120" x2="590" y2="120"/><line x1="40" y1="200" x2="590" y2="200"/><line x1="40" y1="260" x2="590" y2="260"/>
-          </g>
-          <g font-family="Barlow, sans-serif" font-size="13" fill="#4A4E55">
-            <text x="0" y="44">225</text><text x="0" y="124">205</text><text x="0" y="204">185</text>
-            <text x="40" y="285">Week 1</text><text x="540" y="285">Week 12</text>
-          </g>
-          <polyline pathLength="1" fill="none" stroke="#2450E0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"
-            points="40,200 90,180 140,160 190,140 240,180 290,160 340,120 390,100 440,140 490,120 540,80 590,40"/>
-          <g fill="#2450E0"><circle cx="590" cy="40" r="7"/></g>
-          <g fill="#D2262F"><circle cx="240" cy="180" r="6"/><circle cx="440" cy="140" r="6"/></g>
-          <g font-family="Barlow, sans-serif" font-size="14" font-weight="600" fill="#D2262F">
-            <text x="210" y="215">Sick week</text><text x="398" y="175">Sore shoulder</text>
-          </g>
-          <text x="582" y="26" text-anchor="end" font-family="Big Shoulders Display, sans-serif" font-size="22" font-weight="800" fill="#15171A">225</text>
-        </svg>
-        <figcaption>Bench press top set across a 12-week block. An illustration of how an adaptive plan moves, not one athlete's results.</figcaption>
-      </figure>
+      <div class="phone shot" role="img" aria-label="Morning check-in: poor sleep and high stress, so squats drop to 3 sets and the heavy day moves">
+        <div class="row"><span class="lift">Morning check-in</span><span>Today</span></div>
+        <div class="recov">
+          <div class="ring" style="--p:48"><span>48</span><small>Energy</small></div>
+          <ul><li><span>Sleep</span><b class="w">Poor</b></li><li><span>Stress</span><b class="w">High</b></li><li><span>Sore</span><b>Legs</b></li></ul>
+        </div>
+        <div class="coachline"><span class="dot" aria-hidden="true">K</span><span>Squats drop to 3 sets today. Heavy day moves to Saturday.</span></div>
+      </div>
     </div>
   </section>
 
