@@ -293,7 +293,7 @@ main { overflow-x: clip; }
 @media (prefers-reduced-motion: no-preference) {
   .sheet.anim .w::after { transform: rotate(-1.6deg) scaleX(0); transition: transform .32s cubic-bezier(.6,0,.3,1); transition-delay: calc(var(--n) * 520ms + 200ms); }
   .sheet.anim .why { opacity: 0; transition: opacity .25s; transition-delay: calc(var(--n) * 520ms + 480ms); }
-  .sheet.anim .end { opacity: 0; transition: opacity .5s 3s; }
+  .sheet.anim .end { opacity: 0; transition: opacity .5s 2s; }
   .sheet.anim.in .w::after { transform: rotate(-1.6deg) scaleX(1); }
   .sheet.anim.in .why, .sheet.anim.in .end { opacity: 1; }
   .chart.anim polyline { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.8s cubic-bezier(.5,0,.2,1) .2s; }
@@ -506,8 +506,6 @@ html, body { overflow-x: clip; }
           <li><span class="d">Mon</span><span class="w">Bench 3 × 5 @ 225</span><span class="why">Failed set 2. Now what?</span></li>
           <li><span class="d">Tue</span><span class="w">Deadlift 3 × 5 @ 315</span><span class="why">Lower back tight on set 2.</span></li>
           <li><span class="d">Wed</span><span class="w">Squat 5 × 5 @ 275</span><span class="why">Was my form even right?</span></li>
-          <li><span class="d">Fri</span><span class="w">Squat 5 × 5 @ 285</span><span class="why">Slept five hours.</span></li>
-          <li><span class="d">Sun</span><span class="w">Bench 3 × 5 @ 230</span><span class="why">Shoulder still sore.</span></li>
         </ol>
         <p class="end">A spreadsheet can't see any of this.</p>
       </div>
