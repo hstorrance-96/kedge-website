@@ -838,6 +838,8 @@ h2, .big, .mid { line-height: 1.04; }
 <script>
 // Signup service (Formspree). The Brevo form adds the address to the "Kedge waitlist" list and sends the confirmation email.
 var WAITLIST_ENDPOINT = "https://formspree.io/f/mzergwlr";
+// One signup per email: the server remembers a hash of each address that has joined.
+var ONCE_ENDPOINT = "https://jkaszobhblvpupaayyoy.supabase.co/functions/v1/waitlist";
 var CONFIRM_ENDPOINT = "https://48b38bc2.sibforms.com/serve/MUIFAEtvbe2baBI70JU-SbP471J9niIaaEMWNz7MsgoPi-wZw1QSai1xpr97WIeTk7BIpFlwbA6fWW1PftnUBf3umRalk1nkQFkMl5MFC25FKp7t4bQvzerPG3w2FqW2DnSJdXNvo-7h8zkJxH9oQUeeNodJX-nywvjyohVr0mXzX7EBTEz2q8UoCSKJn7y6Y46KhXNOrmunzrbcEA==";
 function sendConfirmation(email) {
   if (!CONFIRM_ENDPOINT) return;
@@ -879,9 +881,19 @@ Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function 
     var trap = form.querySelector('input[name="_gotcha"]').value;
     if (trap || Date.now() - PAGE_LOADED < 3000) { note.textContent = "You're in. We'll email your free-month code at launch."; note.classList.add("ok"); input.value = ""; return; }
     note.textContent = "Adding you…";
-    fetch(WAITLIST_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email: v, headline: HEADLINE.toUpperCase() + ": " + HEADLINES[HEADLINE], _gotcha: trap }) })
-      .then(function (r) { if (!r.ok) throw new Error(); sendConfirmation(v); track("waitlist-signup", { headline: HEADLINE.toUpperCase() }); note.textContent = "You're in. Check your inbox for your confirmation; your free-month code comes at launch."; note.classList.add("ok"); input.value = ""; })
-      .catch(function () { note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
+    var already = function () { note.textContent = "You're already on the list. Your free-month code comes at launch."; note.classList.add("ok"); input.value = ""; };
+    var key = v.toLowerCase(), mine = [];
+    try { mine = JSON.parse(localStorage.getItem("kedge_joined") || "[]"); } catch (e) {}
+    if (mine.indexOf(key) !== -1) { already(); return; }
+    var remember = function () { try { mine.push(key); localStorage.setItem("kedge_joined", JSON.stringify(mine.slice(-20))); } catch (e) {} };
+    var once = function (extra) { var b = { email: v }; if (extra) b.undo = true; return fetch(ONCE_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(b) }).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }); };
+    // If the check itself is unreachable, the signup still goes through.
+    once().then(function (c) {
+    if (c.status === "exists") { remember(); already(); return; }
+    return fetch(WAITLIST_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email: v, headline: HEADLINE.toUpperCase() + ": " + HEADLINES[HEADLINE], _gotcha: trap }) })
+      .then(function (r) { if (!r.ok) throw new Error(); remember(); sendConfirmation(v); track("waitlist-signup", { headline: HEADLINE.toUpperCase() }); note.textContent = "You're in. Check your inbox for your confirmation; your free-month code comes at launch."; note.classList.add("ok"); input.value = ""; })
+      .catch(function () { if (c.status === "new") once(true); note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
+    });
   });
 });
 
