@@ -129,6 +129,32 @@ function render() {
   const names = { github: "GitHub (agents' inbox, merging)", email: "Brevo email (notifications)", waitlist: "Brevo waitlist list",
     sentry: "Sentry (crashes)", revenuecat: "RevenueCat (subscriptions)" };
   for (const [k, label] of Object.entries(names)) conn.append(el("li", data.connected?.[k] ? { class: "on" } : {}, label));
+  const pool = data.offerCodesLeft || {};
+  conn.append(el("li", (pool.friend > 0 && pool.referrer > 0) ? { class: "on" } : {},
+    `Referral free-month codes left: ${pool.friend ?? 0} for friends, ${pool.referrer ?? 0} for referrers`));
+
+  // Reported coach replies
+  const reports = data.reports || [];
+  $("reportcount").textContent = reports.length ? String(reports.length) : "";
+  const rhost = $("reports");
+  rhost.replaceChildren();
+  if (!reports.length) rhost.append(el("p", { class: "empty" }, "Nothing reported."));
+  const reasonText = { unsafe: "Could get someone hurt", wrong: "Wrong", unhelpful: "Didn't help", other: "Something else" };
+  for (const r of reports) {
+    const card = el("article", { class: "item" });
+    card.append(el("h3", {}, `${reasonText[r.reason] || r.reason} · ${new Date(r.created_at).toLocaleString()}`));
+    if (r.question) card.append(el("p", { class: "muted small" }, `Athlete asked: ${r.question}`));
+    card.append(el("p", {}, `Coach said: ${r.reply}`));
+    if (r.note) card.append(el("p", { class: "small" }, `Their note: ${r.note}`));
+    const done = el("button", { class: "ghost" }, "Mark as handled");
+    done.addEventListener("click", async () => {
+      done.disabled = true;
+      try { await call({ action: "closeReport", id: r.id }); card.remove(); }
+      catch { done.disabled = false; done.textContent = "Couldn't save. Try again"; }
+    });
+    card.append(done);
+    rhost.append(card);
+  }
 }
 
 function drawLine(host, values, labels) {
