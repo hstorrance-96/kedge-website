@@ -399,6 +399,8 @@ section { padding: 128px 0; }
   section { padding: 80px 0; } .hero { padding: 24px 0 80px; } .how { padding-top: 0; }
   .also { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; }
 }
+.invited { margin: 0 0 12px; font-weight: 600; color: var(--blue); }
+.call .invited { color: #fff; }
 </style>
 </head>
 <body>
@@ -656,6 +658,23 @@ function sendConfirmation(email) {
   fd.append("EMAIL", email); fd.append("email_address_check", ""); fd.append("locale", "en"); fd.append("html_type", "simple");
   fetch(CONFIRM_ENDPOINT, { method: "POST", mode: "no-cors", body: fd }).catch(function () {});
 }
+// Invite links (kedge.fit/?ref=CODE): remember the friend's code so the signup is tied to them. The code is saved
+// with the waitlist signup, and the launch email uses it to open the app with the invite already attached.
+var INVITE = (function () {
+  var m = location.search.match(/[?&]ref=([A-Za-z0-9]{7})(?:&|$)/);
+  var code = m && /^[A-HJKMNP-Z2-9]{7}$/.test(m[1].toUpperCase()) ? m[1].toUpperCase() : null;
+  try { if (code) localStorage.setItem("kedge_ref", code); else code = localStorage.getItem("kedge_ref"); } catch (e) {}
+  return code;
+})();
+if (INVITE) {
+  Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function (form) {
+    var p = document.createElement("p");
+    p.className = "invited";
+    p.textContent = "A friend invited you. Join the waitlist and their invite stays with your spot.";
+    form.parentNode.insertBefore(p, form);
+  });
+}
+
 // Umami Cloud: counts visits and signups per headline.
 var UMAMI_ID = "c7f8feaa-1248-434c-9dfb-aab343dc529a";
 function track(name, data) { try { if (window.umami) window.umami.track(name, data); } catch (e) {} }
@@ -699,7 +718,7 @@ Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function 
     // If the check itself is unreachable, the signup still goes through.
     once().then(function (c) {
     if (c.status === "exists") { remember(); already(); return; }
-    return fetch(WAITLIST_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email: v, headline: HEADLINE.toUpperCase() + ": " + HEADLINES[HEADLINE], _gotcha: trap }) })
+    return fetch(WAITLIST_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email: v, headline: HEADLINE.toUpperCase() + ": " + HEADLINES[HEADLINE], invited_by: INVITE || "", _gotcha: trap }) })
       .then(function (r) { if (!r.ok) throw new Error(); remember(); sendConfirmation(v); track("waitlist-signup", { headline: HEADLINE.toUpperCase() }); note.textContent = "You're in. Check your inbox for your confirmation; your free-month code comes at launch."; note.classList.add("ok"); input.value = ""; })
       .catch(function () { if (c.status === "new") once(true); note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
     });
