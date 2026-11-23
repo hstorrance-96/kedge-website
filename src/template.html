@@ -418,9 +418,18 @@ section { padding: 128px 0; }
       <div>
         <h1 id="headline">Train the day you actually have.</h1>
         <script>
-        // This version has one headline; signups from it are tagged "N".
-        var HEADLINES = { n: "Train the day you actually have." };
-        var HEADLINE = "n";
+        // Headline test, four versions: each visitor gets one at random and keeps it; signups record which one they saw.
+        // A, B and C are the original three; N is "Train the day you actually have." Add ?h=a (b, c, n) to force one.
+        var HEADLINES = { a: "The coach that changes your next set.", b: "Life happens. Your coach adapts.", c: "Plans break. Progress doesn’t.", n: "Train the day you actually have." };
+        var HEADLINE = (function () {
+          var forced = (location.search.match(/[?&]h=([abcn])(?:&|$)/) || [])[1];
+          if (forced) return forced;
+          var v = null;
+          try { v = localStorage.getItem("kedge_h"); } catch (e) {}
+          if (!HEADLINES[v]) { v = "abcn".charAt(Math.floor(Math.random() * 4)); try { localStorage.setItem("kedge_h", v); } catch (e) {} }
+          return v;
+        })();
+        document.getElementById("headline").textContent = HEADLINES[HEADLINE];
         </script>
         <p class="lede">Kedge is an AI strength coach for iPhone. Miss reps, sleep badly or run short on time, and it rewrites the rest of your workout on the spot. Then it tells you why.</p>
         <form class="signup" novalidate>
