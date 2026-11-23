@@ -67,7 +67,7 @@ Some US states, including Washington, Nevada and Connecticut, give extra rights 
 
 ## How long we keep it
 
-We keep your data while your account is active. If you delete your account, we delete your data within [30] days, except what we must keep for legal, tax or fraud reasons. Backups clear within a further [35] days. Form-review frames are deleted after 90 days unless you save the review.
+We keep your data while your account is active. If you delete your account, we delete your data within [30] days, except what we must keep for legal, tax or fraud reasons. One thing we keep for fraud reasons: if you used a friend's invite code or paid for a subscription, we keep a scrambled, one-way code made from your Sign in with Apple ID, with the date. It has no name, email or other data attached and can't be turned back into your Apple ID. It exists only so the same person can't delete their account and claim another free month. Backups clear within a further [35] days. Form-review frames are deleted after 90 days unless you save the review.
 
 ## Your choices and rights
 
