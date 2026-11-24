@@ -33,6 +33,7 @@
   <nav class="pages" role="tablist" aria-label="Dashboard pages">
     <button role="tab" data-page="dash" aria-selected="true">Dashboard</button>
     <button role="tab" data-page="waiting" aria-selected="false">Waiting for you <span id="waitcount" class="count"></span></button>
+    <button role="tab" data-page="deadlines" aria-selected="false">Deadlines <span id="deadlinecount" class="count"></span></button>
   </nav>
 
   <div id="page-waiting" hidden>
@@ -40,6 +41,26 @@
     <h2>Waiting for you</h2>
     <p class="muted small">Things the agents need you to approve or reject. Nothing ships, sends or posts until you do.</p>
     <div id="waiting" class="items"></div>
+  </section>
+  <section id="due-soon-section" hidden>
+    <h2>Deadlines this week</h2>
+    <p class="muted small">Within 7 days or overdue. Manage them on the Deadlines tab.</p>
+    <table id="due-soon"></table>
+  </section>
+  </div>
+
+  <div id="page-deadlines" hidden>
+  <section>
+    <h2>Deadlines</h2>
+    <p class="muted small">Tokens to replace, credits, renewals and filings, soonest first. Anything within a week also shows under Waiting for you. Names and dates only: never paste a key here.</p>
+    <table id="expiries"></table>
+    <form id="expiry-form" class="row expiry-form">
+      <input id="expiry-label" placeholder="What expires (e.g. GitHub dashboard token)" maxlength="120" required>
+      <input id="expiry-date" type="date" required aria-label="Date it expires">
+      <input id="expiry-note" placeholder="Note (optional)" maxlength="300">
+      <button type="submit" class="ghost">Add</button>
+      <span id="expiry-msg" class="muted small" role="status"></span>
+    </form>
   </section>
   </div>
 
@@ -53,19 +74,6 @@
       </div>
       <ul id="health-list" class="checks"></ul>
     </div>
-  </section>
-
-  <section>
-    <h2>Things that expire</h2>
-    <p class="muted small">Tokens, credits, renewals and deadlines, soonest first. Names and dates only: never paste a key here.</p>
-    <table id="expiries"></table>
-    <form id="expiry-form" class="row expiry-form">
-      <input id="expiry-label" placeholder="What expires (e.g. GitHub dashboard token)" maxlength="120" required>
-      <input id="expiry-date" type="date" required aria-label="Date it expires">
-      <input id="expiry-note" placeholder="Note (optional)" maxlength="300">
-      <button type="submit" class="ghost">Add</button>
-      <span id="expiry-msg" class="muted small" role="status"></span>
-    </form>
   </section>
 
   <section>

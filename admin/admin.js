@@ -124,7 +124,12 @@ function render() {
 
   const items = data.items || [];
   const waiting = items.filter((i) => i.status === "open" && i.kind === "approval");
-  $("waitcount").textContent = waiting.length ? String(waiting.length) : "";
+  // Deadlines within a week (or overdue) need Hunter too, so they count toward "Waiting for you".
+  const dueSoon = (data.expiries || []).filter((r) => r.days <= 7);
+  const needsYou = waiting.length + dueSoon.length;
+  $("waitcount").textContent = needsYou ? String(needsYou) : "";
+  $("deadlinecount").textContent = dueSoon.length ? String(dueSoon.length) : "";
+  renderDueSoon(dueSoon);
   fillItems($("waiting"), waiting, "Nothing waiting. The agents will add things here.");
   fillItems($("feed"), items.filter((i) => tab === "all" || i.agent === tab), "No reports yet.");
 
@@ -264,14 +269,28 @@ function renderHealth(h) {
   }
 }
 
+const timeLeft = (r) => (r.days < 0 ? `${-r.days} days overdue` : r.days === 0 ? "Today" : r.days === 1 ? "1 day" : `${r.days} days`);
+const niceDate = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+function renderDueSoon(rows) {
+  $("due-soon-section").hidden = !rows.length;
+  const t = $("due-soon"); t.replaceChildren();
+  if (!rows.length) return;
+  const head = el("tr"); ["What", "Date", "Time left", "What to do"].forEach((h) => head.append(el("th", {}, h))); t.append(head);
+  for (const r of rows) {
+    const tr = el("tr");
+    tr.append(el("td", {}, r.label), el("td", {}, niceDate(r.expires_on)), el("td", { class: "left " + r.state }, timeLeft(r)), el("td", { class: "muted" }, r.note || ""));
+    t.append(tr);
+  }
+}
+
 function renderExpiries(rows) {
   const t = $("expiries"); t.replaceChildren();
-  if (!rows.length) { t.append(el("caption", { class: "empty" }, "Nothing listed yet.")); return; }
+  if (!rows.length) { t.append(el("caption", { class: "empty" }, "No deadlines listed yet.")); return; }
   const head = el("tr"); ["What", "Date", "Time left", "Note", ""].forEach((h) => head.append(el("th", {}, h))); t.append(head);
   for (const r of rows) {
     const tr = el("tr");
-    const left = r.days < 0 ? `${-r.days} days overdue` : r.days === 0 ? "Today" : r.days === 1 ? "1 day" : `${r.days} days`;
-    const date = new Date(`${r.expires_on}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    const left = timeLeft(r), date = niceDate(r.expires_on);
     const cell = el("td"); const done = el("button", { class: "ghost small-btn", type: "button" }, "Remove");
     done.addEventListener("click", async () => {
       if (!confirm(`Remove "${r.label}" from the list?`)) return;
@@ -309,6 +328,7 @@ for (const b of document.querySelectorAll(".pages button")) {
   b.addEventListener("click", () => {
     for (const x of document.querySelectorAll(".pages button")) x.setAttribute("aria-selected", String(x === b));
     $("page-waiting").hidden = b.dataset.page !== "waiting";
+    $("page-deadlines").hidden = b.dataset.page !== "deadlines";
     $("page-dash").hidden = b.dataset.page !== "dash";
   });
 }
