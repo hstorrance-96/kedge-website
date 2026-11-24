@@ -251,6 +251,15 @@ $("unlock").addEventListener("submit", async (e) => {
 });
 $("signout").addEventListener("click", () => { clearToken(); showLocked(); });
 $("refresh").addEventListener("click", load);
+// Top-level pages: the dashboard, and "Waiting for you" on its own page with its count on the tab.
+for (const b of document.querySelectorAll(".pages button")) {
+  b.addEventListener("click", () => {
+    for (const x of document.querySelectorAll(".pages button")) x.setAttribute("aria-selected", String(x === b));
+    $("page-waiting").hidden = b.dataset.page !== "waiting";
+    $("page-dash").hidden = b.dataset.page !== "dash";
+  });
+}
+
 for (const b of document.querySelectorAll(".tabs button")) {
   b.addEventListener("click", () => {
     tab = b.dataset.agent;

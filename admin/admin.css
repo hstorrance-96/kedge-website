@@ -64,3 +64,9 @@ td.num, th.num { text-align: right; }
 .connections li.on::before { color: var(--good); }
 .empty { color: var(--muted); padding: 10px 0; }
 @media (max-width: 720px) { .charts, .grid2 { grid-template-columns: 1fr; } }
+
+/* Top-level pages (Dashboard / Waiting for you). Separate from .tabs, which filters the agent feed. */
+.pages { display: flex; gap: 6px; margin-top: 18px; border-bottom: 1px solid var(--line); }
+.pages button { background: none; color: var(--muted); border: 0; border-bottom: 2px solid transparent; border-radius: 0; padding: 10px 14px; font-weight: 600; }
+.pages button[aria-selected="true"] { color: inherit; border-bottom-color: var(--volt); }
+.pages button:focus-visible { outline: 2px solid var(--volt); outline-offset: -2px; }
