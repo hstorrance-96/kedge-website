@@ -45,6 +45,30 @@
 
   <div id="page-dash">
   <section>
+    <div id="health" class="health">
+      <div class="health-top">
+        <span id="health-dot" class="dot"></span>
+        <h2 id="health-title">Checking…</h2>
+        <span id="health-when" class="muted small"></span>
+      </div>
+      <ul id="health-list" class="checks"></ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Things that expire</h2>
+    <p class="muted small">Tokens, credits, renewals and deadlines, soonest first. Names and dates only: never paste a key here.</p>
+    <table id="expiries"></table>
+    <form id="expiry-form" class="row expiry-form">
+      <input id="expiry-label" placeholder="What expires (e.g. GitHub dashboard token)" maxlength="120" required>
+      <input id="expiry-date" type="date" required aria-label="Date it expires">
+      <input id="expiry-note" placeholder="Note (optional)" maxlength="300">
+      <button type="submit" class="ghost">Add</button>
+      <span id="expiry-msg" class="muted small" role="status"></span>
+    </form>
+  </section>
+
+  <section>
     <h2>Numbers <span id="asof" class="muted small"></span></h2>
     <div id="cards" class="cards"></div>
     <div class="charts">

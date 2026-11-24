@@ -63,6 +63,9 @@ function render() {
   const latest = (data.history || [])[0];
   $("asof").textContent = latest ? `Live now · nightly snapshot ${latest.day}` : "Live now";
 
+  renderHealth(data.health);
+  renderExpiries(data.expiries || []);
+
   const snap = latest?.data || {};
   const crashes = snap.crashes || {};
   const subs = snap.subscriptions?.metrics || {};
@@ -240,6 +243,56 @@ function itemCard(it) {
   }
   return node;
 }
+
+// ── Health line and expiries ──────────────────────────────────────
+const HEALTH_TITLE = { ok: "Everything is working", warn: "Something needs a look", bad: "Something is broken" };
+const STATE_WORD = { ok: "Working", warn: "Needs a look", bad: "Broken", off: "Not set up" };
+
+function renderHealth(h) {
+  const list = $("health-list"); list.replaceChildren();
+  if (!h) { $("health-title").textContent = "No status yet"; $("health-dot").className = "dot"; return; }
+  $("health-dot").className = `dot ${h.overall}`;
+  $("health-title").textContent = HEALTH_TITLE[h.overall] || "Status";
+  $("health-when").textContent = `Checked ${when(h.checked_at)}`;
+  // Problems first, then what's working, then what isn't set up yet.
+  const order = { bad: 0, warn: 1, ok: 2, off: 3 };
+  for (const c of [...h.checks].sort((a, b) => order[a.state] - order[b.state])) {
+    const li = el("li", { class: c.state });
+    li.append(el("span", { class: "dot " + c.state }), el("b", {}, c.name), el("span", { class: "state" }, STATE_WORD[c.state] || c.state),
+      el("span", { class: "muted" }, c.detail));
+    list.append(li);
+  }
+}
+
+function renderExpiries(rows) {
+  const t = $("expiries"); t.replaceChildren();
+  if (!rows.length) { t.append(el("caption", { class: "empty" }, "Nothing listed yet.")); return; }
+  const head = el("tr"); ["What", "Date", "Time left", "Note", ""].forEach((h) => head.append(el("th", {}, h))); t.append(head);
+  for (const r of rows) {
+    const tr = el("tr");
+    const left = r.days < 0 ? `${-r.days} days overdue` : r.days === 0 ? "Today" : r.days === 1 ? "1 day" : `${r.days} days`;
+    const date = new Date(`${r.expires_on}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    const cell = el("td"); const done = el("button", { class: "ghost small-btn", type: "button" }, "Remove");
+    done.addEventListener("click", async () => {
+      if (!confirm(`Remove "${r.label}" from the list?`)) return;
+      done.disabled = true;
+      try { await call({ action: "removeExpiry", id: r.id }); await load(); } catch (e) { $("expiry-msg").textContent = e.message; done.disabled = false; }
+    });
+    cell.append(done);
+    tr.append(el("td", {}, r.label), el("td", {}, date), el("td", { class: "left " + r.state }, left), el("td", { class: "muted" }, r.note || ""), cell);
+    t.append(tr);
+  }
+}
+
+$("expiry-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  $("expiry-msg").textContent = "";
+  try {
+    await call({ action: "addExpiry", label: $("expiry-label").value, expires_on: $("expiry-date").value, note: $("expiry-note").value });
+    $("expiry-form").reset();
+    await load();
+  } catch (err) { $("expiry-msg").textContent = err.message; }
+});
 
 // ── Wiring ────────────────────────────────────────────────────────
 $("unlock").addEventListener("submit", async (e) => {

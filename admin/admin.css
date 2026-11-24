@@ -70,3 +70,23 @@ td.num, th.num { text-align: right; }
 .pages button { background: none; color: var(--muted); border: 0; border-bottom: 2px solid transparent; border-radius: 0; padding: 10px 14px; font-weight: 600; }
 .pages button[aria-selected="true"] { color: inherit; border-bottom-color: var(--volt); }
 .pages button:focus-visible { outline: 2px solid var(--volt); outline-offset: -2px; }
+
+/* "Is anything broken?" line and the list of things that expire. */
+.health { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.health-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.health-top h2 { margin: 0; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); flex: none; display: inline-block; }
+.dot.ok { background: var(--good); } .dot.warn { background: var(--warn); } .dot.bad { background: var(--bad); } .dot.off { background: var(--line); }
+.health-top .dot { width: 14px; height: 14px; }
+.checks { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+.checks li { display: grid; grid-template-columns: 12px 150px 110px 1fr; gap: 10px; align-items: baseline; font-size: 14px; }
+.checks .state { color: var(--muted); }
+.checks li.bad .state { color: var(--bad); font-weight: 600; } .checks li.warn .state { color: var(--warn); font-weight: 600; }
+.checks li.ok .state { color: var(--good); }
+td.left.bad { color: var(--bad); font-weight: 600; } td.left.warn { color: var(--warn); font-weight: 600; }
+.expiry-form { margin-top: 12px; }
+.expiry-form input { width: auto; flex: 1 1 180px; }
+.expiry-form input[type="date"] { flex: 0 0 170px; color-scheme: dark; }
+.small-btn { padding: 4px 10px; font-size: 13px; }
+caption.empty { text-align: left; }
+@media (max-width: 720px) { .checks li { grid-template-columns: 12px 1fr; } .checks li .state, .checks li .muted { grid-column: 2; } }
