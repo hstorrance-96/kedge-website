@@ -30,7 +30,7 @@ You agree to give accurate answers in the health check and to tell the coach abo
 - Payment is charged to your Apple ID at confirmation of purchase. The subscription renews automatically unless you cancel at least 24 hours before the end of the current period. Manage or cancel in your Apple ID settings.
 - If you cancel during the trial, you won't be charged. Starting a history import during the trial starts the paid subscription right away.
 - Refunds are handled by Apple under its policies.
-- Usage limits apply, including a monthly chat allowance and a monthly number of video form reviews. Extra form reviews can be bought as one-time purchases and don't roll over.
+- Usage limits apply, including a monthly chat allowance and a monthly number of video form reviews. Paying members can buy extra form reviews and extra coach chat as one-time purchases. They don't expire and are used after your monthly allowance.
 - Referral rewards and promotional offers are subject to the terms shown when offered and may end at any time.
 
 ## 7. Your content
