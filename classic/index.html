@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kedge: Your Training Partner</title>
 <meta name="description" content="Training, nutrition and recovery, all in one coach. Kedge plans every workout, adjusts your next set live, reviews your form on video and logs meals from a photo.">
-<meta name="theme-color" content="#0B1222">
+<meta name="theme-color" content="#0B0D12">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://kedge.fit/">
@@ -32,7 +32,7 @@
   --ink: #0A0C11;
   --panel: #12161F;
   --line: #222836;
-  --text: #EEF1F6;
+  --text: #F2F4F8;
   --muted: #9AA3B4;
   --volt: #3D6BF5;
   --volt-soft: #7C9DFF;
@@ -59,7 +59,7 @@ p { margin: 0; }
 .nav a { color: var(--muted); text-decoration: none; }
 .nav a:hover { color: var(--text); }
 .nav .cta { color: #fff; background: var(--volt); padding: 8px 14px; border-radius: 10px; font-weight: 600; }
-.nav .cta:hover { background: #2F5BE0; color: #fff; }
+.nav .cta:hover { background: #2F58D6; color: #fff; }
 @media (max-width: 720px) { .nav a:not(.cta) { display: none; } }
 
 /* hero */
@@ -74,10 +74,10 @@ p { margin: 0; }
 .signup input { flex: 1 1 220px; min-width: 0; height: 52px; padding: 0 16px; border-radius: 12px; border: 1px solid #2E3546; background: var(--panel); color: var(--text); font: 500 16px var(--body); }
 .signup input::placeholder { color: #6F7789; }
 .signup button { height: 52px; padding: 0 22px; border-radius: 12px; border: 0; background: var(--volt); color: #fff; font: 600 16px var(--body); cursor: pointer; }
-.signup button:hover { background: #2F5BE0; }
+.signup button:hover { background: #2F58D6; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .btn-link { display: inline-block; margin-top: 4px; padding: 12px 18px; border-radius: 12px; background: var(--volt); color: #fff !important; font-weight: 600; text-decoration: none; }
-.btn-link:hover { background: #2F5BE0; }
+.btn-link:hover { background: #2F58D6; }
 .offer { margin-top: 30px; display: inline-flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border-radius: 999px; background: rgba(61,107,245,.14); border: 1px solid rgba(61,107,245,.55); color: var(--text); font: 700 20px var(--body); }
 .offer span { padding: 5px 12px; border-radius: 999px; background: var(--volt); color: #fff; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .offer + .signup { margin-top: 18px; }
@@ -204,7 +204,7 @@ footer a { color: var(--muted); }
 [hidden] { display: none !important; }
 
 /* ---- design pass: Archivo wide display, plate-blue on deep navy, timeline tabs ---- */
-:root { --ink: #0B1222; --panel: #111A2E; --line: #1F2A42; --muted: #8E9AB3; --volt: #2F63F2; --volt-soft: #8FA9FF; --go: #4ED39A;
+:root { --ink: #0B0D12; --panel: #161A22; --line: #252B38; --muted: #A3AAB8; --volt: #3D6BF5; --volt-soft: #6E95FF; --go: #4ED39A;
   --display: "Archivo", system-ui, sans-serif; --body: "Archivo", system-ui, -apple-system, sans-serif; }
 body { font-variation-settings: "wdth" 100; }
 h1, h2, h3, .setcard .lift, .set .load, .ring span, .mealtop b { font-family: var(--display); font-variation-settings: "wdth" 118; letter-spacing: -0.01em; }
@@ -220,7 +220,7 @@ h1, h2, h3, .setcard .lift, .set .load, .ring span, .mealtop b { font-family: va
 .signup:focus-within { border-color: var(--volt-soft); }
 .signup input { flex: 1; height: 50px; border: 0; background: transparent; padding: 0 14px; font-size: 16px; }
 .signup input:focus-visible { outline: none; }
-.signup button { height: 50px; padding: 0 22px; border-radius: 11px; background: #fff; color: #0B1222; font-weight: 700; font-size: 15px; white-space: nowrap; }
+.signup button { height: 50px; padding: 0 22px; border-radius: 11px; background: #fff; color: #0B0D12; font-weight: 700; font-size: 15px; white-space: nowrap; }
 .signup button:hover { background: var(--volt-soft); }
 .fine { margin-top: 14px; font-size: 13.5px; }
 @media (max-width: 480px) { .signup { flex-direction: column; gap: 6px; } .signup button { width: 100%; } }
@@ -228,9 +228,9 @@ h1, h2, h3, .setcard .lift, .set .load, .ring span, .mealtop b { font-family: va
 /* timeline tabs: each bar fills while its slide shows */
 .tabs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 18px; flex-wrap: nowrap; }
 .tabs button { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; padding: 4px 0; border: 0; border-radius: 0; background: none; color: var(--muted); font: 500 13px var(--body); text-align: left; cursor: pointer; }
-.tabs button i { display: block; width: 100%; height: 3px; border-radius: 2px; background: #26324D; position: relative; overflow: hidden; }
+.tabs button i { display: block; width: 100%; height: 3px; border-radius: 2px; background: #2C3342; position: relative; overflow: hidden; }
 .tabs button i::after { content: ""; position: absolute; inset: 0; background: #fff; transform: scaleX(0); transform-origin: left; }
-.tabs button.seen i::after { transform: scaleX(1); background: #3A4766; }
+.tabs button.seen i::after { transform: scaleX(1); background: #3A4356; }
 .tabs button[aria-selected="true"] { background: none; color: #fff; font-weight: 600; }
 .tabs button[aria-selected="true"] i::after { transform: scaleX(1); }
 .carousel.playing .tabs button[aria-selected="true"] i::after { animation: fillbar 7.5s linear forwards; }
@@ -256,14 +256,14 @@ h1, h2, h3, .setcard .lift, .set .load, .ring span, .mealtop b { font-family: va
 .set.missed .load { color: #5F6B86; text-decoration-color: #FF8A4C; }
 .set.missed .tag, .set.pain .tag { color: #FF8A4C; }
 .set.done .n { color: var(--go); }
-.coachline { margin-top: 4px; padding: 14px 16px; border-radius: 14px; background: #0D1526; font-size: 14.5px; }
+.coachline { margin-top: 4px; padding: 14px 16px; border-radius: 14px; background: #10131A; font-size: 14.5px; }
 .coachline .dot { width: 24px; height: 24px; border-radius: 7px; font-size: 12px; }
 .bubble { border-radius: 16px 16px 4px 16px; font-size: 14.5px; }
-.meal, .checks li { background: #0D1526; border-color: var(--line); }
+.meal, .checks li { background: #10131A; border-color: var(--line); }
 .macros i { height: 4px; }
 .checks li.ok b::before { color: var(--go); }
 .frame.photo img { border-radius: 12px; }
-.ring { background: conic-gradient(#FF8A4C calc(var(--p) * 1%), #26324D 0); }
+.ring { background: conic-gradient(#FF8A4C calc(var(--p) * 1%), #2C3342 0); }
 
 /* below the hero: quiet */
 section.block { padding: 64px 0; }
@@ -276,7 +276,7 @@ section.block { padding: 64px 0; }
 .hero { padding-bottom: 40px; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: linear-gradient(to bottom, rgba(11,18,34,0), var(--ink)); pointer-events: none; }
 section#how { border-top: 0; padding: 8px 0 56px; }
-#how .feat::before { content: ""; display: block; width: 36px; height: 3px; border-radius: 2px; background: #3A4766; margin-bottom: 16px; }
+#how .feat::before { content: ""; display: block; width: 36px; height: 3px; border-radius: 2px; background: #3A4356; margin-bottom: 16px; }
 #how .feat:first-child::before { background: #fff; }
 section#pricing { border-top: 0; padding-top: 16px; }
 .yearly { display: flex; flex-direction: column; gap: 10px; }
@@ -294,7 +294,7 @@ section#pricing { border-top: 0; padding-top: 16px; }
 .plan-row.best { border-color: #3B5BD6; background: linear-gradient(90deg, rgba(47,99,242,.16), rgba(47,99,242,.04)); }
 .plan-name { display: flex; flex-direction: column; } .plan-name b { font-size: 18px; } .plan-name span { font-size: 13px; color: var(--muted); }
 .bar { height: 14px; border-radius: 8px; background: #19233A; position: relative; }
-.bar i { display: block; height: 100%; border-radius: 8px; background: #3A4766; position: relative; }
+.bar i { display: block; height: 100%; border-radius: 8px; background: #3A4356; position: relative; }
 .best .bar i { background: linear-gradient(90deg, var(--volt), var(--volt-soft)); }
 .bar em { position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%); white-space: nowrap; font-style: normal; font-size: 13px; font-weight: 700; color: var(--go); }
 .plan-price { text-align: right; white-space: nowrap; min-width: 130px; } .plan-price b { font-family: var(--display); font-variation-settings: "wdth" 118; font-weight: 800; font-size: 34px; line-height: 1; } .plan-price span { color: var(--muted); font-size: 14px; margin-left: 2px; }
@@ -303,9 +303,9 @@ section#pricing { border-top: 0; padding-top: 16px; }
 #pricing .fine { margin-top: 18px; }
 .live { display: inline-flex; align-items: center; gap: 7px; } .live i { width: 7px; height: 7px; border-radius: 50%; background: var(--go); box-shadow: 0 0 0 3px rgba(78,211,154,.18); }
 .chat { display: flex; flex-direction: column; gap: 12px; }
-.reply { align-self: flex-start; max-width: 88%; background: #0D1526; border: 1px solid var(--line); padding: 12px 14px; border-radius: 16px 16px 16px 4px; font-size: 14.5px; line-height: 1.5; color: #D5DAE3; }
+.reply { align-self: flex-start; max-width: 88%; background: #10131A; border: 1px solid var(--line); padding: 12px 14px; border-radius: 16px 16px 16px 4px; font-size: 14.5px; line-height: 1.5; color: #D5DAE3; }
 .chat .bubble { max-width: 80%; }
-.voice { margin-top: auto; display: flex; align-items: center; gap: 12px; padding: 10px 14px 10px 10px; border-radius: 999px; background: #0D1526; border: 1px solid var(--line); }
+.voice { margin-top: auto; display: flex; align-items: center; gap: 12px; padding: 10px 14px 10px 10px; border-radius: 999px; background: #10131A; border: 1px solid var(--line); }
 .mic { width: 34px; height: 34px; border-radius: 50%; background: var(--volt); display: grid; place-items: center; flex: none; } .mic svg { width: 18px; height: 18px; }
 .wave { display: flex; align-items: center; gap: 3px; height: 22px; } .wave b { width: 3px; border-radius: 2px; background: var(--volt-soft); height: 30%; }
 .wave b:nth-child(3n) { height: 80%; } .wave b:nth-child(3n+1) { height: 50%; } .wave b:nth-child(4n) { height: 100%; }
@@ -330,7 +330,7 @@ section#pricing { border-top: 0; padding-top: 16px; }
 <header class="top">
   <div class="wrap">
     <a class="mark" href="#">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 9h24" stroke="#EEF1F6" stroke-width="3" stroke-linecap="round"/><path d="M16 9v13" stroke="#3D6BF5" stroke-width="3" stroke-linecap="round"/><path d="M8 19c2 5 5 8 8 8s6-3 8-8" fill="none" stroke="#EEF1F6" stroke-width="3" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 9h24" stroke="#F2F4F8" stroke-width="3" stroke-linecap="round"/><path d="M16 9v13" stroke="#3D6BF5" stroke-width="3" stroke-linecap="round"/><path d="M8 19c2 5 5 8 8 8s6-3 8-8" fill="none" stroke="#F2F4F8" stroke-width="3" stroke-linecap="round"/></svg>
       Kedge
     </a>
   </div>
