@@ -864,11 +864,30 @@ section { padding: 128px 0; }
 <p><strong>My wearable isn't syncing.</strong> Open Account › Devices, turn the connection off and on again, and make sure the device's own app has synced recently.</p>
   </div>
 </main>
+<main class="doc" id="doc-about" hidden>
+  <div class="wrap">
+    <a class="back" href="#">← Back to Kedge</a>
+<h1>About Kedge</h1>
+<p>Kedge is built by one lifter in Michigan, not a big fitness company.</p>
+<h2>Who's behind it</h2>
+<p>I'm Hunter Torrance. I lift, and I built Kedge because I wanted a coach that changes the plan when the day changes, and tells me why.</p>
+<h2>Where the coaching comes from</h2>
+<p>The coach in the app is software. The judgment behind it is human.</p>
+<ul>
+<li>I write the coaching rules myself and review the coach's answers every morning.</li>
+<li>Certified personal trainers are among our beta testers, and their feedback shapes how Kedge coaches.</li>
+<li>When a form video doesn't show enough, the coach says so instead of guessing. If something hurts, it changes the plan instead of pushing you through it.</li>
+</ul>
+<h2>Talk to me</h2>
+<p>I read every message. Email <a href="mailto:info@kedge.fit">info@kedge.fit</a> with questions, ideas or anything the coach got wrong.</p>
+  </div>
+</main>
 
 <footer>
   <div class="wrap">
     <span>© 2026 Kedge Fit LLC</span>
     <nav aria-label="Legal">
+      <a href="#about">About</a>
       <a href="#privacy">Privacy Policy</a>
       <a href="#health-data">Consumer Health Data</a>
       <a href="#terms">Terms of Service</a>
@@ -917,7 +936,7 @@ if (UMAMI_ID && !/\/(preview|new)\//.test(location.pathname)) {
 }
 var PAGE_LOADED = Date.now();
 
-var views = ["privacy", "terms", "health-data", "support"];
+var views = ["privacy", "terms", "health-data", "support", "about"];
 function route() {
   var h = (location.hash || "").replace("#", "");
   var isDoc = views.indexOf(h) !== -1;

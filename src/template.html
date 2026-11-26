@@ -644,6 +644,7 @@ section { padding: 128px 0; }
   <div class="wrap">
     <span>© 2026 [COMPANY NAME, LLC]</span>
     <nav aria-label="Legal">
+      <a href="#about">About</a>
       <a href="#privacy">Privacy Policy</a>
       <a href="#health-data">Consumer Health Data</a>
       <a href="#terms">Terms of Service</a>
@@ -692,7 +693,7 @@ if (UMAMI_ID && !/\/(preview|new)\//.test(location.pathname)) {
 }
 var PAGE_LOADED = Date.now();
 
-var views = ["privacy", "terms", "health-data", "support"];
+var views = ["privacy", "terms", "health-data", "support", "about"];
 function route() {
   var h = (location.hash || "").replace("#", "");
   var isDoc = views.indexOf(h) !== -1;
