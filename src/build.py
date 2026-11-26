@@ -28,8 +28,7 @@ REPL = [
 SUPPORT_BTN = ('\n\n<p><a class="btn-link" href="mailto:info@kedge.fit?subject=Mailing%20address%20request">'
                'Request our mailing address</a></p>\n')
 
-DOCS = [("privacy", "privacy.md"), ("terms", "terms.md"), ("health-data", "health-data.md"), ("support", "support.md"),
-        ("about", "../about.md")]
+DOCS = [("privacy", "privacy.md"), ("terms", "terms.md"), ("health-data", "health-data.md"), ("support", "support.md")]
 
 
 def fill(text):
