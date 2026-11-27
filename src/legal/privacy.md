@@ -22,7 +22,8 @@ Effective date: [DATE]
 - Training data: workouts, sets, weights, reps, effort ratings, check-ins and energy scores.
 - Nutrition data: meals, food photos, barcodes you scan, saved foods.
 - Chat and voice: messages you type or speak to the coach. Voice is turned into text to answer you; we don't keep audio recordings after that.
-- Still frames from sets you film for form review. Your videos stay on your phone; the app sends only still frames and body-position data for review, and we delete the frames after 90 days unless you save the review.
+- Still frames from sets you film for form review. Videos you film for form review stay on your phone; the app sends only still frames and body-position data for review, and we delete the frames after 90 days unless you save the review.
+- Posts, comments and follows, if you use them: what you choose to post (a workout or record summary, a caption, a video you upload to a post), comments and cheers you leave, who you follow and who follows you, and reports and blocks you make.
 
 **From services you connect (only if you turn them on):**
 
@@ -50,6 +51,12 @@ We don't use your data for advertising, and we don't sell or rent it.
 ## Sharing with Anthropic (third-party AI)
 
 The coach is powered by Claude, from Anthropic, PBC. Before the coach works, the app asks your explicit permission to send Anthropic the data it needs: your messages, workouts, meals and food photos, check-ins, health answers, connected wearable data, and frames from videos you film. Anthropic processes it only to produce the coach's replies, under terms that prohibit training its models on it. You can turn this off in Account at any time; the coach pauses until you turn it back on.
+
+## Posts, comments and followers
+
+Nothing goes on your profile unless you post it. A post shows the workout or record you picked, plus any caption or video you add; it never includes your weight, food, sleep or health details. By default you approve each follower, and only approved followers see your posts and comments on them; if you turn approval off, anyone on Kedge can follow you and see your posts. Comments are visible to the people who can see that post.
+
+To keep the community safe, the text of each comment and caption is checked automatically when you post it, using Claude from Anthropic under the same no-training terms. Text that breaks our community rules is hidden, and its writer can lose the ability to comment or add captions. Reported posts, comments and videos, and anything hidden automatically, may be reviewed by us. Deleting a post deletes its caption, video and comments; deleting your account deletes all of your posts, comments and follows.
 
 ## Other service providers
 
