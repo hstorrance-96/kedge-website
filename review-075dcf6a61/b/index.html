@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" data-reviewer="B"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kedge coach review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* VOICE: a head coach's clipboard: brisk, plain, one call at a time.
+   IDEA: the scoring sheet a coach fills in at the side of the platform.
+   PICTURE: the scenario card itself, with its verdict buttons, is the page.
+   COLOUR and TYPE: Kedge's concrete and paper with plate blue; Big Shoulders Display and Barlow, as on kedge.fit.
+   LAYOUT: one calm column; week strip on top, number rail, card, answer, next. */
+:root{color-scheme:light dark;
+--bg:light-dark(#E6E7E2,#101215);--paper:light-dark(#F4F4F0,#191C21);--ink:light-dark(#15171A,#EEF0EC);
+--mute:light-dark(#4A4E55,#A5ABB4);--rule:light-dark(#C6C8C1,#2E333B);--blue:light-dark(#2450E0,#6E8FFF);
+--blue-ink:#fff;--soft:light-dark(#DCE3FB,#1E2741);--green:light-dark(#2D8A4B,#5BC27E);--yellow:light-dark(#B98A0C,#E8B31C);--red:light-dark(#C0222B,#F06A70)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Barlow,"Helvetica Neue",Arial,sans-serif;overflow-x:clip}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(16px,4vw,36px) max(4vw,14px) 64px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font:900 26px/1 "Big Shoulders Display",Impact,sans-serif;letter-spacing:.5px}
+.brand span{color:var(--blue)}
+.note{font-size:13px;color:var(--mute)}
+h1{font:800 clamp(34px,7vw,48px)/1.02 "Big Shoulders Display",Impact,sans-serif;margin:18px 0 6px;text-wrap:balance}
+.lede{color:var(--mute);margin:0 0 18px}
+.week{margin-top:18px;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:14px 16px;display:grid;gap:10px}
+.weekrow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.day{text-align:center;font-size:13px;color:var(--mute)}
+.day i{display:block;height:10px;border-radius:5px;background:var(--rule);margin-top:4px}
+.day.done i{background:var(--green)}.day.today{color:var(--ink);font-weight:700}.day.today i{outline:2px solid var(--blue);outline-offset:2px}
+.mile{height:8px;border-radius:4px;background:var(--rule);overflow:hidden}.mile b{display:block;height:100%;background:var(--blue)}
+.railwrap{display:flex;align-items:center;gap:6px}.railwrap .rail{flex:1}
+.arr{flex:none;width:44px;height:44px;border-radius:22px;border:0;background:var(--ink);color:var(--paper);font:700 26px/1 Barlow,sans-serif;cursor:pointer;padding-bottom:3px}.arr:disabled{opacity:.25;cursor:default}
+.rail{display:flex;gap:8px;overflow-x:auto;padding:18px 2px 10px;scrollbar-width:none}
+.rail button{flex:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--rule);background:var(--paper);color:var(--ink);font:800 20px "Big Shoulders Display",sans-serif;cursor:pointer}
+.rail button.on{border-color:var(--blue);box-shadow:0 0 0 2px var(--blue) inset}
+.rail button.agree{background:var(--green);border-color:var(--green);color:#fff}
+.rail button.change{background:var(--yellow);border-color:var(--yellow);color:#15171A}
+.rail button.unsure{background:var(--mute);border-color:var(--mute);color:#fff}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:clamp(18px,4vw,28px);box-shadow:0 1px 0 var(--rule)}
+.tag{font-size:14px;color:var(--blue);font-weight:600}
+h2{font:800 clamp(28px,5.6vw,38px)/1.05 "Big Shoulders Display",Impact,sans-serif;margin:4px 0 14px;text-wrap:balance}
+h3{font:700 15px Barlow,sans-serif;margin:18px 0 4px;color:var(--mute)}
+p{margin:0}
+.rec{background:var(--soft);border-radius:12px;padding:14px 16px;margin-top:6px}
+.rec dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px}
+.rec dt{font-weight:700}.rec dd{margin:0}
+@media(max-width:520px){.rec dl{grid-template-columns:minmax(0,1fr)}.rec dd{margin-bottom:6px}}
+details{margin-top:14px;border-top:1px solid var(--rule);padding-top:10px}
+summary{cursor:pointer;font-weight:600;min-height:32px}
+details li{margin:4px 0}details a{color:var(--blue);overflow-wrap:anywhere}
+.answer{margin-top:22px;border-top:2px solid var(--ink);padding-top:16px}
+.answer h3{color:var(--ink);font-size:17px;margin-top:0}
+.verdicts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.v{min-height:52px;border-radius:12px;border:1.5px solid var(--rule);background:transparent;color:var(--ink);font:700 16px Barlow,sans-serif;cursor:pointer}
+.v[aria-pressed=true].agree{background:var(--green);border-color:var(--green);color:#fff}
+.v[aria-pressed=true].change{background:var(--yellow);border-color:var(--yellow);color:#15171A}
+.v[aria-pressed=true].unsure{background:var(--mute);border-color:var(--mute);color:#fff}
+label{display:block;font-weight:600;font-size:15px;margin:12px 0 4px}
+textarea,input[type=text]{width:100%;font:16px/1.4 Barlow,sans-serif;padding:12px;border-radius:10px;border:1.5px solid var(--rule);background:var(--bg);color:var(--ink)}
+textarea{min-height:84px;resize:vertical}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 16px;border-radius:22px;border:1.5px solid var(--rule);background:transparent;color:var(--ink);font:600 15px Barlow,sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.nav{display:flex;gap:10px;margin-top:18px}
+.btn{min-height:52px;flex:1;border-radius:14px;border:0;font:700 17px Barlow,sans-serif;cursor:pointer}
+.primary{background:var(--blue);color:var(--blue-ink)}.ghost{background:transparent;border:1.5px solid var(--rule);color:var(--ink);flex:0 0 auto;padding:0 18px}
+.btn:disabled{opacity:.45;cursor:default}
+button:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.done{text-align:center;padding:28px 10px}
+.done h2{margin-bottom:8px}
+.sumrow{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:14px 0;font-weight:600}
+.sumrow span b{font:800 32px "Big Shoulders Display",sans-serif;display:block}
+.card{animation:in .22s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){.card{animation:none}}
+.hide{display:none}
+.rail button.deep{border-style:dashed}.rail button.x{font:700 15px Barlow,sans-serif}
+.impact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border-top:1px solid var(--rule);padding-top:10px}
+.impact b{font:800 28px/1 "Big Shoulders Display",sans-serif;display:block}
+.frow{border:1px solid var(--rule);border-radius:12px;padding:10px 12px;margin-top:10px}
+.frow h4{margin:0;font-size:15px}
+.prog td:first-child{white-space:nowrap;font-weight:600}
+.said{font-style:italic;margin:4px 0 10px}
+.file{border:1px solid var(--rule);border-radius:12px;padding:12px 14px;margin-top:6px;display:grid;gap:8px;font-size:15px}
+.file table{width:100%;border-collapse:collapse;font-size:14px}.file td,.file th{text-align:left;padding:5px 6px;border-bottom:1px solid var(--rule);vertical-align:top}.file th{color:var(--mute);font-weight:600}
+.small{font-size:13px;color:var(--mute)}
+.bubble{background:var(--blue);color:#fff;border-radius:16px 16px 16px 4px;padding:12px 14px;margin-top:6px;max-width:560px}
+.follow{margin-top:12px;font-size:14px;color:var(--blue);font-weight:600}
+.slot{aspect-ratio:9/16;max-height:420px;margin:8px auto;border:2px dashed var(--rule);border-radius:14px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--mute)}
+.cmp td:nth-child(2),.cmp td:nth-child(3){width:38%}.match{color:var(--green);font-weight:700}.miss{color:var(--yellow);font-weight:700}
+</style></head><body>
+<div class="wrap">
+  <div class="top"><div class="brand">KEDGE <span>coach review</span></div></div>
+  <section class="week" aria-label="This week">
+    <div class="weekrow"><strong>This week</strong><span id="weekTxt"></span></div>
+    <div class="days" id="days"></div>
+    <div id="bonus">
+    <div class="weekrow"><span>Weeks toward your 1.5%</span><span id="mileTxt">0 of 26</span></div>
+    <div class="mile" aria-hidden="true"><b id="mileBar" style="width:0%"></b></div>
+    <div class="weekrow"><span>Paying members, 3-month average</span><span id="memTxt"></span></div>
+    <div class="mile" aria-hidden="true"><b id="memBar" style="width:0%;background:var(--green)"></b></div>
+    <div class="weekrow note"><span id="memNext"></span></div>
+    </div>
+    <div class="impact"><span><b id="shaped">0</b>Rules you shaped</span><span><b id="live">0</b>Now live in the coach</span></div>
+  </section>
+  <div class="railwrap"><button type="button" class="arr" id="arrL" aria-label="Previous scenario">‹</button><nav class="rail" id="rail" aria-label="Scenarios"></nav><button type="button" class="arr" id="arrR" aria-label="Next scenario">›</button></div>
+  <main id="main"></main>
+</div>
+<script>
+{
+const R=document.documentElement.dataset.reviewer||'A';
+const ENDPOINT='https://formspree.io/f/mzergwlr';
+let S=[],W={},ST={},DATE='',KEY='kedgeReview';
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let ans={};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}};
+let cur=0,finished=false;
+let NQ=0;
+const SEV=['None','Minor','Moderate','Major'];
+const X=[['fault','Fault list for this week','F'],['program','Program review','P']];
+const answered=()=>S.filter(s=>ans[s.n]&&ans[s.n].v).length;
+function parseRec(t){return t.split('\n').map(l=>{const m=l.match(/^([A-Z][A-Za-z ]{2,28}):\s*(.*)$/);return m?[m[1],m[2]]:null})}
+const ymd=d=>d.toLocaleDateString('en-CA');
+function sentDays(){try{return JSON.parse(localStorage.getItem('kedgeDays-'+R)||'[]')}catch(e){return []}}
+function week(){
+  const names=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];const now=new Date();const ti=(now.getDay()+6)%7;const sent=sentDays();let n=0;
+  document.getElementById('days').innerHTML=names.map((d,i)=>{const day=new Date(now);day.setDate(now.getDate()-ti+i);const done=sent.includes(ymd(day));if(done)n++;return '<div class="day'+(i===ti?' today':'')+(done?' done':'')+'">'+d+'<i></i></div>'}).join('');
+  document.getElementById('weekTxt').textContent=n+' of 5 days done';
+  const wk=+(ST.weeks||0),goal=wk<26?26:52;document.getElementById('mileTxt').textContent=wk+' of '+goal;document.getElementById('mileBar').style.width=Math.min(100,wk/goal*100)+'%';
+  document.getElementById('shaped').textContent=+(ST.shaped||0);document.getElementById('live').textContent=+(ST.live||0);
+}
+let MEMBERS=0;
+function members(){
+  const goal=MEMBERS<100?100:1000,pay=goal===100?'$1,000':'$10,000';
+  document.getElementById('memTxt').textContent=MEMBERS.toLocaleString()+' of '+goal.toLocaleString();
+  document.getElementById('memBar').style.width=Math.min(100,MEMBERS/goal*100)+'%';
+  document.getElementById('memNext').textContent=MEMBERS>=1000?'Both growth bonuses reached.':'Your '+pay+' bonus at '+goal.toLocaleString()+(goal===100?'; $10,000 more at 1,000.':'.');
+}
+function rail(){
+  document.getElementById('rail').innerHTML=S.map((s,i)=>{const a=ans[s.n]&&ans[s.n].v;return '<button type="button" data-i="'+i+'" class="'+(s.kind==='deep'?'deep ':'')+(i===cur&&!finished?'on ':'')+(a||'')+'" aria-label="Scenario '+s.n+(a?', answered':'')+'">'+s.n+'</button>'}).join('')+X.map((x,j)=>'<button type="button" data-i="'+(S.length+j)+'" class="x '+(cur===S.length+j&&!finished?'on':'')+'" aria-label="'+x[1]+'">'+x[2]+'</button>').join('');
+}
+function card(){
+  const s=S[cur],a=ans[s.n]||{};
+  if(s.kind==='quick'){
+    document.getElementById('main').innerHTML='<article class="card" aria-labelledby="t"><div class="tag">Quick call '+s.n+' of '+NQ+' · '+esc(s.areaName.charAt(0).toUpperCase()+s.areaName.slice(1))+'</div><h2 id="t">'+esc(s.title)+'</h2><p>'+esc(s.situation)+'</p><h3>Kedge would</h3><div class="rec"><p>'+esc(s.short)+'</p></div>'+
+    '<div class="answer"><div class="verdicts">'+[['agree','Agree'],['change','Change it'],['unsure','Not sure']].map(v=>'<button type="button" class="v '+v[0]+'" data-v="'+v[0]+'" aria-pressed="'+(a.v===v[0])+'">'+v[1]+'</button>').join('')+'</div>'+
+    (a.v==='change'?'<label for="cw">What would you do instead?</label><textarea id="cw">'+esc(a.change||'')+'</textarea>':'')+
+    (a.v?'<label for="nt">'+(a.v==='agree'?'Anything to add? (optional)':a.v==='unsure'?'What would you need to know? (optional)':'Anything else? (optional)')+'</label><textarea id="nt" placeholder="A cue, a caution, a detail that would change your call">'+esc(a.note||'')+'</textarea>':'')+
+    '<div class="nav"><button type="button" class="btn ghost" id="prev" '+(cur===0?'disabled':'')+'>Back</button><button type="button" class="btn primary" id="next" '+(a.v?'':'disabled')+'>Next</button></div></div></article>';
+    return;
+  }
+  const rows=s.form?parseRec(s.rec).filter(Boolean):null;
+  const recHtml=rows&&rows.length?'<dl>'+rows.map(r=>'<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>').join('')+'</dl>':'<p>'+esc(s.rec)+'</p>';
+  const get=k=>rows?(rows.find(r=>r[0].toLowerCase().startsWith(k))||['',''])[1]:'';
+  const f=a.fields||{fault:get('fault'),cue:get('cue'),sev:(SEV.find(x=>get('severity').startsWith(x))||''),keeps:get('if it keeps')};
+  let changeHtml='';
+  if(a.v==='change'){
+    changeHtml=s.form?
+      '<label for="ff">Main fault</label><input type="text" id="ff" value="'+esc(f.fault)+'">'+
+      '<label for="fc">Your cue</label><input type="text" id="fc" value="'+esc(f.cue)+'">'+
+      '<label>How serious</label><div class="chips" id="sev">'+SEV.map(x=>'<button type="button" class="chip" aria-pressed="'+(f.sev===x)+'" data-s="'+x+'">'+x+'</button>').join('')+'</div>'+
+      '<label for="fk">If it keeps happening</label><input type="text" id="fk" value="'+esc(f.keeps)+'">'
+      :'<label for="cw">What would you do instead?</label><textarea id="cw" placeholder="Your call, in your own words">'+esc(a.change||'')+'</textarea>';
+  }
+  document.getElementById('main').innerHTML='<article class="card" aria-labelledby="t">'+
+   '<div class="tag">Deep dive '+(s.n-NQ)+' of '+(S.length-NQ)+(s.breakit?' · Try to break it':' · '+esc(s.areaName.charAt(0).toUpperCase()+s.areaName.slice(1)))+'</div>'+
+   (s.breakit?'<p class="small" style="margin-bottom:8px">The athlete is pushing for something risky. Did the coach hold the line, and did it keep him coaching?</p>':'')+
+   '<h2 id="t">'+esc(s.title)+'</h2>'+
+   '<h3>The athlete</h3><p>'+esc(s.situation)+'</p>'+
+   (s.data?'<h3>Case file</h3><div class="file"><p class="said">'+esc(s.data.said)+'</p><p><strong>This morning:</strong> '+esc(s.data.checkin)+'</p><table><thead><tr><th>Date</th><th>Lift</th><th>Logged</th><th>Effort</th></tr></thead><tbody>'+s.data.log.map(r=>'<tr>'+r.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table><p><strong>Food:</strong> '+esc(s.data.food)+'</p></div>':'')+
+   '<h3>What Kedge does today</h3><p>'+esc(s.today)+'</p>'+
+   '<h3>Kedge recommends</h3><div class="rec">'+recHtml+'</div>'+
+   '<h3>What the coach would say</h3><div class="bubble">'+esc(s.reply)+'</div>'+
+   (s.data&&s.data.follow?'<p class="follow">'+esc(s.data.follow)+'</p>':'')+
+   '<details><summary>Why, and sources</summary><p style="margin-top:8px">'+esc(s.why)+'</p>'+(s.sources.length?'<ul>'+s.sources.map(x=>'<li><a href="'+esc(x.u)+'" target="_blank" rel="noopener">'+esc(x.t)+'</a></li>').join('')+'</ul>':'')+'</details>'+
+   '<div class="answer"><h3>Would you coach it this way?</h3><div class="verdicts">'+
+   [['agree','Agree'],['change','Change it'],['unsure','Not sure']].map(v=>'<button type="button" class="v '+v[0]+'" data-v="'+v[0]+'" aria-pressed="'+(a.v===v[0])+'">'+v[1]+'</button>').join('')+'</div>'+
+   changeHtml+
+   '<label for="sy">Say it your way (optional)</label><textarea id="sy" placeholder="How you would say it to this athlete">'+esc(a.say||'')+'</textarea>'+
+   '<label for="nt">Anything else? (optional)</label><textarea id="nt" placeholder="A cue, a caution, what you see in clients like this">'+esc(a.note||'')+'</textarea>'+
+   '<div class="nav"><button type="button" class="btn ghost" id="prev" '+(cur===0?'disabled':'')+'>Back</button><button type="button" class="btn primary" id="next" '+(a.v?'':'disabled')+'>'+(cur===S.length-1?'Review and send':'Save and next')+'</button></div></div></article>';
+}
+function doneView(){
+  const c={agree:0,change:0,unsure:0};S.forEach(s=>{const v=ans[s.n]&&ans[s.n].v;if(v)c[v]++});
+  const n=answered();
+  document.getElementById('main').innerHTML='<article class="card done"><h2>'+(n===S.length?'All '+S.length+' done.':n+' of '+S.length+' answered.')+'</h2>'+
+   '<div class="sumrow"><span><b>'+c.agree+'</b>Agree</span><span><b>'+c.change+'</b>Changed</span><span><b>'+c.unsure+'</b>Not sure</span></div>'+
+   '<p class="lede">Hunter makes the final call on every rule. Your answers go to him with the morning review.</p>'+
+   '<div class="nav"><button type="button" class="btn ghost" id="back">Back</button><button type="button" class="btn primary" id="send" '+(n?'':'disabled')+'>Send to Kedge</button></div><p class="note" id="sent" style="margin-top:12px"></p></article>';
+}
+function grab(){
+  if(cur>=S.length){const k=X[cur-S.length][0],r=ans[k]||(ans[k]={});document.querySelectorAll('#main input[id],#main textarea[id]').forEach(e=>r[e.id]=e.value);document.querySelectorAll('#main .chips[id]').forEach(g=>{const c=g.querySelector('[aria-pressed=true]');if(c)r[g.id]=c.dataset.s});save();return}
+  const s=S[cur],a=ans[s.n]||(ans[s.n]={});
+  const sy=document.getElementById('sy');if(sy)a.say=sy.value;
+  const nt=document.getElementById('nt');if(nt)a.note=nt.value;
+  const cw=document.getElementById('cw');if(cw)a.change=cw.value;
+  if(document.getElementById('ff')){a.fields={fault:document.getElementById('ff').value,cue:document.getElementById('fc').value,keeps:document.getElementById('fk').value,sev:(document.querySelector('#sev [aria-pressed=true]')||{}).dataset?.s||''}}
+  save();
+}
+function faultV(){
+  const r=ans.fault||{};
+  document.getElementById('main').innerHTML='<article class="card"><div class="tag">This week’s lift</div><h2>Fault list: '+esc(W.faultLift||'back squat')+'</h2><p>The five faults you see most on a back squat, worst first. These become the coach’s fault list: what it looks for, what it says, and the extra work it adds when a fault keeps coming back.</p>'+
+  [1,2,3,4,5].map(i=>'<div class="frow"><h4>Fault '+i+'</h4><label for="fa'+i+'">What it looks like</label><input type="text" id="fa'+i+'" value="'+esc(r['fa'+i]||'')+'"><label for="fc'+i+'">Your cue</label><input type="text" id="fc'+i+'" value="'+esc(r['fc'+i]||'')+'"><label>How serious</label><div class="chips" id="fs'+i+'">'+SEV.map(x=>'<button type="button" class="chip" aria-pressed="'+(r['fs'+i]===x)+'" data-s="'+x+'">'+x+'</button>').join('')+'</div><label for="fd'+i+'">Corrective drill if it keeps happening</label><input type="text" id="fd'+i+'" value="'+esc(r['fd'+i]||'')+'"></div>').join('')+
+  '<p class="small" style="margin-top:12px">One lift a week, until every lift the app reviews has a list.</p></article>';
+}
+function programV(){
+  const r=ans.program||{};
+  const PG=W.program||{};const P=PG.days||[];
+  document.getElementById('main').innerHTML='<article class="card"><div class="tag">Weekly program review</div><h2>Would you hand this to a client?</h2><p>'+esc(PG.athlete||'')+'</p>'+
+  '<h3>'+esc(PG.heading||'Week 1, as Kedge built it')+'</h3><div class="file"><table class="prog"><tbody>'+P.map(d=>'<tr><td>'+d[0]+'</td><td>'+d[1]+'</td></tr>').join('')+'</tbody></table><p>'+esc(PG.note||'')+'</p></div>'+
+  '<div class="answer"><h3>Your call</h3><div class="chips" id="pv">'+['As is','With changes','Not as is'].map(x=>'<button type="button" class="chip" aria-pressed="'+(r.pv===x)+'" data-s="'+x+'">'+x+'</button>').join('')+'</div><label for="pc">What would you change, and why?</label><textarea id="pc">'+esc(r.pc||'')+'</textarea></div></article>';
+}
+function film(){
+  const r=ans.film||{};const K={vf:'Knees cave in on the way up',vc:'Knees out, push the floor apart',sev:'Moderate',vk:'Banded squats and goblet squats with a 3-second lowering in the warm-up'};
+  const row=(l,k)=>{const m=(r[k]||'').trim().toLowerCase(),kk=K[k].toLowerCase();const ok=m&&(m===kk||kk.split(' ').filter(w=>w.length>3&&m.includes(w)).length>=2);return '<tr><td>'+l+'</td><td>'+esc(K[k])+'</td><td>'+(m?esc(r[k]):'—')+'</td><td class="'+(ok?'match':'miss')+'">'+(m?(ok?'Same':'Differs'):'')+'</td></tr>'};
+  document.getElementById('main').innerHTML='<article class="card"><div class="tag">Film review · watch first, then compare</div><h2>Back squat, 225 × 5</h2>'+
+  '<p>A real set, filmed side-on. Give your read before you see Kedge’s, so we learn how close the coach is to a trainer’s eye.</p>'+
+  '<div class="slot"><div><strong>No clip yet</strong><br>Real clips start once you two film sets. Each one gets reviewed by Kedge’s form check and by you.</div></div>'+
+  '<div class="answer"><h3>Your read</h3><label for="vf">Main fault</label><input type="text" id="vf" value="'+esc(r.vf||'')+'"><label for="vc">Your cue</label><input type="text" id="vc" value="'+esc(r.vc||'')+'">'+
+  '<label>How serious</label><div class="chips" id="vs">'+SEV.map(x=>'<button type="button" class="chip" aria-pressed="'+(r.vs===x)+'" data-s="'+x+'">'+x+'</button>').join('')+'</div>'+
+  '<label for="vk">If it keeps happening</label><input type="text" id="vk" value="'+esc(r.vk||'')+'">'+
+  '<div class="nav"><button type="button" class="btn primary" id="reveal">'+(r.shown?'Hide Kedge’s read':'Show Kedge’s read')+'</button></div>'+
+  (r.shown?'<h3 style="margin-top:18px">You vs Kedge</h3><div class="file"><table class="cmp"><thead><tr><th></th><th>Kedge</th><th>You</th><th></th></tr></thead><tbody>'+row('Fault','vf')+row('Cue','vc')+'<tr><td>Severity</td><td>'+K.sev+'</td><td>'+esc(r.vs||'—')+'</td><td class="'+(r.vs===K.sev?'match':'miss')+'">'+(r.vs?(r.vs===K.sev?'Same':'Differs'):'')+'</td></tr>'+row('If it keeps happening','vk')+'</tbody></table><p class="small">Kedge’s read here is an example for this preview.</p></div>':'')+
+  '</div></article>';
+}
+function summary(){
+  const V={agree:'Agree',change:'Change it',unsure:'Not sure'};
+  return S.map(c=>{const a=ans[c.n]||{};let t=c.n+'. '+c.title+': '+(V[a.v]||'no answer');if(a.change)t+='\n   Instead: '+a.change;if(a.fields)t+='\n   Fault: '+(a.fields.fault||'')+' | Cue: '+(a.fields.cue||'')+' | Severity: '+(a.fields.sev||'')+' | If it keeps happening: '+(a.fields.keeps||'');if(a.say)t+='\n   Say it: '+a.say;if(a.note)t+='\n   Note: '+a.note;return t}).join('\n')+
+   (ans.fault?'\n\nFault list ('+(W.faultLift||'')+'):\n'+[1,2,3,4,5].map(i=>'  '+i+'. '+(ans.fault['fa'+i]||'')+' | cue: '+(ans.fault['fc'+i]||'')+' | '+(ans.fault['fs'+i]||'')+' | drill: '+(ans.fault['fd'+i]||'')).join('\n'):'')+
+   (ans.program?'\n\nProgram review: '+(ans.program.pv||'')+' '+(ans.program.pc||''):'');
+}
+function send(btn){
+  const msg=document.getElementById('sent');btn.disabled=true;msg.textContent='Sending…';
+  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Kedge coach review '+R+' '+DATE,reviewer:R,date:DATE,summary:summary(),answers:JSON.stringify(ans)})})
+  .then(r=>{if(!r.ok)throw 0;const d=sentDays();if(!d.includes(ymd(new Date()))){d.push(ymd(new Date()));try{localStorage.setItem('kedgeDays-'+R,JSON.stringify(d.slice(-60)))}catch(e){}}week();msg.textContent='Sent. Thanks. You can change answers and send again today.';btn.disabled=false;btn.textContent='Send again'})
+  .catch(()=>{msg.textContent='That didn’t send. Check your connection and try again. Your answers are saved on this phone.';btn.disabled=false});
+}
+function render(){const T=S.length+X.length;document.getElementById('arrL').disabled=!finished&&cur===0;document.getElementById('arrR').disabled=finished||cur===T-1;rail();week();members();finished?doneView():cur>=S.length?[faultV,programV][cur-S.length]():card();const r=document.querySelector('.rail .on');if(r)r.scrollIntoView({block:'nearest',inline:'nearest'})}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.id==='arrL'||b.id==='arrR'){if(finished){finished=false}else{grab();cur=Math.max(0,Math.min(S.length+X.length-1,cur+(b.id==='arrR'?1:-1)))}render();window.scrollTo({top:0});return}
+  if(b.closest('#rail')){if(!finished)grab();finished=false;cur=+b.dataset.i;render();window.scrollTo({top:0});return}
+  if(b.dataset.v){grab();const a=ans[S[cur].n];a.v=b.dataset.v;save();render();return}
+  if(b.dataset.s){b.parentNode.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));grab();return}
+  if(b.id==='reveal'){grab();ans.film.shown=!ans.film.shown;save();render();return}
+  if(b.id==='prev'){grab();cur--;render();return}
+  if(b.id==='next'){grab();if(cur===S.length-1){finished=true}else{cur++}render();window.scrollTo({top:0});return}
+  if(b.id==='back'){finished=false;render();return}
+  if(b.id==='send'){grab();send(b);}
+});
+document.addEventListener('input',e=>{if(e.target.matches('textarea,input'))grab()});
+document.addEventListener('keydown',e=>{if(e.target.matches('textarea,input'))return;if(e.key==='ArrowRight'&&!finished&&cur<S.length+X.length-1){grab();cur++;render()}if(e.key==='ArrowLeft'&&!finished&&cur>0){grab();cur--;render()}});
+document.getElementById('bonus').hidden=R!=='A';
+fetch('../cases.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{S=d.cases||[];W=d.weekly||{};ST=d.stats||{};DATE=d.date||'';NQ=S.filter(x=>x.kind==='quick').length;MEMBERS=+(ST.members||0);KEY='kedgeReview-'+R+'-'+DATE;try{ans=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){ans={}}render()})
+.catch(()=>{document.getElementById('main').innerHTML='<article class="card"><h2>Couldn’t load today’s cases</h2><p>Check your connection and refresh the page.</p></article>'});
+}
+</script></body></html>
