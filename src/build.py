@@ -4,12 +4,11 @@ import os, pathlib, re, markdown
 ROOT = pathlib.Path(__file__).parent  # src/; writes ../index.html
 EMAIL = "info@kedge.fit"
 MAILTO = '<a href="mailto:info@kedge.fit">info@kedge.fit</a>'
-ADDR_REQ = ('<a href="mailto:info@kedge.fit?subject=Mailing%20address%20request">'
-            'mailing address available on request</a>')
+ADDR_REQ = '2728 Geneva St, Dearborn, MI 48124'
 
 REPL = [
     ("- **By mail:** [COMPANY NAME, LLC], [MAILING ADDRESS].",
-     "- **By mail:** email " + MAILTO + " and we'll send you our mailing address."),
+     "- **By mail:** Kedge Fit LLC, 2728 Geneva St, Dearborn, MI 48124."),
     ("{{APP}}", "Kedge"),
     ("[COMPANY NAME, LLC]", "Kedge Fit LLC"),
     ("[MAILING ADDRESS]", ADDR_REQ),
@@ -25,8 +24,7 @@ REPL = [
     ("[35]", "35"),
 ]
 
-SUPPORT_BTN = ('\n\n<p><a class="btn-link" href="mailto:info@kedge.fit?subject=Mailing%20address%20request">'
-               'Request our mailing address</a></p>\n')
+SUPPORT_BTN = '\n\n**Mail:** Kedge Fit LLC, 2728 Geneva St, Dearborn, MI 48124\n'
 
 DOCS = [("privacy", "privacy.md"), ("terms", "terms.md"), ("health-data", "health-data.md"), ("support", "support.md")]
 
