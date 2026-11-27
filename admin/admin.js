@@ -59,6 +59,8 @@ async function load() {
 }
 
 // ── Rendering ─────────────────────────────────────────────────────
+const prSettled = (i) => !!i.pr && (i.pr.state === "merged" || i.pr.state === "closed");
+
 function render() {
   const n = data.numbers || {};
   const latest = (data.history || [])[0];
@@ -124,7 +126,8 @@ function render() {
   }
 
   const items = data.items || [];
-  const waiting = items.filter((i) => i.status === "open" && i.kind === "approval");
+  // A code change already merged or closed on GitHub needs nothing from Hunter, even if its card is still open.
+  const waiting = items.filter((i) => i.status === "open" && i.kind === "approval" && !prSettled(i));
   // Deadlines within a week (or overdue) need Hunter too, so they count toward "Waiting for you".
   const dueSoon = (data.expiries || []).filter((r) => r.days <= 7);
   const needsYou = waiting.length + dueSoon.length;
@@ -231,6 +234,11 @@ function itemCard(it) {
 
   const decide = node.querySelector(".decide");
   if (it.status !== "open") decide.remove();
+  else if (prSettled(it)) {
+    decide.replaceWith(el("p", { class: "muted small" }, it.pr.state === "merged"
+      ? "Already merged on GitHub. Nothing to do here."
+      : "This pull request was closed on GitHub without merging. Nothing to do here."));
+  }
   else {
     const approve = node.querySelector(".approve"), reject = node.querySelector(".reject"), note = node.querySelector("textarea");
     approve.textContent = it.kind === "report" ? (it.agent === "trainer" ? "Send feedback" : "Mark read")
