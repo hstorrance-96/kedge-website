@@ -58,6 +58,23 @@ async function load() {
 }
 
 // ── Rendering ─────────────────────────────────────────────────────
+// Reddit: open its "create post" page with the title and text filled in, and put the text on the clipboard too
+// (Reddit doesn't always fill in the body, so a long-press Paste is the fallback). Must run inside a tap.
+function redditParts(it) {
+  const m = /^\s*Title:\s*(.+)\n+([\s\S]*)$/.exec(it.action.text || "");
+  const title = m ? m[1].trim() : it.title.replace(/^Reddit\s*\([^)]*\):\s*/i, "");
+  const body = m ? m[2].trim() : (it.action.text || "");
+  const sub = (/\br\/([A-Za-z0-9_]{2,21})/.exec(it.title + " " + (it.body || "")) || [])[1];
+  return { title, body, sub };
+}
+function openReddit(it) {
+  const { title, body, sub } = redditParts(it);
+  const url = `https://www.reddit.com/${sub ? `r/${sub}/` : ""}submit?type=TEXT&selftext=true&title=${encodeURIComponent(title)}&text=${encodeURIComponent(body)}`;
+  window.open(url, "_blank", "noopener");
+  try { navigator.clipboard.writeText(body).catch(() => {}); } catch { /* ignore */ }
+}
+const isReddit = (it) => it.action?.type === "post" && /reddit/i.test(it.action.channel || "");
+
 // Approved posts wait here until Hunter says he posted them (remembered on this device).
 const postedIds = () => { try { return JSON.parse(localStorage.getItem("kedgePosted") || "[]"); } catch { return []; } };
 function markPosted(id) { try { localStorage.setItem("kedgePosted", JSON.stringify([...postedIds(), id].slice(-300))); } catch { /* ignore */ } }
@@ -81,7 +98,15 @@ function renderReady(items) {
     });
     const done = el("button", { class: "ghost" }, "I posted it");
     done.addEventListener("click", () => { markPosted(it.id); render(); });
-    row.append(copy, done); c.append(row); host.append(c);
+    if (isReddit(it)) {
+      const open = el("button", {}, "Open in Reddit");
+      open.addEventListener("click", () => openReddit(it));
+      copy.className = "ghost";
+      row.append(open);
+    }
+    row.append(copy, done); c.append(row);
+    if (isReddit(it)) c.append(el("p", { class: "muted small" }, "Opens Reddit with the title and post filled in. If the post box is empty, tap it and paste: the text is already copied."));
+    host.append(c);
   }
   return ready.length;
 }
@@ -281,7 +306,8 @@ function itemCard(it) {
         await load();
       } catch (e) { node.querySelector(".result").textContent = e.message; approve.disabled = false; if (reject.isConnected) reject.disabled = false; }
     };
-    approve.addEventListener("click", () => go("approve"));
+    approve.addEventListener("click", () => { if (isReddit(it)) openReddit(it); go("approve"); });
+    if (isReddit(it)) approve.textContent = "Approve and open Reddit";
     reject.addEventListener("click", () => go("reject"));
   }
   return node;
