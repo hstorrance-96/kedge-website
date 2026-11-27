@@ -59,8 +59,8 @@ async function load() {
 }
 
 // ── Rendering ─────────────────────────────────────────────────────
-// Reddit: open its "create post" page with the title and text filled in, and put the text on the clipboard too
-// (Reddit doesn't always fill in the body, so a long-press Paste is the fallback). Must run inside a tap.
+// Approved posts: open the right app's "new post" screen, filled in where the site allows it, with the text on the
+// clipboard as well. Must run inside a tap (browsers block pop-ups and clipboard writes otherwise).
 function redditParts(it) {
   const m = /^\s*Title:\s*(.+)\n+([\s\S]*)$/.exec(it.action.text || "");
   const title = m ? m[1].trim() : it.title.replace(/^Reddit\s*\([^)]*\):\s*/i, "");
@@ -68,13 +68,25 @@ function redditParts(it) {
   const sub = (/\br\/([A-Za-z0-9_]{2,21})/.exec(it.title + " " + (it.body || "")) || [])[1];
   return { title, body, sub };
 }
-function openReddit(it) {
-  const { title, body, sub } = redditParts(it);
-  const url = `https://www.reddit.com/${sub ? `r/${sub}/` : ""}submit?type=TEXT&selftext=true&title=${encodeURIComponent(title)}&text=${encodeURIComponent(body)}`;
+const CHANNELS = {
+  reddit: { name: "Reddit", fill: "title and post", open: (it) => {
+    const { title, body, sub } = redditParts(it);
+    return { url: `https://www.reddit.com/${sub ? `r/${sub}/` : ""}submit?type=TEXT&selftext=true&title=${encodeURIComponent(title)}&text=${encodeURIComponent(body)}`, copy: body };
+  } },
+  x: { name: "X", fill: "post", open: (it) => ({ url: `https://x.com/intent/post?text=${encodeURIComponent(it.action.text)}`, copy: it.action.text }) },
+  instagram: { name: "Instagram", fill: null, open: (it) => ({ url: "https://www.instagram.com/", copy: it.action.text }) },
+  tiktok: { name: "TikTok", fill: null, open: (it) => ({ url: "https://www.tiktok.com/upload", copy: it.action.text }) },
+};
+const channelOf = (it) => it.action?.type === "post" ? CHANNELS[(it.action.channel || "").toLowerCase().replace(/^twitter$/, "x")] || null : null;
+function openPost(it) {
+  const ch = channelOf(it); if (!ch) return;
+  const { url, copy } = ch.open(it);
+  try { navigator.clipboard.writeText(copy).catch(() => {}); } catch { /* ignore */ }
   window.open(url, "_blank", "noopener");
-  try { navigator.clipboard.writeText(body).catch(() => {}); } catch { /* ignore */ }
 }
-const isReddit = (it) => it.action?.type === "post" && /reddit/i.test(it.action.channel || "");
+const openHint = (ch) => ch.fill
+  ? `Opens ${ch.name} with the ${ch.fill} filled in, and copies the text too. If anything's empty, tap it and paste.`
+  : `${ch.name} doesn't let websites fill in a post, so this copies the caption and opens ${ch.name}. Add the photo or video, then paste the caption.`;
 
 // Approved posts wait here until Hunter says he posted them (remembered on this device).
 const postedIds = () => { try { return JSON.parse(localStorage.getItem("kedgePosted") || "[]"); } catch { return []; } };
@@ -89,6 +101,10 @@ function renderReady(items) {
     const h = el("header"); h.append(el("span", { class: "agent" }, `Post on ${it.action.channel}`), el("time", {}, `Approved ${it.decided_at ? when(it.decided_at) : ""}`));
     c.append(h, el("h3", { class: "title" }, it.title), el("pre", { class: "posttext" }, it.action.text));
     if (it.action.media) c.append(el("p", { class: "muted small" }, `Media: ${it.action.media}`));
+    if (it.body_html) {
+      const d = el("details", { class: "notes" }); d.append(el("summary", { class: "small" }, "Agent's notes (what to film, when to post)"));
+      const b = el("div", { class: "body" }); b.innerHTML = it.body_html; d.append(b); c.append(d); // server-side escaped
+    }
     if (it.decision_note) c.append(el("p", { class: "muted small" }, `Your note: ${it.decision_note}`));
     const row = el("div", { class: "row" });
     const copy = el("button", {}, "Copy text");
@@ -99,14 +115,15 @@ function renderReady(items) {
     });
     const done = el("button", { class: "ghost" }, "I posted it");
     done.addEventListener("click", () => { markPosted(it.id); render(); });
-    if (isReddit(it)) {
-      const open = el("button", {}, "Open in Reddit");
-      open.addEventListener("click", () => openReddit(it));
+    const ch = channelOf(it);
+    if (ch) {
+      const open = el("button", {}, `Open in ${ch.name}`);
+      open.addEventListener("click", () => openPost(it));
       copy.className = "ghost";
       row.append(open);
     }
     row.append(copy, done); c.append(row);
-    if (isReddit(it)) c.append(el("p", { class: "muted small" }, "Opens Reddit with the title and post filled in. If the post box is empty, tap it and paste: the text is already copied."));
+    if (ch) c.append(el("p", { class: "muted small" }, openHint(ch)));
     host.append(c);
   }
   return ready.length;
@@ -307,8 +324,8 @@ function itemCard(it) {
         await load();
       } catch (e) { node.querySelector(".result").textContent = e.message; approve.disabled = false; if (reject.isConnected) reject.disabled = false; }
     };
-    approve.addEventListener("click", () => { if (isReddit(it)) openReddit(it); go("approve"); });
-    if (isReddit(it)) approve.textContent = "Approve and open Reddit";
+    approve.addEventListener("click", () => { if (channelOf(it)) openPost(it); go("approve"); });
+    if (channelOf(it)) approve.textContent = `Approve and open ${channelOf(it).name}`;
     reject.addEventListener("click", () => go("reject"));
   }
   return node;
