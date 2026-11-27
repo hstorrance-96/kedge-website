@@ -139,7 +139,15 @@ document.getElementById("amb").addEventListener("submit", function (e) {
   var roles = Array.prototype.map.call(f.querySelectorAll("input[name=role]:checked"), function (c) { return c.value; }).join(", ");
   note.textContent = "Sending…";
   fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({ _subject: "Kedge ambassador application", list: "AMBASSADOR", name: name, email: email, where: where || "Not given", size: f.size.value || "Not given", roles: roles || "Not given", why: f.why.value.trim() || "-", _gotcha: "" }) })
+    body: JSON.stringify({ _subject: "Kedge ambassador application: " + name,
+      "Form": "Ambassador application",
+      "Full name": name,
+      "Email": email,
+      "Social media links": where || "Not given",
+      "What describes them": roles || "Not given",
+      "Who they'd share Kedge with, and why": f.why.value.trim() || "Not given",
+      "About how many people": f.size.value || "Not given",
+      _gotcha: "" }) })
     .then(function (r) { if (!r.ok) throw new Error(); try { window.umami && window.umami.track("ambassador-apply"); } catch (x) {} done(); })
     .catch(function () { note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
 });
