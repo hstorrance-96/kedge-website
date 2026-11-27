@@ -85,8 +85,6 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
     <div><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
     <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
     <div><label for="where">Social media links <span class="opt">Optional, one per line</span></label><textarea id="where" name="where" placeholder="instagram.com/yourname&#10;tiktok.com/@yourname"></textarea></div>
-    <div><label for="size">About how many people?</label>
-      <select id="size" name="size"><option value="">Pick one</option><option>Under 1,000</option><option>1,000 to 10,000</option><option>10,000 to 100,000</option><option>100,000+</option><option>I coach clients in person</option></select></div>
     <fieldset><legend>What describes you? Pick any.</legend>
       <div class="chips">
         <label><input type="checkbox" name="role" value="Personal trainer">Personal trainer</label>
@@ -96,6 +94,8 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
         <label><input type="checkbox" name="role" value="Kedge member or beta tester">Kedge member or beta tester</label>
       </div></fieldset>
     <div><label for="why">Who would you share Kedge with, and why? <span class="opt">Optional</span></label><textarea id="why" name="why"></textarea></div>
+    <div><label for="size">About how many people?</label>
+      <select id="size" name="size"><option value="">Pick one</option><option>Under 1,000</option><option>1,000 to 10,000</option><option>10,000 to 100,000</option><option>100,000+</option><option>I coach clients in person</option></select></div>
     <label class="agree"><input type="checkbox" id="rules" name="rules"> I'm 18 or older, live in the US, and I'll follow the ground rules below.</label>
     <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button type="submit">Send my application</button>
