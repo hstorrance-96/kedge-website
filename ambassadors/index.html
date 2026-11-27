@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kedge ambassadors: earn for every member you bring</title>
+<meta name="description" content="Kedge ambassadors earn up to $45 for every paying member they bring. Apply in two minutes.">
+<meta name="theme-color" content="#E6E7E2">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kedge">
+<meta property="og:url" content="https://kedge.fit/ambassadors/">
+<meta property="og:title" content="Become a Kedge ambassador">
+<meta property="og:description" content="Your followers get their first month free. You earn up to $45 for each one who stays.">
+<meta property="og:image" content="https://kedge.fit/og.png?v=3">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&amp;family=Barlow:wght@400;500;600;700&amp;display=swap">
+<style>
+:root {
+  --concrete: #E6E7E2; --paper: #F4F4F0; --ink: #15171A; --graphite: #4A4E55; --rule: #C6C8C1;
+  --blue: #2450E0; --blue-dark: #1A3DB3; --red: #D2262F; --green: #2D8A4B;
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--concrete); color: var(--ink); font: 400 18px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: var(--ink); }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.top .wrap { display: flex; align-items: center; height: 76px; }
+.mark { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 900 30px/1 var(--display); }
+.mark svg { width: 28px; height: 28px; }
+h1, h2 { font-family: var(--display); font-weight: 900; line-height: .9; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(54px, 11vw, 92px); margin-top: 32px; }
+.lede { margin: 22px 0 0; font-size: 21px; line-height: 1.5; color: var(--graphite); max-width: 32em; }
+.facts { margin: 40px 0 0; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
+.facts li { display: grid; grid-template-columns: 9.5em 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.facts b { font-weight: 700; }
+@media (max-width: 560px) { .facts li { grid-template-columns: 1fr; gap: 2px; } }
+form { margin: 48px 0 0; background: var(--paper); border: 2px solid var(--ink); border-radius: 16px; padding: 28px 24px; display: grid; gap: 20px; }
+h2 { font-size: 40px; }
+label, legend { display: block; font-weight: 600; font-size: 16px; margin-bottom: 6px; }
+input[type=text], input[type=email], select { width: 100%; height: 50px; border: 1.5px solid var(--graphite); border-radius: 10px; background: #fff; padding: 0 14px; font: 500 17px var(--body); color: var(--ink); }
+fieldset { border: 0; margin: 0; padding: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { margin: 0; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--graphite); border-radius: 999px; padding: 8px 14px; background: #fff; cursor: pointer; }
+.chips input { accent-color: var(--blue); width: 18px; height: 18px; margin: 0; }
+.chips label:has(input:checked) { border-color: var(--blue); background: #E9EEFD; }
+button { height: 54px; border: 0; border-radius: 10px; background: var(--blue); color: #fff; font: 700 18px var(--body); cursor: pointer; }
+button:hover { background: var(--blue-dark); }
+.note { margin: 0; font-size: 15px; color: var(--graphite); min-height: 1.6em; }
+.note.ok { color: var(--green); font-weight: 600; } .note.err { color: var(--red); font-weight: 600; }
+.fine { font-size: 14px; color: var(--graphite); margin: 0; }
+.hp { position: absolute; left: -9999px; }
+footer { margin-top: 72px; padding: 28px 0 40px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--graphite); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+.earn { margin: 40px 0 0; border-collapse: collapse; width: 100%; font-size: 17px; }
+.earn caption { text-align: left; font: 900 32px/1 var(--display); margin-bottom: 14px; }
+.earn th, .earn td { text-align: left; padding: 12px 10px 12px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.earn thead th { border-bottom: 2px solid var(--ink); font-size: 15px; color: var(--graphite); font-weight: 600; }
+.earn td b { font: 900 28px/1 var(--display); }
+h3 { font: 900 32px/1 var(--display); margin: 48px 0 12px; }
+.rules { margin: 0; padding-left: 20px; } .rules li { margin: 6px 0; }
+textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); border-radius: 10px; background: #fff; padding: 12px 14px; font: 500 17px/1.4 var(--body); color: var(--ink); resize: vertical; }
+.agree { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; }
+.agree input { width: 20px; height: 20px; margin-top: 4px; accent-color: var(--blue); flex: none; }
+.opt { font-weight: 400; color: var(--graphite); }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 9h24" stroke="#15171A" stroke-width="3.4" stroke-linecap="round"/><path d="M16 9v13" stroke="#2450E0" stroke-width="3.4" stroke-linecap="round"/><path d="M8 19c2 5 5 8 8 8s6-3 8-8" fill="none" stroke="#15171A" stroke-width="3.4" stroke-linecap="round"/></svg>Kedge</a>
+</div></header>
+
+<main class="wrap">
+  <h1>Bring people to Kedge. Get paid when they stay.</h1>
+  <p class="lede">Kedge is your strength coach, nutrition coach and form check in one iPhone app. If you train people, post about lifting or just have friends who keep asking what program you're on, I'd like you to be an ambassador. Your people get their first month free with your code. You earn for every one who becomes a paying member.</p>
+
+  <table class="earn">
+    <caption>What you earn</caption>
+    <thead><tr><th scope="col">Their plan</th><th scope="col">You earn</th><th scope="col">When</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Monthly</th><td><b>$15</b></td><td>When they finish their first paid month</td></tr>
+      <tr><th scope="row"></th><td><b>$15</b></td><td>When they finish 6 paid months</td></tr>
+      <tr><th scope="row"></th><td><b>$15</b></td><td>When they finish 12 paid months</td></tr>
+      <tr><th scope="row">Yearly</th><td><b>$45</b></td><td>Once their yearly payment is past Apple's refund window: 120 days after they're charged</td></tr>
+    </tbody>
+  </table>
+
+  <ul class="facts">
+    <li><b>What they get</b><span>Their first month of Coach Pro free with your code, then $29.99 a month or $199.99 a year. They can cancel anytime in their Apple settings.</span></li>
+    <li><b>How you're paid</b><span>Once a month, by the 15th, for everything you earned the month before. Paid by direct deposit or PayPal. Payouts start after Kedge launches in January.</span></li>
+    <li><b>Refunds</b><span>If Apple refunds a payment you already earned on, that amount comes off your next payout.</span></li>
+    <li><b>Who can apply</b><span>Anyone 18 or older in the US. I read every application myself. You'll need to fill out a W-9 before your first payout.</span></li>
+  </ul>
+
+  <h3>The ground rules</h3>
+  <ul class="rules">
+    <li>Say you earn from your code, every time. "#ad" or "I get paid if you join" both work.</li>
+    <li>No medical, injury or weight-loss promises. Kedge is a coach, not a doctor.</li>
+    <li>No spam, no fake or paid App Store reviews, and no ads on searches for "Kedge."</li>
+    <li>Your code is for your audience. Codes posted on coupon sites don't earn.</li>
+  </ul>
+
+  <form id="amb" novalidate>
+    <h2>Apply</h2>
+    <div><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+    <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+    <div><label for="where">Where do you reach people? <span class="opt">Links or handles, one per line</span></label><textarea id="where" name="where" placeholder="instagram.com/yourname&#10;Coach at Iron Gym, Dearborn"></textarea></div>
+    <div><label for="size">About how many people?</label>
+      <select id="size" name="size"><option value="">Pick one</option><option>Under 1,000</option><option>1,000 to 10,000</option><option>10,000 to 100,000</option><option>100,000+</option><option>I coach clients in person</option></select></div>
+    <fieldset><legend>What describes you? Pick any.</legend>
+      <div class="chips">
+        <label><input type="checkbox" name="role" value="Personal trainer">Personal trainer</label>
+        <label><input type="checkbox" name="role" value="Gym or studio owner">Gym or studio owner</label>
+        <label><input type="checkbox" name="role" value="Creator">Creator</label>
+        <label><input type="checkbox" name="role" value="Athlete">Athlete</label>
+        <label><input type="checkbox" name="role" value="Kedge member or beta tester">Kedge member or beta tester</label>
+      </div></fieldset>
+    <div><label for="why">Who would you share Kedge with, and why? <span class="opt">Optional</span></label><textarea id="why" name="why"></textarea></div>
+    <label class="agree"><input type="checkbox" id="rules" name="rules"> I'm 18 or older, live in the US, and I'll follow the ground rules above.</label>
+    <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit">Send my application</button>
+    <p class="note" id="note" role="status"></p>
+    <p class="fine">I'll only use your details to review your application and run the program. See the <a href="/#privacy">Privacy Policy</a>. Approved ambassadors sign a short agreement before getting a code.</p>
+  </form>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Kedge Fit LLC</span><a href="mailto:info@kedge.fit">info@kedge.fit</a><p style="flex-basis:100%;margin:8px 0 0;font-size:13px">Coaching rules are reviewed by personal trainers certified by the National Academy of Sports Medicine (NASM-CPT), an NCCA-accredited certification. Kedge is not medical advice.</p></div></footer>
+
+<script>
+var ENDPOINT = "https://formspree.io/f/mzergwlr";
+var LOADED = Date.now();
+var UMAMI_ID = "c7f8feaa-1248-434c-9dfb-aab343dc529a";
+(function () { var s = document.createElement("script"); s.defer = true; s.src = "https://cloud.umami.is/script.js"; s.setAttribute("data-website-id", UMAMI_ID); document.head.appendChild(s); })();
+document.getElementById("amb").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var f = e.target, note = document.getElementById("note");
+  var name = f.name.value.trim(), email = f.email.value.trim(), where = f.where.value.trim();
+  note.className = "note";
+  var bad = function (msg, el) { note.textContent = msg; note.classList.add("err"); el.focus(); };
+  if (!name) return bad("Add your name.", f.name);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad("Enter an email address like you@example.com.", f.email);
+  if (!where) return bad("Tell me where you reach people.", f.where);
+  if (!f.rules.checked) return bad("Tick the box to confirm the ground rules.", f.rules);
+  var done = function () { note.textContent = "Got it, thanks. I'll email you at " + email + " within a week."; note.classList.add("ok"); f.reset(); };
+  if (f._gotcha.value || Date.now() - LOADED < 3000) { done(); return; }
+  var roles = Array.prototype.map.call(f.querySelectorAll("input[name=role]:checked"), function (c) { return c.value; }).join(", ");
+  note.textContent = "Sending…";
+  fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify({ _subject: "Kedge ambassador application", list: "AMBASSADOR", name: name, email: email, where: where, size: f.size.value || "Not given", roles: roles || "Not given", why: f.why.value.trim() || "-", _gotcha: "" }) })
+    .then(function (r) { if (!r.ok) throw new Error(); try { window.umami && window.umami.track("ambassador-apply"); } catch (x) {} done(); })
+    .catch(function () { note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
+});
+</script>
+</body>
+</html>
