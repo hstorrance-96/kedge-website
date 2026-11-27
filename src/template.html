@@ -670,8 +670,9 @@ function sendConfirmation(email) {
 // Invite links (kedge.fit/?ref=CODE): remember the friend's code so the signup is tied to them. The code is saved
 // with the waitlist signup, and the launch email uses it to open the app with the invite already attached.
 var INVITE = (function () {
-  var m = location.search.match(/[?&]ref=([A-Za-z0-9]{7})(?:&|$)/);
-  var code = m && /^[A-HJKMNP-Z2-9]{7}$/.test(m[1].toUpperCase()) ? m[1].toUpperCase() : null;
+  // Friend codes are 7 characters; ambassadors' custom codes are 4 to 12 letters and numbers.
+  var m = location.search.match(/[?&]ref=([A-Za-z0-9]{4,12})(?:&|$)/);
+  var code = m ? m[1].toUpperCase() : null;
   try { if (code) localStorage.setItem("kedge_ref", code); else code = localStorage.getItem("kedge_ref"); } catch (e) {}
   return code;
 })();

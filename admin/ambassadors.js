@@ -9,7 +9,10 @@
     return n;
   };
   const day = (iso) => (iso ? new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "");
-  let list = [], flash = "";
+  let list = [], flash = "", minPayout = 25;
+  const money = (n) => "$" + Number(n || 0).toFixed(2);
+  // A starting suggestion for the custom code: KEDGE + their first name, letters only, at most 12 characters.
+  const suggest = (name) => ("KEDGE" + (name.split(/\s+/)[0] || "").toUpperCase().replace(/[^A-Z0-9]/g, "")).slice(0, 12);
 
   function row(label, value) {
     if (!value) return null;
@@ -39,10 +42,24 @@
     const btns = E("div", { class: "row" });
     if (a.status === "applied") btns.append(act(a, "ambApprove", "Approve and email the agreement"), act(a, "ambDecline", "Decline", "ghost"));
     if (a.status === "approved") btns.append(E("span", { class: "muted small" }, `Agreement emailed ${day(a.approved_at)}. Waiting for them to accept.`), act(a, "ambApprove", "Resend the email", "ghost"), act(a, "ambDecline", "Decline", "ghost"));
-    if (a.status === "accepted") btns.append(act(a, "ambActivate", "Activate: make their code and page, email them"), act(a, "ambEnd", "End", "ghost", `End ${a.name}'s ambassador agreement?`));
+    if (a.status === "accepted") {
+      const lab = E("label", { class: "small muted" }, "Their code");
+      const inp = E("input", { type: "text", value: suggest(a.name), maxlength: "12", "aria-label": "Custom code", class: "codein" });
+      inp.addEventListener("input", () => { inp.value = inp.value.toUpperCase().replace(/[^A-Z0-9]/g, ""); });
+      const go = E("button", { type: "button" }, "Activate with this code");
+      go.addEventListener("click", async () => {
+        const msg = c.querySelector(".ambmsg");
+        if (!/^[A-Z0-9]{4,12}$/.test(inp.value)) { msg.textContent = "Codes are 4 to 12 letters and numbers."; return; }
+        go.disabled = true; msg.textContent = "Working…";
+        try { const r = await window.kedgeCall({ action: "ambActivate", id: a.id, code: inp.value }); flash = `${a.name}: ${r.result}`; await load(); }
+        catch (e) { msg.textContent = e.message; go.disabled = false; }
+      });
+      btns.append(lab, inp, go, act(a, "ambEnd", "End", "ghost", `End ${a.name}'s ambassador agreement?`));
+    }
     if (a.status === "active") {
       const box = E("div", { class: "ambactive" });
       box.append(E("p", {}, `Code ${a.code} · ${a.joined} joined · active since ${day(a.activated_at)}`));
+      if (a.money) box.append(E("p", { class: "small" }, `Earned ${money(a.money.earned)} · paid ${money(a.money.paid)} · due now ${money(Math.max(0, a.money.dueNow))}` + (a.money.nextMonth ? ` · ${money(a.money.nextMonth)} more due next month` : "") + (a.money.dueNow < 0 ? ` · ${money(-a.money.dueNow)} to take off the next payout (refunds)` : "")));
       box.append(E("p", { class: "small muted" }, a.link));
       const pay = E("div", { class: "paper" });
       const w9 = E("label", { class: "check" }); const w9i = E("input", { type: "checkbox" }); w9i.checked = !!a.w9_received_at;
@@ -84,10 +101,37 @@
       for (const a of rows) s.append(card(a));
       host.append(s);
     }
+    // Payouts due this month: everyone with at least the minimum due, ready or not, so nothing is forgotten.
+    const due = list.filter((a) => a.money && a.money.dueNow >= minPayout);
+    const ps = E("section");
+    ps.append(E("h2", {}, `Payouts due (${due.length})`), E("p", { class: "muted small" }, `Pay by the 15th for everything earned before the 1st. Under ${money(minPayout)} waits until next month. Send the money yourself, then record it here.`));
+    if (!due.length) ps.append(E("p", { class: "empty" }, "Nothing due right now."));
+    for (const a of due) {
+      const r = E("article", { class: "item amb" });
+      r.append(E("p", {}, `${a.name} · ${money(a.money.dueNow)} due · ${a.payout_method || "no payout method yet"}`));
+      if (a.payoutBlockers.length) r.append(E("p", { class: "warnline" }, "Can't pay yet: " + a.payoutBlockers.join(", ") + "."));
+      else {
+        const amt = E("input", { type: "number", step: "0.01", min: "0", value: a.money.dueNow.toFixed(2), "aria-label": "Amount sent", class: "amtin" });
+        const note = E("input", { type: "text", placeholder: "Note (optional), e.g. PayPal transaction id", "aria-label": "Note" });
+        const b = E("button", { type: "button" }, "I sent it: record payout");
+        b.addEventListener("click", async () => {
+          const msg = r.querySelector(".ambmsg");
+          if (!confirm(`Record ${money(amt.value)} sent to ${a.name} by ${a.payout_method}?`)) return;
+          b.disabled = true; msg.textContent = "Saving…";
+          try { const out = await window.kedgeCall({ action: "ambPaid", id: a.id, amount: Number(amt.value), method: a.payout_method, note: note.value }); flash = `${a.name}: ${out.result}`; await load(); }
+          catch (e) { msg.textContent = e.message; b.disabled = false; }
+        });
+        const row2 = E("div", { class: "row" }); row2.append(amt, note, b); r.append(row2);
+      }
+      r.append(E("p", { class: "ambmsg small muted" }));
+      ps.append(r);
+    }
+    host.insertBefore(ps, host.children[flash ? 1 : 0] || null);
+
     const old = list.filter((a) => a.status === "declined" || a.status === "ended");
     if (old.length) {
       const d = E("details"); d.append(E("summary", {}, `Declined or ended (${old.length})`));
-      for (const a of old) d.append(E("p", { class: "small muted" }, `${a.name} · ${a.email} · ${a.status} ${day(a.ended_at || a.applied_at)}`));
+      for (const a of old) d.append(E("p", { class: "small muted" }, `${a.name} · ${a.email} · ${a.status} ${day(a.ended_at || a.applied_at)}` + (a.money ? ` · earned ${money(a.money.earned)}, paid ${money(a.money.paid)}` : "")));
       host.append(d);
     }
     const n = list.filter((a) => a.status === "applied" || a.status === "accepted").length;
@@ -95,7 +139,7 @@
     if (count) count.textContent = n ? String(n) : "";
   }
   async function load() {
-    try { list = (await window.kedgeCall({ action: "ambassadors" })).ambassadors || []; }
+    try { const r = await window.kedgeCall({ action: "ambassadors" }); list = r.ambassadors || []; minPayout = r.minPayout || 25; }
     catch (e) { const host = document.getElementById("amb"); if (host) host.replaceChildren(E("p", { class: "empty" }, "Couldn't load ambassadors: " + e.message)); return; }
     render();
   }

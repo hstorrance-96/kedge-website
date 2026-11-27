@@ -74,7 +74,7 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
 .doc h2 { font-size: 30px; margin: 36px 0 10px; }
 .doc table { border-collapse: collapse; width: 100%; font-size: 16px; } .doc th, .doc td { text-align: left; padding: 8px 8px 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
 .doc li { margin: 6px 0; }
-.big { font: 900 54px/1 var(--display); letter-spacing: 3px; margin: 6px 0 0; }
+.big { font: 900 clamp(30px, 10vw, 54px)/1 var(--display); letter-spacing: 2px; margin: 6px 0 0; overflow-wrap: anywhere; }
 .panel { margin: 28px 0 0; background: var(--paper); border: 2px solid var(--ink); border-radius: 16px; padding: 22px 24px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0 0; }
 .stats div { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 14px; }
@@ -83,7 +83,7 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
 .copyrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; } .copyrow code { font-size: 16px; word-break: break-all; }
 .copy { height: 44px; padding: 0 16px; font-size: 16px; }
 .todo { list-style: none; padding: 0; margin: 10px 0 0; } .todo li { padding: 8px 0; border-bottom: 1px solid var(--rule); }
-.todo li::before { content: "○ "; color: var(--red); font-weight: 700; } .todo li.done::before { content: "✓ "; color: var(--green); }
+.todo li::before { content: "○ "; color: var(--red); font-weight: 700; } .todo li.done::before { content: "✓ "; color: var(--green); } .todo.plain li::before { content: ""; }
 details summary { cursor: pointer; font-weight: 600; margin-top: 28px; }
 </style>
 </head>
@@ -103,7 +103,8 @@ details summary { cursor: pointer; font-weight: 600; margin-top: 28px; }
       <div><b id="paying">0</b><span>Paying members now</span></div>
       <div><b id="earned">–</b><span>Earned so far</span></div>
     </div>
-    <p class="fine" id="earnnote" style="margin-top:10px">Earnings start counting when Kedge launches in January.</p>
+    <p class="fine" id="earnnote" style="margin-top:10px"></p>
+    <div class="panel" id="hist" hidden><div><b>Recent earnings</b></div><ul class="todo plain" id="recent"></ul><div id="paidwrap" hidden><div style="margin-top:14px"><b>Payouts</b></div><ul class="todo plain" id="paid"></ul></div></div>
     <div class="panel"><div><b>Before your first payout</b></div><ul class="todo" id="todo"></ul><p class="fine" style="margin-top:10px">Hunter will reach out about these. Never send your Social Security number by email.</p></div>
     <details><summary>Your agreement</summary><div class="doc"><h2>1. Who this is between</h2>
 <p>This agreement is between <strong>Kedge Fit LLC</strong>, a Michigan limited liability company ("Kedge"), and the person who accepts it on kedge.fit ("you"). Kedge makes Kedge, an iPhone and Apple Watch strength coach.</p>
@@ -205,7 +206,18 @@ else fetch(API, { method: "POST", headers: { "Content-Type": "application/json" 
     document.getElementById("link").textContent = d.link;
     document.getElementById("joined").textContent = d.joined;
     document.getElementById("paying").textContent = d.paying;
-    if (d.earned !== null) { document.getElementById("earned").textContent = "$" + d.earned; document.getElementById("earnnote").hidden = true; }
+    var m = function (n) { return "$" + Number(n || 0).toFixed(2); };
+    document.getElementById("earned").textContent = m(d.earned);
+    document.getElementById("earnnote").textContent = "Paid so far: " + m(d.paid) + ". In your next payout (by the 15th): " + m(d.dueNow) + (d.dueNow > 0 && d.dueNow < d.minPayout ? " (under " + m(d.minPayout) + ", so it rolls into the month after)" : "") + (d.nextMonth ? ". Earned this month, paid next month: " + m(d.nextMonth) : "") + ".";
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+    if (d.recent && d.recent.length) {
+      document.getElementById("recent").innerHTML = d.recent.map(function (e) { return "<li>" + esc(e.on) + ": " + m(e.amount) + " · " + esc(e.reason) + "</li>"; }).join("");
+      document.getElementById("hist").hidden = false;
+    }
+    if (d.payouts && d.payouts.length) {
+      document.getElementById("paid").innerHTML = d.payouts.map(function (p) { return "<li>" + esc(p.on) + ": " + m(p.amount) + " by " + esc(p.method) + "</li>"; }).join("");
+      document.getElementById("paidwrap").hidden = false; document.getElementById("hist").hidden = false;
+    }
     var items = [["W-9 tax form", d.missing.indexOf("W-9 not received") < 0], ["How you'd like to be paid (direct deposit or PayPal)", !d.missing.some(function (m) { return /Payout method|details/.test(m); })]];
     document.getElementById("todo").innerHTML = items.map(function (i) { return '<li class="' + (i[1] ? "done" : "") + '">' + i[0] + (i[1] ? ": received" : ": needed") + "</li>"; }).join("");
     document.getElementById("body").hidden = false;

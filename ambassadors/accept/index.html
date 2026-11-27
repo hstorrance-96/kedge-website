@@ -74,7 +74,7 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
 .doc h2 { font-size: 30px; margin: 36px 0 10px; }
 .doc table { border-collapse: collapse; width: 100%; font-size: 16px; } .doc th, .doc td { text-align: left; padding: 8px 8px 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
 .doc li { margin: 6px 0; }
-.big { font: 900 54px/1 var(--display); letter-spacing: 3px; margin: 6px 0 0; }
+.big { font: 900 clamp(30px, 10vw, 54px)/1 var(--display); letter-spacing: 2px; margin: 6px 0 0; overflow-wrap: anywhere; }
 .panel { margin: 28px 0 0; background: var(--paper); border: 2px solid var(--ink); border-radius: 16px; padding: 22px 24px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0 0; }
 .stats div { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 14px; }
@@ -83,7 +83,7 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
 .copyrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; } .copyrow code { font-size: 16px; word-break: break-all; }
 .copy { height: 44px; padding: 0 16px; font-size: 16px; }
 .todo { list-style: none; padding: 0; margin: 10px 0 0; } .todo li { padding: 8px 0; border-bottom: 1px solid var(--rule); }
-.todo li::before { content: "○ "; color: var(--red); font-weight: 700; } .todo li.done::before { content: "✓ "; color: var(--green); }
+.todo li::before { content: "○ "; color: var(--red); font-weight: 700; } .todo li.done::before { content: "✓ "; color: var(--green); } .todo.plain li::before { content: ""; }
 details summary { cursor: pointer; font-weight: 600; margin-top: 28px; }
 </style>
 </head>

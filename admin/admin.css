@@ -132,3 +132,6 @@ caption.empty { text-align: left; }
 .amb .paper { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 8px 0; }
 .amb select { font: inherit; color: var(--text); background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; }
 .warnline { color: var(--warn); font-weight: 600; } .okline { color: var(--good); font-weight: 600; }
+.amb .codein { width: 150px; font-weight: 700; letter-spacing: 1px; }
+.amb .row input[type=text] { width: auto; flex: 1; min-width: 180px; }
+.amb .amtin { width: 120px; }
