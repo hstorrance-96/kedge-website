@@ -23,7 +23,7 @@ Effective date: [DATE]
 - Nutrition data: meals, food photos, barcodes you scan, saved foods.
 - Chat and voice: messages you type or speak to the coach. Voice is turned into text to answer you; we don't keep audio recordings after that.
 - Still frames from sets you film for form review. Videos you film for form review stay on your phone unless you choose to post one; the app sends only still frames and body-position data for review, and we delete the frames after 90 days unless you save the review.
-- Posts, comments and follows, if you use them: what you choose to post (a workout, record or form-check summary, a caption, a photo or video you upload to a post), comments and cheers you leave, who you follow and who follows you, and reports and blocks you make.
+- Posts, comments and follows, if you use them: what you choose to post (a win from a workout, such as a record, form score, streak or badge, plus a caption, a photo or video you upload, and the stats shown on it), comments and cheers you leave, who you follow and who follows you, and reports and blocks you make.
 
 **From services you connect (only if you turn them on):**
 
