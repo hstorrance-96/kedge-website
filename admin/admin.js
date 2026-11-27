@@ -268,6 +268,15 @@ function renderHealth(h) {
       el("span", { class: "muted" }, c.detail));
     list.append(li);
   }
+  // Phones show problems only; this line opens the rest (hidden on wider screens by CSS).
+  const fine = h.checks.filter((c) => c.state === "ok" || c.state === "off").length;
+  $("health").classList.remove("all");
+  const old = $("health").querySelector(".showall"); if (old) old.remove();
+  if (fine) {
+    const b = el("button", { type: "button", class: "showall" }, `Show ${fine} other check${fine === 1 ? "" : "s"}`);
+    b.addEventListener("click", () => { const all = $("health").classList.toggle("all"); b.textContent = all ? "Hide working checks" : `Show ${fine} other check${fine === 1 ? "" : "s"}`; });
+    $("health").append(b);
+  }
 }
 
 const timeLeft = (r) => (r.days < 0 ? `${-r.days} days overdue` : r.days === 0 ? "Today" : r.days === 1 ? "1 day" : `${r.days} days`);
