@@ -135,3 +135,57 @@ caption.empty { text-align: left; }
 .amb .codein { width: 150px; font-weight: 700; letter-spacing: 1px; }
 .amb .row input[type=text] { width: auto; flex: 1; min-width: 180px; }
 .amb .amtin { width: 120px; }
+/* ── Phones ─────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  .top { padding: 10px 14px; }
+  .top button { padding: 7px 12px; font-size: 14px; }
+  main { padding: 0 14px 48px; }
+  section { margin-top: 22px; }
+  h2 { font-size: 18px; margin-bottom: 10px; }
+
+  /* Page tabs: one swipeable row that stays under the header. */
+  .pages { position: sticky; top: 53px; z-index: 1; background: var(--ink); margin: 0 -14px; padding: 0 8px; gap: 0;
+           overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  .pages::-webkit-scrollbar { display: none; }
+  .pages { -webkit-mask-image: linear-gradient(to right, #000 88%, transparent); mask-image: linear-gradient(to right, #000 88%, transparent); }
+  .pages button { flex: none; padding: 13px 10px; font-size: 14px; white-space: nowrap; }
+  .pages .count { margin-left: 4px; padding: 0 7px; font-size: 12px; }
+
+  /* Status: problems shown in full; working checks folded behind one line. */
+  .health { padding: 12px 14px; }
+  .health-top h2 { font-size: 17px; }
+  .checks li { grid-template-columns: 12px 1fr auto; gap: 2px 8px; }
+  .checks li .dot { align-self: center; }
+  .checks li .state { grid-column: 3; grid-row: 1; font-size: 13px; }
+  .checks li .muted { grid-column: 2 / 4; font-size: 13px; }
+  .health:not(.all) .checks li.ok, .health:not(.all) .checks li.off { display: none; }
+  .showall { display: block; background: none; color: var(--volt-soft); padding: 8px 0 0; font-weight: 500; font-size: 14px; }
+
+  /* Numbers: three across, smaller. */
+  #cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  #cards .card { padding: 10px; border-radius: 12px; }
+  #cards .card b { font-size: 19px; }
+  #cards .card span { font-size: 12px; line-height: 1.3; display: block; }
+  figure { padding: 10px 12px; }
+
+  /* Wide tables scroll sideways inside the page instead of stretching it. */
+  #spend, #coaching table, #expiries, #due-soon, .kpi table { display: block; overflow-x: auto; white-space: nowrap; }
+  th, td { font-size: 13px; padding: 6px; }
+
+  /* Agent filters: one swipeable row. */
+  .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { flex: none; padding: 7px 12px; font-size: 14px; }
+
+  .item { padding: 12px 14px; }
+  .item > header { flex-wrap: wrap; gap: 4px 8px; }
+  .item .title { font-size: 15px; }
+  .decide .row button, .item .action button { flex: 1 1 auto; }
+  #page-dash > section:last-child .row button { flex: 1 1 100%; }
+  .expiry-form input, .expiry-form input[type="date"] { flex: 1 1 100%; }
+  .kpis { grid-template-columns: 1fr; }
+  .amb header { flex-wrap: wrap; }
+  .amb .codein { flex: 1 1 120px; }
+}
+@media (min-width: 641px) { .showall { display: none; } }
