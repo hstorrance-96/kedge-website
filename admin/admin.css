@@ -109,3 +109,18 @@ caption.empty { text-align: left; }
 .frow { border-top: 1px solid var(--line); padding-top: 8px; display: grid; gap: 6px; }
 .warnline { color: var(--warn); font-weight: 600; }
 .school details summary { cursor: pointer; color: var(--volt-soft); }
+
+/* Trainer KPIs */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; }
+.kpi h3 { margin: 0 0 8px; }
+.kpi .cards { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); margin-bottom: 10px; }
+.kpisub { display: block; font-size: 12px; margin-top: 2px; }
+.kpichart { width: 100%; height: auto; display: block; }
+.kpichart .grid { stroke: var(--line); stroke-width: 1; }
+.kpichart .goal { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
+.kpichart .ax { fill: var(--muted); font-size: 10px; }
+.kpichart .bar path { fill: var(--volt-soft); opacity: .55; }
+.kpichart .bar.now path { opacity: 1; }
+.kpichart .bar:hover path { opacity: 1; }
+.kpi details { margin-top: 8px; }
+.kpi summary { cursor: pointer; }
