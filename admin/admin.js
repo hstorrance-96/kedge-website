@@ -210,6 +210,21 @@ function render() {
   const fresh = feedAll.filter((i) => i.status === "open" && !prSettled(i));
   const earlier = feedAll.filter((i) => !fresh.includes(i));
   fillItems($("feed"), fresh, "All caught up. New reports from the agents show up here.");
+  // One tap clears every unread report (approvals still need their own decision).
+  const unread = fresh.filter((i) => i.kind === "report");
+  if (unread.length > 1) {
+    const all = el("button", { class: "ghost markall" }, `Mark all ${unread.length} reports read`);
+    all.addEventListener("click", async () => {
+      all.disabled = true;
+      let n = 0;
+      for (const it of unread) {
+        all.textContent = `Marking read… ${++n} of ${unread.length}`;
+        try { await call({ action: "decide", id: it.id, decision: "approve", note: "" }); } catch { /* skip it; it stays unread */ }
+      }
+      await load();
+    });
+    $("feed").prepend(all);
+  }
   if (earlier.length) {
     const d = el("details", { class: "earlier" });
     d.append(el("summary", {}, `Earlier (${earlier.length})`));
