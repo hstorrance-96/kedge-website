@@ -12,12 +12,13 @@ This agreement starts when you accept it and Kedge activates your ambassador acc
 - Someone who joins with your code or link gets their first month of Kedge Coach Pro free. After that they pay Kedge's normal price through Apple, and can cancel anytime in their Apple settings.
 - A member counts for you only if they're new to Kedge and use your code or link when they join. Each person can use one friend or ambassador code, once. If two codes are used, the first one counts.
 - You can't use your own code, or create accounts to earn on yourself.
+- While you're an active ambassador, Kedge gives you Coach Pro at no cost, with the same coach chat and AI limits as a free month. It ends when this agreement ends; you can then subscribe if you like.
 
 ## 3. What you earn and when
 
 | Member's plan | You earn | When it's earned |
 | --- | --- | --- |
-| Monthly | $15 | When the member completes their first paid month |
+| Monthly | $15 | When the member completes 2 paid months |
 | Monthly | $15 more | When the member completes 6 paid months |
 | Monthly | $15 more | When the member completes 12 paid months |
 | Yearly | $45 | 120 days after the member's yearly payment is charged, once it's past Apple's refund window |
