@@ -179,3 +179,7 @@ caption.empty { text-align: left; }
   .amb .codein { flex: 1 1 120px; }
 }
 @media (min-width: 641px) { .showall { display: none; } }
+
+/* Ready to post */
+.posttext { white-space: pre-wrap; background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: 15px/1.5 var(--body); margin: 8px 0; user-select: text; -webkit-user-select: text; }
+#ready .row button { flex: 1 1 auto; }

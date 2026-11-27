@@ -58,6 +58,34 @@ async function load() {
 }
 
 // ── Rendering ─────────────────────────────────────────────────────
+// Approved posts wait here until Hunter says he posted them (remembered on this device).
+const postedIds = () => { try { return JSON.parse(localStorage.getItem("kedgePosted") || "[]"); } catch { return []; } };
+function markPosted(id) { try { localStorage.setItem("kedgePosted", JSON.stringify([...postedIds(), id].slice(-300))); } catch { /* ignore */ } }
+function renderReady(items) {
+  const posted = new Set(postedIds());
+  const ready = items.filter((i) => i.action?.type === "post" && ["approved", "done"].includes(i.status) && !posted.has(i.id));
+  $("ready-section").hidden = !ready.length;
+  const host = $("ready"); host.replaceChildren();
+  for (const it of ready) {
+    const c = el("article", { class: "item" });
+    const h = el("header"); h.append(el("span", { class: "agent" }, `Post on ${it.action.channel}`), el("time", {}, `Approved ${it.decided_at ? when(it.decided_at) : ""}`));
+    c.append(h, el("h3", { class: "title" }, it.title), el("pre", { class: "posttext" }, it.action.text));
+    if (it.action.media) c.append(el("p", { class: "muted small" }, `Media: ${it.action.media}`));
+    if (it.decision_note) c.append(el("p", { class: "muted small" }, `Your note: ${it.decision_note}`));
+    const row = el("div", { class: "row" });
+    const copy = el("button", {}, "Copy text");
+    copy.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(it.action.text); copy.textContent = "Copied"; }
+      catch { copy.textContent = "Press and hold the text to copy"; }
+      setTimeout(() => { copy.textContent = "Copy text"; }, 2000);
+    });
+    const done = el("button", { class: "ghost" }, "I posted it");
+    done.addEventListener("click", () => { markPosted(it.id); render(); });
+    row.append(copy, done); c.append(row); host.append(c);
+  }
+  return ready.length;
+}
+
 const prSettled = (i) => !!i.pr && (i.pr.state === "merged" || i.pr.state === "closed");
 
 function render() {
@@ -129,7 +157,8 @@ function render() {
   const waiting = items.filter((i) => i.status === "open" && i.kind === "approval" && !prSettled(i));
   // Deadlines within a week (or overdue) need Hunter too, so they count toward "Waiting for you".
   const dueSoon = (data.expiries || []).filter((r) => r.days <= 7);
-  const needsYou = waiting.length + dueSoon.length;
+  const readyCount = renderReady(items);
+  const needsYou = waiting.length + dueSoon.length + readyCount;
   $("waitcount").textContent = needsYou ? String(needsYou) : "";
   $("deadlinecount").textContent = dueSoon.length ? String(dueSoon.length) : "";
   renderDueSoon(dueSoon);
