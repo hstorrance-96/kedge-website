@@ -206,7 +206,18 @@ function render() {
   $("deadlinecount").textContent = dueSoon.length ? String(dueSoon.length) : "";
   renderDueSoon(dueSoon);
   fillItems($("waiting"), waiting, "Nothing waiting. The agents will add things here.");
-  fillItems($("feed"), items.filter((i) => !window.isSchoolItem?.(i) && (tab === "all" || i.agent === tab)), "No reports yet.");
+  // The feed shows only what's new. Anything read, approved or rejected folds into "Earlier" at the bottom.
+  const feedAll = items.filter((i) => !window.isSchoolItem?.(i) && (tab === "all" || i.agent === tab));
+  const fresh = feedAll.filter((i) => i.status === "open" && !prSettled(i));
+  const earlier = feedAll.filter((i) => !fresh.includes(i));
+  fillItems($("feed"), fresh, "All caught up. New reports from the agents show up here.");
+  if (earlier.length) {
+    const d = el("details", { class: "earlier" });
+    d.append(el("summary", {}, `Earlier (${earlier.length})`));
+    const box = el("div", { class: "items" });
+    for (const it of earlier.slice(0, 40)) box.append(itemCard(it));
+    d.append(box); $("feed").append(d);
+  }
   window.renderSchool?.(items, itemCard);
 
   const conn = $("connections"); conn.replaceChildren();
@@ -312,9 +323,12 @@ function itemCard(it) {
   }
   else {
     const approve = node.querySelector(".approve"), reject = node.querySelector(".reject"), note = node.querySelector("textarea");
-    approve.textContent = it.kind === "report" ? (it.agent === "trainer" ? "Send feedback" : "Mark read")
+    approve.textContent = it.kind === "report" ? "Mark read"
       : it.pr_number ? "Approve and merge" : it.action?.type === "email" ? "Approve and send to waitlist" : "Approve";
-    if (it.kind === "report") reject.remove();
+    if (it.kind === "report") {
+      reject.remove();
+      note.addEventListener("input", () => { approve.textContent = note.value.trim() ? "Send feedback and mark read" : "Mark read"; });
+    }
     const go = async (decision) => {
       if (decision === "approve" && it.action?.type === "email" && !confirm(`Send "${it.action.subject}" to everyone on the waitlist now?`)) return;
       approve.disabled = true; if (reject.isConnected) reject.disabled = true;
