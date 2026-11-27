@@ -94,6 +94,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-vi
 
 #gate{position:fixed;inset:0;background:var(--bg);display:grid;place-items:center;z-index:9;padding:20px}#gate form{display:grid;gap:10px;width:min(360px,100%)}#gate p{margin:0;color:var(--mute);font-size:14px}
 .agr{font-size:15px}.agr a{color:var(--blue);font-weight:600;display:inline-block;min-height:44px;line-height:44px}
+.check{display:flex;gap:10px;align-items:center;margin-top:16px;font-weight:600}.check input{width:22px;height:22px}
 </style></head><body>
 <div id="gate"><form id="gateform"><div class="brand">KEDGE <span>coach review</span></div><label for="pw">Password</label><input type="password" id="pw" autocomplete="current-password" required><button type="submit" class="btn primary">Open</button><p id="gatemsg" role="alert"></p></form></div>
 <div class="wrap">
@@ -124,10 +125,40 @@ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}};
 let cur=0,finished=false;
 let NQ=0;
 const SEV=['None','Minor','Moderate','Major'];
-const X=[['fault','Fault list for this week','F'],['program','Program review','P']];
+const X=[['fault','Fault list for this week','F'],['program','Program review','P'],['own','Add a case from your clients','+']];
 const answered=()=>S.filter(s=>ans[s.n]&&ans[s.n].v).length;
 function parseRec(t){return t.split('\n').map(l=>{const m=l.match(/^([A-Z][A-Za-z ]{2,28}):\s*(.*)$/);return m?[m[1],m[2]]:null})}
 const ymd=d=>d.toLocaleDateString('en-CA');
+function ownDays(){try{return JSON.parse(localStorage.getItem('kedgeOwn-'+R)||'[]')}catch(e){return []}}
+function weekStart(){const n=new Date();n.setHours(0,0,0,0);n.setDate(n.getDate()-((n.getDay()+6)%7));return n}
+function ownThisWeek(){const ws=weekStart();return ownDays().filter(d=>new Date(d+'T12:00:00')>=ws).sort()}
+function creditDay(){return ownThisWeek()[0]||''}
+const AGES=['18–29','30–44','45–59','60+'],EXP=['New','1–3 years','3+ years'];
+function ownV(){
+  const r=ans.own||{};const n=ownThisWeek().length,cd=creditDay(),today=ymd(new Date());
+  const credit=!cd?'Optional. The first one you send this week counts as one of your 10 cases that day, so you can skip one quick call. Send as many more as you like.':(cd===today?'Today’s case counts as one of your 10 for today. Any more you send are extra, and welcome.':'This week’s counted case is already in. Any more you send are extra, and welcome.');
+  document.getElementById('main').innerHTML='<article class="card"><div class="tag">Your own case</div><h2>Something you saw with a client</h2><p>'+credit+'</p>'+(n?'<p class="small">'+n+' sent this week.</p>':'')+
+  '<p class="small"><strong>Keep it anonymous:</strong> no names, photos, contact details, employer or anything else that would identify the client. Adults only.</p>'+
+  '<div class="answer"><label>Age range</label><div class="chips" id="oa">'+AGES.map(x=>'<button type="button" class="chip" aria-pressed="'+(r.oa===x)+'" data-s="'+x+'">'+x+'</button>').join('')+'</div>'+
+  '<label>Training experience</label><div class="chips" id="oe">'+EXP.map(x=>'<button type="button" class="chip" aria-pressed="'+(r.oe===x)+'" data-s="'+x+'">'+x+'</button>').join('')+'</div>'+
+  '<label for="og">Their goal</label><input type="text" id="og" value="'+esc(r.og||'')+'">'+
+  '<label for="ow">What happened</label><textarea id="ow" placeholder="What you saw, and when in the session">'+esc(r.ow||'')+'</textarea>'+
+  '<label for="oc">Your call</label><textarea id="oc" placeholder="What you told them or changed">'+esc(r.oc||'')+'</textarea>'+
+  '<label for="oy">Why</label><textarea id="oy">'+esc(r.oy||'')+'</textarea>'+
+  '<label for="ol">What should Kedge learn from it? (optional)</label><textarea id="ol">'+esc(r.ol||'')+'</textarea>'+
+  '<label class="check"><input type="checkbox" id="ok"> Nothing here identifies my client.</label>'+
+  '<div class="nav"><button type="button" class="btn primary" id="sendown">Send this case</button></div><p class="note" id="ownmsg" role="status"></p></div></article>';
+}
+function sendOwn(btn){
+  const r=ans.own||{},msg=document.getElementById('ownmsg');
+  if(!(r.ow||'').trim()||!(r.oc||'').trim()){msg.textContent='Fill in what happened and your call.';return}
+  if(!document.getElementById('ok').checked){msg.textContent='Tick the box to confirm nothing identifies your client.';return}
+  const today=ymd(new Date()),counts=!creditDay();btn.disabled=true;msg.textContent='Sending…';
+  const text='Age range: '+(r.oa||'-')+'\nExperience: '+(r.oe||'-')+'\nGoal: '+(r.og||'-')+'\nWhat happened: '+r.ow+'\nTheir call: '+r.oc+'\nWhy: '+(r.oy||'-')+'\nWhat Kedge should learn: '+(r.ol||'-');
+  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Kedge coach review '+R+' own case '+today,reviewer:R,type:'own-case',date:today,counts_for_week:counts?'yes, covers one case today':'no, extra',case:text})})
+  .then(x=>{if(!x.ok)throw 0;const d=ownDays();d.push(today);try{localStorage.setItem('kedgeOwn-'+R,JSON.stringify(d.slice(-200)))}catch(e){}delete ans.own;save();render();document.getElementById('ownmsg').textContent='Sent. Thanks. '+(counts?'It counts as one of your 10 cases today.':'Add another any time.');window.scrollTo({top:0})})
+  .catch(()=>{msg.textContent='That didn’t send. Check your connection and try again. Your case is saved on this phone.';btn.disabled=false});
+}
 function sentDays(){try{return JSON.parse(localStorage.getItem('kedgeDays-'+R)||'[]')}catch(e){return []}}
 function week(){
   const names=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];const now=new Date();const ti=(now.getDay()+6)%7;const sent=sentDays();let n=0;
@@ -189,8 +220,8 @@ function card(){
 }
 function doneView(){
   const c={agree:0,change:0,unsure:0};S.forEach(s=>{const v=ans[s.n]&&ans[s.n].v;if(v)c[v]++});
-  const n=answered();
-  document.getElementById('main').innerHTML='<article class="card done"><h2>'+(n===S.length?'All '+S.length+' done.':n+' of '+S.length+' answered.')+'</h2>'+
+  const n=answered(),own=creditDay()===ymd(new Date());
+  document.getElementById('main').innerHTML='<article class="card done"><h2>'+(n===S.length?'All '+S.length+' done.':own&&n===S.length-1?'Done: '+n+' calls plus your own case.':n+' of '+S.length+' answered.')+'</h2>'+
    '<div class="sumrow"><span><b>'+c.agree+'</b>Agree</span><span><b>'+c.change+'</b>Changed</span><span><b>'+c.unsure+'</b>Not sure</span></div>'+
    '<p class="lede">Hunter makes the final call on every rule. Your answers go to him with the morning review.</p>'+
    '<div class="nav"><button type="button" class="btn ghost" id="back">Back</button><button type="button" class="btn primary" id="send" '+(n?'':'disabled')+'>Send to Kedge</button></div><p class="note" id="sent" style="margin-top:12px"></p></article>';
@@ -238,11 +269,11 @@ function summary(){
 }
 function send(btn){
   const msg=document.getElementById('sent');btn.disabled=true;msg.textContent='Sending…';
-  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Kedge coach review '+R+' '+DATE,reviewer:R,date:DATE,summary:summary(),answers:JSON.stringify(ans)})})
+  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Kedge coach review '+R+' '+DATE,reviewer:R,date:DATE,summary:summary(),answers:JSON.stringify(ans,(k,v)=>k==='own'?undefined:v)})})
   .then(r=>{if(!r.ok)throw 0;const d=sentDays();if(!d.includes(ymd(new Date()))){d.push(ymd(new Date()));try{localStorage.setItem('kedgeDays-'+R,JSON.stringify(d.slice(-60)))}catch(e){}}week();msg.textContent='Sent. Thanks. You can change answers and send again today.';btn.disabled=false;btn.textContent='Send again'})
   .catch(()=>{msg.textContent='That didn’t send. Check your connection and try again. Your answers are saved on this phone.';btn.disabled=false});
 }
-function render(){const T=S.length+X.length;document.getElementById('arrL').disabled=!finished&&cur===0;document.getElementById('arrR').disabled=finished||cur===T-1;rail();week();members();finished?doneView():cur>=S.length?[faultV,programV][cur-S.length]():card();const r=document.querySelector('.rail .on');if(r)r.scrollIntoView({block:'nearest',inline:'nearest'})}
+function render(){const T=S.length+X.length;document.getElementById('arrL').disabled=!finished&&cur===0;document.getElementById('arrR').disabled=finished||cur===T-1;rail();week();members();finished?doneView():cur>=S.length?[faultV,programV,ownV][cur-S.length]():card();const r=document.querySelector('.rail .on');if(r)r.scrollIntoView({block:'nearest',inline:'nearest'})}
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
   if(b.id==='arrL'||b.id==='arrR'){if(finished){finished=false}else{grab();cur=Math.max(0,Math.min(S.length+X.length-1,cur+(b.id==='arrR'?1:-1)))}render();window.scrollTo({top:0});return}
@@ -254,6 +285,7 @@ document.addEventListener('click',e=>{
   if(b.id==='next'){grab();if(cur===S.length-1){finished=true}else{cur++}render();window.scrollTo({top:0});return}
   if(b.id==='back'){finished=false;render();return}
   if(b.id==='send'){grab();send(b);}
+  if(b.id==='sendown'){grab();sendOwn(b);}
 });
 document.addEventListener('input',e=>{if(e.target.matches('textarea,input'))grab()});
 document.addEventListener('keydown',e=>{if(e.target.matches('textarea,input'))return;if(e.key==='ArrowRight'&&!finished&&cur<S.length+X.length-1){grab();cur++;render()}if(e.key==='ArrowLeft'&&!finished&&cur>0){grab();cur--;render()}});
