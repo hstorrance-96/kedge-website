@@ -34,7 +34,21 @@
     <button role="tab" data-page="dash" aria-selected="true">Dashboard</button>
     <button role="tab" data-page="waiting" aria-selected="false">Waiting for you <span id="waitcount" class="count"></span></button>
     <button role="tab" data-page="deadlines" aria-selected="false">Deadlines <span id="deadlinecount" class="count"></span></button>
+    <button role="tab" data-page="school" aria-selected="false">Coach school <span id="schoolcount" class="count"></span></button>
   </nav>
+
+  <div id="page-school" hidden>
+  <section>
+    <h2>Coach school</h2>
+    <p class="muted small">Your daily cases and the places the trainers don't agree with Kedge. You, trainer A and trainer B each get different cases, so the coach learns three times as fast. Your call decides every rule.</p>
+    <div id="school"></div>
+  </section>
+  <section>
+    <h2>Weekly coach report</h2>
+    <p class="muted small">The trainer agent's Friday report and its proposed changes.</p>
+    <div id="school-reports" class="items"></div>
+  </section>
+  </div>
 
   <div id="page-waiting" hidden>
   <section>
@@ -138,6 +152,7 @@
   </article>
 </template>
 
+<script src="school.js"></script>
 <script src="admin.js"></script>
 </body>
 </html>

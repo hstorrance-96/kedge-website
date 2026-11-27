@@ -131,7 +131,8 @@ function render() {
   $("deadlinecount").textContent = dueSoon.length ? String(dueSoon.length) : "";
   renderDueSoon(dueSoon);
   fillItems($("waiting"), waiting, "Nothing waiting. The agents will add things here.");
-  fillItems($("feed"), items.filter((i) => tab === "all" || i.agent === tab), "No reports yet.");
+  fillItems($("feed"), items.filter((i) => !window.isSchoolItem?.(i) && (tab === "all" || i.agent === tab)), "No reports yet.");
+  window.renderSchool?.(items, itemCard);
 
   const conn = $("connections"); conn.replaceChildren();
   const names = { github: "GitHub (agents' inbox, merging)", email: "Brevo email (notifications)", waitlist: "Brevo waitlist list",
@@ -330,6 +331,7 @@ for (const b of document.querySelectorAll(".pages button")) {
     $("page-waiting").hidden = b.dataset.page !== "waiting";
     $("page-deadlines").hidden = b.dataset.page !== "deadlines";
     $("page-dash").hidden = b.dataset.page !== "dash";
+    $("page-school").hidden = b.dataset.page !== "school";
   });
 }
 
@@ -348,5 +350,7 @@ for (const [id, action] of [["run-collect", "collect"], ["run-inbox", "inbox"]])
   });
 }
 
+window.kedgeCall = call;
+window.kedgeReload = load;
 token = storedToken();
 if (token) load(); else showLocked();
