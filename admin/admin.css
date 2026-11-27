@@ -193,3 +193,19 @@ caption.empty { text-align: left; }
 /* Ready to post */
 .posttext { white-space: pre-wrap; background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: 15px/1.5 var(--body); margin: 8px 0; user-select: text; -webkit-user-select: text; }
 #ready .row button { flex: 1 1 auto; }
+
+/* Nothing an agent writes (long links, file names, tables) may make the page wider than the screen. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+main, section, .items, .item, .case, .health, .kpi, figure { min-width: 0; max-width: 100%; }
+.item, .case, .health, .item .body, .result, .posttext, .action pre { overflow-wrap: anywhere; word-break: break-word; }
+.item .body table { display: block; overflow-x: auto; max-width: 100%; }
+.item .body pre, .item .body code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.item .body img { max-width: 100%; height: auto; }
+.item .body ul, .item .body ol { padding-left: 20px; }
+@media (max-width: 640px) {
+  .item .body { font-size: 15px; line-height: 1.5; }
+  .item .body h2, .item .body h3, .item .body h4 { font-size: 15px; }
+  .item .body table th, .item .body table td { font-size: 13px; }
+}
+.item .body table th, .item .body table td { word-break: normal; overflow-wrap: normal; white-space: nowrap; }
