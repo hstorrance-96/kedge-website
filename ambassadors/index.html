@@ -110,7 +110,7 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
     <h2>Apply</h2>
     <div><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
     <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-    <div><label for="where">Where do you reach people? <span class="opt">Links or handles, one per line</span></label><textarea id="where" name="where" placeholder="instagram.com/yourname&#10;Coach at Iron Gym, Dearborn"></textarea></div>
+    <div><label for="where">Social media links <span class="opt">Optional, one per line</span></label><textarea id="where" name="where" placeholder="instagram.com/yourname&#10;tiktok.com/@yourname"></textarea></div>
     <div><label for="size">About how many people?</label>
       <select id="size" name="size"><option value="">Pick one</option><option>Under 1,000</option><option>1,000 to 10,000</option><option>10,000 to 100,000</option><option>100,000+</option><option>I coach clients in person</option></select></div>
     <fieldset><legend>What describes you? Pick any.</legend>
@@ -145,14 +145,13 @@ document.getElementById("amb").addEventListener("submit", function (e) {
   var bad = function (msg, el) { note.textContent = msg; note.classList.add("err"); el.focus(); };
   if (!name) return bad("Add your name.", f.name);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad("Enter an email address like you@example.com.", f.email);
-  if (!where) return bad("Tell me where you reach people.", f.where);
   if (!f.rules.checked) return bad("Tick the box to confirm the ground rules.", f.rules);
   var done = function () { note.textContent = "Got it, thanks. I'll email you at " + email + " within a week."; note.classList.add("ok"); f.reset(); };
   if (f._gotcha.value || Date.now() - LOADED < 3000) { done(); return; }
   var roles = Array.prototype.map.call(f.querySelectorAll("input[name=role]:checked"), function (c) { return c.value; }).join(", ");
   note.textContent = "Sending…";
   fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({ _subject: "Kedge ambassador application", list: "AMBASSADOR", name: name, email: email, where: where, size: f.size.value || "Not given", roles: roles || "Not given", why: f.why.value.trim() || "-", _gotcha: "" }) })
+    body: JSON.stringify({ _subject: "Kedge ambassador application", list: "AMBASSADOR", name: name, email: email, where: where || "Not given", size: f.size.value || "Not given", roles: roles || "Not given", why: f.why.value.trim() || "-", _gotcha: "" }) })
     .then(function (r) { if (!r.ok) throw new Error(); try { window.umami && window.umami.track("ambassador-apply"); } catch (x) {} done(); })
     .catch(function () { note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
 });
