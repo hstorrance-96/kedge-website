@@ -200,3 +200,8 @@ main, section, .items, .item, .case, .health, .kpi, figure { min-width: 0; max-w
 }
 .item .body table th, .item .body table td { word-break: normal; overflow-wrap: normal; white-space: nowrap; }
 #ready details.notes { margin: 4px 0 8px; } #ready details.notes summary { cursor: pointer; color: var(--volt-soft); }
+
+/* Read items fold away under "Earlier". */
+details.earlier { margin-top: 12px; }
+details.earlier > summary { cursor: pointer; color: var(--muted); padding: 8px 0; font-weight: 600; }
+details.earlier .item { opacity: .8; }
