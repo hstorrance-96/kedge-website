@@ -55,6 +55,7 @@ async function load() {
   }
   $("locked").hidden = true; $("app").hidden = false; $("refresh").hidden = false; $("signout").hidden = false;
   render();
+  window.loadAmbassadors?.();
 }
 
 // ── Rendering ─────────────────────────────────────────────────────
@@ -332,6 +333,8 @@ for (const b of document.querySelectorAll(".pages button")) {
     $("page-deadlines").hidden = b.dataset.page !== "deadlines";
     $("page-dash").hidden = b.dataset.page !== "dash";
     $("page-school").hidden = b.dataset.page !== "school";
+    $("page-amb").hidden = b.dataset.page !== "amb";
+    if (b.dataset.page === "amb") window.loadAmbassadors?.();
   });
 }
 

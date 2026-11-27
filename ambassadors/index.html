@@ -133,7 +133,7 @@ textarea { width: 100%; min-height: 96px; border: 1.5px solid var(--graphite); b
 <footer><div class="wrap"><span>© 2026 Kedge Fit LLC</span><a href="mailto:info@kedge.fit">info@kedge.fit</a><p style="flex-basis:100%;margin:8px 0 0;font-size:13px">Coaching rules are reviewed by personal trainers certified by the National Academy of Sports Medicine (NASM-CPT), an NCCA-accredited certification. Kedge is not medical advice.</p></div></footer>
 
 <script>
-var ENDPOINT = "https://formspree.io/f/mzergwlr";
+var AMB_API = "https://jkaszobhblvpupaayyoy.supabase.co/functions/v1/ambassador";
 var LOADED = Date.now();
 var UMAMI_ID = "c7f8feaa-1248-434c-9dfb-aab343dc529a";
 (function () { var s = document.createElement("script"); s.defer = true; s.src = "https://cloud.umami.is/script.js"; s.setAttribute("data-website-id", UMAMI_ID); document.head.appendChild(s); })();
@@ -150,10 +150,10 @@ document.getElementById("amb").addEventListener("submit", function (e) {
   if (f._gotcha.value || Date.now() - LOADED < 3000) { done(); return; }
   var roles = Array.prototype.map.call(f.querySelectorAll("input[name=role]:checked"), function (c) { return c.value; }).join(", ");
   note.textContent = "Sending…";
-  fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({ _subject: "Kedge ambassador application", list: "AMBASSADOR", name: name, email: email, where: where || "Not given", size: f.size.value || "Not given", roles: roles || "Not given", why: f.why.value.trim() || "-", _gotcha: "" }) })
-    .then(function (r) { if (!r.ok) throw new Error(); try { window.umami && window.umami.track("ambassador-apply"); } catch (x) {} done(); })
-    .catch(function () { note.textContent = "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
+  fetch(AMB_API, { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "apply", name: name, email: email, links: where, audience: f.size.value, roles: roles, why: f.why.value.trim(), rules: true, hp: "" }) })
+    .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || ""); try { window.umami && window.umami.track("ambassador-apply"); } catch (x) {} done(); }); })
+    .catch(function (x) { note.textContent = x.message || "That didn't go through. Please try again in a minute."; note.classList.add("err"); });
 });
 </script>
 </body>
