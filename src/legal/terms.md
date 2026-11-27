@@ -43,7 +43,7 @@ When you post, the people who can see your post (your approved followers, or any
 
 Don't misuse the app: no illegal activity, no attempts to break, reverse-engineer, scrape or overload it, no using it to harass anyone, no uploading content you don't have the right to, and no trying to make the AI produce harmful content. We may limit or suspend accounts that do.
 
-**Community rules for posts and comments.** No harassment, threats, hate, sexual content, nudity, spam, ads, or anything about another person's body or weight that they didn't ask for. Don't post other people without their permission. Captions and comments are checked automatically; anything that breaks these rules is hidden, and the writer may lose the ability to comment or add captions, or lose access to posting entirely. You can report any post or comment and block anyone; blocked people can't find you, follow you or see your posts. If you think we got it wrong, email us at the address below.
+**Community rules for posts and comments.** No harassment, threats, hate, sexual content, nudity, spam, ads, or anything about another person's body or weight that they didn't ask for. Don't post other people without their permission. Treat anything you post as public. Comments, captions, photos and videos are checked automatically before others see them; anything that breaks these rules is hidden, and the poster may lose the ability to comment, add captions or post photos and videos, or lose access to posting entirely. You can report any post or comment and block anyone; blocked people can't find you, follow you or see your posts. If you think we got it wrong, email us at the address below.
 
 ## 9. Third-party services
 

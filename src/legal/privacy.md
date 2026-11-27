@@ -22,8 +22,8 @@ Effective date: [DATE]
 - Training data: workouts, sets, weights, reps, effort ratings, check-ins and energy scores.
 - Nutrition data: meals, food photos, barcodes you scan, saved foods.
 - Chat and voice: messages you type or speak to the coach. Voice is turned into text to answer you; we don't keep audio recordings after that.
-- Still frames from sets you film for form review. Videos you film for form review stay on your phone; the app sends only still frames and body-position data for review, and we delete the frames after 90 days unless you save the review.
-- Posts, comments and follows, if you use them: what you choose to post (a workout or record summary, a caption, a video you upload to a post), comments and cheers you leave, who you follow and who follows you, and reports and blocks you make.
+- Still frames from sets you film for form review. Videos you film for form review stay on your phone unless you choose to post one; the app sends only still frames and body-position data for review, and we delete the frames after 90 days unless you save the review.
+- Posts, comments and follows, if you use them: what you choose to post (a workout, record or form-check summary, a caption, a photo or video you upload to a post), comments and cheers you leave, who you follow and who follows you, and reports and blocks you make.
 
 **From services you connect (only if you turn them on):**
 
@@ -54,9 +54,9 @@ The coach is powered by Claude, from Anthropic, PBC. Before the coach works, the
 
 ## Posts, comments and followers
 
-Nothing goes on your profile unless you post it. A post shows the workout or record you picked, plus any caption or video you add; it never includes your weight, food, sleep or health details. By default you approve each follower, and only approved followers see your posts and comments on them; if you turn approval off, anyone on Kedge can follow you and see your posts. Comments are visible to the people who can see that post.
+**Anything you post is public to the people who can see it. They can view it and could save or share it, so don't post anything you want kept private.** Nothing goes on your profile unless you post it. A post shows the workout or record you picked, plus any caption, photo or video you add (including a set you filmed for form review, if you choose to post it; that uploads the video); it never includes your weight, food, sleep or health details. By default you approve each follower, and only approved followers see your posts and comments on them; if you turn approval off, anyone on Kedge can follow you and see your posts. Comments are visible to the people who can see that post.
 
-To keep the community safe, the text of each comment and caption is checked automatically when you post it, using Claude from Anthropic under the same no-training terms. Text that breaks our community rules is hidden, and its writer can lose the ability to comment or add captions. Reported posts, comments and videos, and anything hidden automatically, may be reviewed by us. Deleting a post deletes its caption, video and comments; deleting your account deletes all of your posts, comments and follows.
+To keep the community safe, every comment, caption, photo and video is checked automatically before anyone else sees it, using Claude from Anthropic under the same no-training terms (for a video, we send a few still frames). Anything that breaks our community rules is hidden, and its poster can lose the ability to comment, add captions or post photos and videos. Reported posts, comments and videos, and anything hidden automatically, may be reviewed by us. Deleting a post deletes its caption, video and comments; deleting your account deletes all of your posts, comments and follows.
 
 ## Other service providers
 
