@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360">
+<rect width="1200" height="360" fill="#0B0D12"/>
+<g transform="translate(30,20) scale(.68)">
+<g>
+ <path d="M104 350 L280 130 L390 130 L214 350 Z" fill="#F2F4F8"/>
+ <path d="M300 130 L410 130 L330 230 L220 230 Z" fill="#F2F4F8"/>
+ <path d="M250 250 L360 250 L470 350 L360 350 Z" fill="#3D6BF5"/>
+</g>
+</g>
+<text x="390" y="245" font-family="Arial, Helvetica, sans-serif" font-size="210" font-weight="600" letter-spacing="-8" fill="#F2F4F8">kedge</text>
+</svg>
