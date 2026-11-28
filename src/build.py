@@ -24,7 +24,7 @@ REPL = [
     ("[35]", "35"),
 ]
 
-SUPPORT_BTN = '\n\n**Mail:** Kedge Fit LLC, 2728 Geneva St, Dearborn, MI 48124\n'
+SUPPORT_BTN = '\n\n**Mail:** Kedge Fit LLC, 2728 Geneva St, Dearborn, MI 48124\n\n**Phone:** (313) 546-0718\n'
 
 DOCS = [("privacy", "privacy.md"), ("terms", "terms.md"), ("health-data", "health-data.md"), ("support", "support.md")]
 
