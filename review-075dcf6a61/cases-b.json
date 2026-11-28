@@ -1,262 +1,356 @@
 {
- "date": "2026-11-27",
+ "date": "2026-11-28",
  "cases": [
   {
    "n": 1,
-   "title": "Twenty minutes instead of sixty",
+   "kind": "quick",
+   "title": "Two hours free, wants to do two days in one",
    "area": 1,
-   "areaName": "cut-short sessions",
+   "areaName": "missed sessions",
    "form": false,
-   "situation": "Pete, 41, lifting 3 years, general strength, full gym, 4 days a week, nothing hurts. Today is legs: squat 4 × 5 at 225, Romanian deadlift 3 × 8, leg press, leg curl, calf raise. He types: \"I've got 20 minutes before we leave town. Skip it or do something?\"",
-   "today": "The check-in offers 30, 45 or 60+ minutes. At 30 the app drops accessories from the end and cuts main lifts to 2 sets, never dropping a main lift. There is no 20-minute choice and the rules don't cover it.",
-   "rec": "Don't skip. Squat only gets warm-up sets, then 2 to 3 hard sets at the planned 225. If time is left, 2 sets of Romanian deadlift. Nothing else. It counts as a done session with no make-up work, and the weight can still go up next time if he earns it.",
-   "why": "A 2021 review on training when short on time says keep the big multi-joint lifts, warm up only for the lift itself, skip stretching, and that as few as 4 hard sets per muscle a week still make progress. A second review found strength holds on very little work when the weight stays heavy. Moderate evidence; no study of a single 20-minute session.",
+   "situation": "Gabe, 32, lifting 2 years, upper/lower 4 days a week, full gym, nothing hurts. He missed Wednesday's lower day (squat 4 × 5 at 245, Romanian deadlift, lunges, leg curl). Today, Thursday, is upper. He types: \"I'll just do both today, Wednesday's then Thursday's. I've got two hours.\"",
+   "short": "Same as today: no stacking. Do Wednesday's lower day today and slide the week a day. If he can't slide, squat 4 × 5 at 245 first, then the upper day, and drop the other leg work.",
+   "today": "Never stack missed sessions into one day. One missed workout pushes the week back a day if the schedule allows. Otherwise its main lift folds into the next session and its accessories are dropped.",
+   "rec": "Same as today; the rule is fine. Today becomes Wednesday's lower day in full, and upper moves to tomorrow with the rest of the week one day later. If he can't train an extra day: squat 4 × 5 at 245 first, then Thursday's upper day as written; Romanian deadlift, lunges and leg curl are dropped with nothing to make up. Stacking is not one of the safety rules, so if he still says he wants both, the coach lets him: lower day first, stop each set at the planned effort, and no weight goes up off the lifts done late in the session.",
+   "why": "A 2012 review of exercise order found that lifts placed late in a session get fewer total reps across their sets, whatever the muscle, and that people gained less strength on the lifts done last. A 2021 review on training when short of time found the week's total sets matter more than which day they fall on, so sliding a day costs nothing. I found no trial of two full sessions done back to back. Coaching judgment.",
    "sources": [
+    {
+     "t": "Exercise Order in Resistance Training (Simão, de Salles, Figueiredo, Dias, Willardson, Sports Medicine, 2012; abstract read on a university record)",
+     "u": "https://thekeep.eiu.edu/kss_fac/33"
+    },
     {
      "t": "No Time to Lift? Designing Time-Efficient Training Programs for Strength and Hypertrophy: A Narrative Review (Iversen, Norum, Schoenfeld, Fimland, Sports Medicine, 2021)",
      "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8449772"
-    },
-    {
-     "t": "Maintaining physical performance: the minimal dose of exercise needed to preserve endurance and strength over time (Spiering, Mujika, Sharp, Foulis, Journal of Strength and Conditioning Research, 2021; abstract read)",
-     "u": "https://pubmed.ncbi.nlm.nih.gov/33629972"
     }
    ],
-   "reply": "Don't skip it. Warm up, then 2 or 3 hard sets of squats at 225, and 2 sets of RDLs if there's time. That counts as today's session, nothing to make up.",
-   "kind": "quick",
-   "short": "Don’t skip. Warm up, then 2 to 3 hard squat sets at 225, and 2 sets of RDLs if there’s time. Counts as a done session."
+   "reply": "Let's not stack them. Do Wednesday's lower day today, squats at 245 for 4 × 5 and the rest as written, then upper tomorrow, and the week slides one day. If tomorrow's out, do the squats first today, then your upper day, and skip the other leg work. Nothing to make up either way."
   },
   {
    "n": 2,
-   "title": "Shoulder is a 2 in the gym but wakes him at night",
-   "area": 2,
-   "areaName": "pain",
+   "kind": "quick",
+   "title": "The next dumbbells are a 25% jump",
+   "area": 3,
+   "areaName": "progression, small weights",
    "form": false,
-   "situation": "Dale, 46, lifting 5 years, strength, full gym. His right shoulder aches 2 out of 10 on bench (185 × 6) and settles in a few hours. He types: \"It's fine in the gym, but it's been waking me up when I roll onto it for about two weeks.\"",
-   "today": "Discomfort at 3 out of 10 or below that settles within 24 hours is okay to train through, so nothing changes. The rules don't mention pain at night.",
-   "rec": "Add a rule: pain that keeps waking them at night, or has for a week or two, gets a doctor or physical therapist suggestion now, whatever the number in the gym. Meanwhile swap to a pressing variation that doesn't hurt and keep training. No guessing at what it is. This adds a safety rule; it loosens none.",
-   "why": "University of Iowa Health Care says to be seen when shoulder pain regularly disrupts sleep or isn't better after one to two weeks of home care. Cleveland Clinic lists night pain among the warning signs. Expert guidance, not trials. Fairly sure.",
+   "situation": "Lena, 28, lifting 1 year, wants muscle, full gym, nothing hurts. Dumbbell shoulder press with 20s, range 8 to 12: she got 12, 12, 11 at effort 8 out of 10. Her gym's dumbbells go from 20 to 25 lb, a 25% jump. Last month she tried the 25s and got 5, 4, 4.",
+   "short": "Ask about 22.5s or add-on weights first. If there are none: build the 20s to 3 sets of 15, then switch one set at a time to the 25s, counting 5 or more reps as a good set for the first few weeks.",
+   "today": "Today's 12, 12, 11 is in the range but not at the top, so same weight and chase reps. Once every set is 12, the jump the app wants (about 1 lb) is smaller than one dumbbell step, so it adds a rep per set: 13s, then 14s. At 14s it takes the 25s anyway and asks for 8. The 10% limit doesn't stop that step. By the app's own rep math, 14 reps with 20s is about 5 with 25s, so she would miss 8 twice and be reset to the 20s.",
+   "rec": "First ask if the gym has 22.5s, clip-on add-on weights (1.25 or 2.5 lb), or a shoulder press machine with smaller steps; if so, use them. If not, when the next step is more than 10% heavier: keep adding a rep per set on the 20s up to 3 sets of 15. Then set 1 with the 25s for as many as she can at effort 8 (expect 5 to 7) and sets 2 and 3 with the 20s. Move a set to the 25s each time the 25 sets reach 8. Reps of 5 or more on the 25s don't count as a miss during the switch. Slower lowering on the 20s is fine as an extra, not as the plan.",
+   "why": "A 2021 review of loading (Schoenfeld and others) found muscle grows about the same across a wide range of weights and reps as long as sets are hard, so more weeks at 13 to 15 reps cost her nothing. NASM's coaching guide suggests upper-body jumps of about 2 to 5%. I found no study of this exact switch. The app math is my own check. Coaching judgment.",
    "sources": [
     {
-     "t": "Shoulder pain while sleeping: When it could be more than soreness (University of Iowa Health Care, 2026)",
-     "u": "https://uihc.org/health-topics/shoulder-pain-while-sleeping-when-it-could-be-more-soreness"
+     "t": "Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum (Schoenfeld, Grgic, Van Every, Plotkin, Sports, 2021)",
+     "u": "https://mdpi.com/2075-4663/9/2/32"
     },
     {
-     "t": "Shoulder Pain: 11 Common Conditions and Causes (Cleveland Clinic, 2022)",
-     "u": "https://health.clevelandclinic.org/shoulder-pain-most-common-causes-and-how-to-fix-it"
+     "t": "Progressive Overload Explained: Programming Progress for Every Client (Andre Adams, NASM, 2021)",
+     "u": "https://www.nasm.org/resource-center/blog/training/progressive-overload-explained-programming-progress-for-every-client"
     }
    ],
-   "reply": "Dale, pain that wakes you up for two weeks is worth getting looked at by a doctor or a physical therapist, even if it's a 2 in the gym. Until then, swap bench for a press that doesn't hurt and keep training. Tell me what they say.",
-   "kind": "quick",
-   "short": "Night pain for two weeks gets a doctor or physical therapist suggestion now, whatever the gym number. Swap to a pain-free press meanwhile."
+   "reply": "Stay with the 20s and add a rep to each set: 12s, then 13s, up to 15s. Does your gym have 22.5s or small clip-on weights? If not, once you reach 15s your first set moves to the 25s, where 5 to 7 reps is right on track, and the other two sets stay on the 20s."
   },
   {
    "n": 3,
-   "title": "Stops at the bottom of the range and calls it a 5",
-   "area": 3,
-   "areaName": "progression",
+   "kind": "quick",
+   "title": "\"Is the trap bar cheating?\"",
+   "area": 4,
+   "areaName": "exercise choice",
    "form": false,
-   "situation": "Hannah, 25, lifting 8 months, wants muscle, full gym, nothing hurts. Dumbbell shoulder press, 25s, 3 sets of 8 to 12, meant to feel like a 7 to 8. Three sessions running she logs 8, 8, 8 and rates each set 5 out of 10. She types: \"I hit my reps. Why isn't the weight going up?\"",
-   "today": "Reps in the range but not at the top means same weight, chase reps. The easy rating changes nothing until every set reaches the top, and the coach doesn't raise it unless she asks.",
-   "rec": "The coach explains once: the range is something to climb, and the set ends when it feels like a 7 to 8, not at the first number. Same weight next time, go until it's actually hard. No increase on the rating alone. If she still stops at 8 after two reminders, ask what's holding her back.",
-   "why": "A 2021 analysis of how well lifters judge reps left found people have about one more rep than they think on average, with a bigger gap on higher-rep sets, and experience made no difference. So a \"5\" at 8 reps has plenty left. Moderate evidence (studies disagreed a lot with each other); the coaching steps are judgment. Same pattern as Hunter's Nov 22 answer on ratings that don't fit the reps.",
+   "situation": "Owen, 45, lifting 1 year, general strength, full gym with a trap bar, nothing hurts. His plan has barbell deadlift 3 × 5 at 185. He watched a friend hurt his back deadlifting and types: \"I don't want to do barbell deadlifts. Is the trap bar cheating?\"",
+   "short": "Not cheating. Make the trap-bar deadlift his main pulling-from-the-floor lift and don't bring the barbell deadlift back unless he asks or his goal changes to one that needs it.",
+   "today": "Lifts an athlete dislikes are swapped for an equivalent, and the trap-bar deadlift is in the exercise list (offered when a trap bar is ticked in his equipment). After repeated swaps the app asks whether to stop suggesting the lift. In the list the trap-bar deadlift is an accessory, not a main lift. The rules don't say whether the coach should ever raise the barbell deadlift again.",
+   "rec": "Swap to the trap-bar deadlift and treat it as his main lift for that slot: same sets, reps and progression. Say plainly it is a real deadlift. Keep Romanian deadlifts or leg curls in the week, because the trap bar works the thighs more and the hamstrings and lower back a little less. For a general-strength goal the coach never pushes the barbell deadlift again. It comes up once only if he asks, or if he picks a goal that needs a straight bar, such as a powerlifting meet.",
+   "why": "Swinton 2011 (19 powerlifters): the trap bar lowered the peak load at the lower back and hip, raised it at the knee, and they lifted more with it. Camara 2016 (20 trained men): more thigh activity, less hamstring and lower-back activity, same max. An NSCA trainers' journal article (2026) says near-max barbell deadlifts aren't needed outside powerlifting. All single-session lab studies on men; no long-term injury comparison found. Mixed evidence.",
    "sources": [
     {
-     "t": "Accuracy in predicting repetitions to task failure in resistance exercise: A scoping review and exploratory meta-analysis (Halperin and others, Sports Medicine, 2021; read on the university record)",
-     "u": "https://pure.solent.ac.uk/en/publications/accuracy-in-predicting-repetitions-to-task-failure-in-resistance-/"
+     "t": "A biomechanical analysis of straight and hexagonal barbell deadlifts using submaximal loads (Swinton and others, Journal of Strength and Conditioning Research, 2011; abstract read)",
+     "u": "https://pubmed.ncbi.nlm.nih.gov/21659894/"
+    },
+    {
+     "t": "An Examination of Muscle Activation and Power Characteristics While Performing the Deadlift Exercise with Straight and Hexagonal Barbells (Camara, Coburn, Dunnick, Brown, Galpin, Costa, Journal of Strength and Conditioning Research, 2016)",
+     "u": "https://hhd.fullerton.edu/knes/_resources/pdfs/research-lab/bmep/Camara-%20An%20examination%20of.pdf"
+    },
+    {
+     "t": "Rethinking Heavy Barbell Training: Injury Risk vs. Necessity in Non-Powerlifting Populations (Nick Tumminello, NSCA Personal Training Quarterly, 2026)",
+     "u": "https://www.nsca.com/education/articles/ptq/rethinking-heavy-barbell-training-injury-risk-vs.-necessity-in-non-powerlifting-populations/"
     }
    ],
-   "reply": "The 8 to 12 is a range to climb, not a finish line. Same 25s next time, and keep going until a set feels like a 7 or 8. Once you reach 12 on every set, the weight goes up.",
-   "kind": "quick",
-   "short": "Explain the range once: same weight, keep going until a set is a real 7 to 8. No increase on the rating alone."
+   "reply": "Not cheating. The trap-bar deadlift is a real deadlift, and I've swapped it in as your main one, starting at 185 for 3 sets of 5. Your Romanian deadlifts stay in for the hamstrings. If you ever want the barbell back, just say so."
   },
   {
    "n": 4,
-   "title": "Wants everything on bench for 8 weeks",
-   "area": 6,
-   "areaName": "experienced lifters, specialization",
+   "kind": "quick",
+   "title": "Week two and wants to find her one-rep max",
+   "area": 5,
+   "areaName": "beginners",
    "form": false,
-   "situation": "Rob, 36, lifting 9 years, bench 285, wants 315 by spring, full gym, 4 days, nothing hurts. He types: \"Bench three times a week for 8 weeks. What's the least I can do to keep my squat and deadlift?\"",
-   "today": "A focus lift gets an extra set and faster jumps; on a one-lift program the other main lifts go to maintenance: 2 sets, weight held. The rules don't say how little is enough or for how long.",
-   "rec": "Yes, for one block of up to 8 weeks. Squat and deadlift once a week each, 2 sets, at the weights he lifts now: the weight stays, the sets drop. Then a normal block for legs before specializing again. At 60 and over, hold more: 2 to 3 sets, twice a week.",
-   "why": "A 2021 review of the least training needed to hold strength: younger lifters held strength and muscle for up to 32 weeks on one session a week and as little as one set per exercise, as long as the weight stayed heavy; older adults needed up to two sessions and 2 to 3 sets. Moderate evidence, not tested on advanced lifters. This confirms today's design.",
+   "situation": "Zoe, 24, in her second week, general fitness, full gym, nothing hurts. Her last squat session was 65 × 8, 8, 8 at effort 7 out of 10. She types: \"My friend squats 135. I want to find my one-rep max this week so I know where I am.\"",
+   "short": "No true max yet. Give her the estimate from her own sets now (about 85 to 90), offer a hard set of 3 to 5 in week 4, and a real max test after about 8 to 12 weeks of clean squatting.",
+   "today": "The first two sessions of a new lift are for finding the weight. Beginners work at efforts 6 to 8 out of 10. The app estimates a max from logged sets and shows it. The rules on testing a max are written for athletes with a dated event and don't mention beginners.",
+   "rec": "Don't test a true max in the first weeks. Give her the number she is asking for from her logged sets (65 × 8 at effort 7 is about 85 to 90) and say it will be more accurate as she logs heavier sets. In week 4, offer one hard set of 3 to 5 reps at effort 8 to get a better estimate. A real one-rep test is fine once she has squatted for about 8 to 12 weeks, her last form review was clean, and she has safety bars or a spotter. Not for anyone training lighter for a health reason. If she pushes back now, offer the set of 3 to 5 this week, not a single.",
+   "why": "Sources disagree. A 2020 systematic review found one-rep max tests reliable and generally safe even in untrained people, with soreness the only common problem. ACE's trainer guidance says a true max is not appropriate for beginners and an estimate from reps is the better choice. A US military fitness page says rep-based estimates work well at 5 reps or fewer. So the wait is about learning the lift, not proven danger. Mixed evidence.",
    "sources": [
     {
-     "t": "Maintaining physical performance: the minimal dose of exercise needed to preserve endurance and strength over time (Spiering, Mujika, Sharp, Foulis, Journal of Strength and Conditioning Research, 2021; abstract read)",
-     "u": "https://pubmed.ncbi.nlm.nih.gov/33629972"
+     "t": "Test-Retest Reliability of the One-Repetition Maximum (1RM) Strength Assessment: a Systematic Review (Grgic, Lazinica, Schoenfeld, Pedisic, Sports Medicine - Open, 2020)",
+     "u": "https://link.springer.com/article/10.1186/s40798-020-00260-z"
+    },
+    {
+     "t": "Understanding 1-RM and Predicted 1-RM Assessments (Clarissa Jimenez, American Council on Exercise, 2018)",
+     "u": "https://www.acefitness.org/fitness-certifications/ace-answers/exam-preparation-blog/2894/understanding-1-rm-and-predicted-1-rm-assessments/"
+    },
+    {
+     "t": "What is a one-rep max? (Human Performance Resources by CHAMP, 2022)",
+     "u": "https://www.hprc-online.org/articles/one-rep-max-for-strength"
     }
    ],
-   "reply": "Yes, for one 8-week block. Squat and deadlift once a week each, 2 sets at the weights you lift now; that's enough to hold them. After the block, legs get a normal block again.",
-   "kind": "quick",
-   "short": "Yes, for one 8-week block: squat and deadlift once a week, 2 sets each, at today’s weights."
+   "reply": "From your 65 × 8 last session, your max is about 85 to 90 right now, and that number will sharpen as you log heavier sets. Let's hold off on a true max for a few more weeks. In week 4 we'll do one hard set of 3 to 5 to pin it down, and a real max test after that."
   },
   {
    "n": 5,
-   "title": "Night-shift month: every check-in is red",
-   "area": 8,
-   "areaName": "recovery",
+   "kind": "quick",
+   "title": "\"Should I be wearing a belt?\"",
+   "area": 6,
+   "areaName": "experienced lifters",
    "form": false,
-   "situation": "Amy, 34, nurse, lifting 3 years, strength, full gym, nothing hurts, not ill. Three workouts in a row: about 5 hours of sleep, energy 30, red. She has 3 more weeks of night shifts.",
-   "today": "Each red day is a short session: main lifts at 2 sets, same weights, no increases. After three red days in a row the app starts a lighter week by itself: about half the sets and 10% lighter for 7 days. Hunter's Nov 23 answer (not in the rules yet) was to cut sets but keep pushing strength.",
-   "rec": "After 3 red check-ins in a row from sleep or stress, when the athlete says it will continue: no automatic lighter week and no 10% drop. Take one set off every exercise (never under 2 on main lifts), keep the weights, and allow half-size increases when every set hits the top at the target effort. Back to normal after two check-ins in a row that aren't red. This does not apply when the red comes from illness signs or soreness; those keep today's rules. Planned lighter weeks still happen.",
-   "why": "A 2018 systematic review found several short nights in a row lower force in big multi-joint lifts but not single-joint ones (abstract only; no numbers). A 2022 analysis put one bad night at about 3% off strength and about 10% off higher-rep work, and could not study runs of bad nights. Strength holds on fewer sets if the weight stays (Spiering, scenario 6). Nobody has tested this exact plan: coaching judgment.",
+   "situation": "Hank, 40, lifting 12 years, squat 365 × 3, deadlift 455 × 2, full gym, nothing hurts. He types: \"Should I be wearing a belt? When do I put it on?\"",
+   "short": "Optional. If he wants one: heaviest squat and deadlift sets only, warm-ups without it, and never as a fix for a sore or tight back.",
+   "today": "The rules don't cover this.",
+   "rec": "A belt is optional and he doesn't need one. If he wants it: put it on for the last warm-up and the top sets of squat and deadlift (for him, from about 315 on squat and 405 on deadlift), snug enough to push his stomach out against it, and off for everything else. He should be able to brace the same way without it first. A belt never changes the pain rules: a tight lower back still means no spinal loading that session. For anyone with a heart or blood pressure condition on file, no belt advice and no breath-holding cues, as today.",
+   "why": "Sources disagree. A sports doctor's 2023 review of the studies: belts raise pressure in the trunk in most studies, may help heavy sets move a little better, and haven't been shown to prevent back injury. A review written for the NSCA by a spine researcher (McGill, 2005) is more cautious: no protection for healthy people, a possible help only for very heavy lifting, never a stand-in for technique, and may raise blood pressure. I did not find the NSCA textbook's own wording. Mixed evidence.",
    "sources": [
     {
-     "t": "Inadequate sleep and muscle strength: implications for resistance training (Knowles and others, Journal of Science and Medicine in Sport, 2018; abstract read on the university record)",
-     "u": "https://dro.deakin.edu.au/articles/journal_contribution/Inadequate_sleep_and_muscle_strength_implications_for_resistance_training/20813233"
+     "t": "The Science of Weight Lifting Belts (Jordan Feigenbaum, MD, Barbell Medicine, 2023)",
+     "u": "https://www.barbellmedicine.com/blog/the-science-of-weight-lifting-belts/"
     },
     {
-     "t": "Effects of Acute Sleep Loss on Physical Performance: A Systematic and Meta-Analytical Review (Craven and others, Sports Medicine, 2022)",
-     "u": "https://link.springer.com/10.1007/s40279-022-01706-y"
+     "t": "On The Use Weight Belts (Stuart McGill, review invited by the NSCA, 2005)",
+     "u": "https://www.backfitpro.com/medical-scientific-articles/2007/NSCA-weight-belt-use.pdf"
     },
     {
-     "t": "How much does sleep loss affect strength performance? (Greg Nuckols, Stronger by Science, 2022)",
-     "u": "https://www.strongerbyscience.com/research-spotlight-sleep-loss/"
+     "t": "The Weight Belt Controversy (Frankel and Kravitz, University of New Mexico; year not shown)",
+     "u": "https://www.unm.edu/~lkravitz/Article%20folder/weightbelt.html"
     }
    ],
-   "reply": "Three red check-ins and three more weeks of nights, so here's the plan: one set off every exercise, same weights, and smaller jumps when you hit the top of the range. We go back to normal after two check-ins that aren't red.",
-   "kind": "quick",
-   "short": "Three reds in a row with more nights ahead: one set off every exercise, same weights, half-size jumps. Normal again after two non-red days."
+   "reply": "It's optional, and you don't need one. If you want it, put it on for your last warm-up and top sets of squat and deadlift, around 315 and up on squat and 405 and up on deadlift, and leave it off for everything else. Take a big breath and push your stomach out against it. It's not a fix for a sore back, so tell me if that ever comes up."
   },
   {
    "n": 6,
-   "title": "Logs four days a week and wants a lower target",
-   "area": 7,
-   "areaName": "nutrition, logging gaps",
+   "kind": "quick",
+   "title": "\"Three months and I look exactly the same\"",
+   "area": 9,
+   "areaName": "tone, motivation dip",
    "form": false,
-   "situation": "Tina, 33, lifting 1 year, wants to lose fat, 170 lb, target 1,800 calories. For 4 weeks she has logged Monday to Thursday at about 1,700; Friday to Sunday are mostly blank. Her weight hasn't moved. She types: \"I'm eating 1,700 and not losing. Drop me to 1,500.\"",
-   "today": "1,500 is under her floor (25% below her maintenance of about 2,300 is about 1,725), so the app refuses. Changes follow the 2 to 3 week weight trend, at most once every 2 weeks. Nothing says what to do about unlogged days.",
-   "rec": "No lower target. Say plainly, with no blame, that the three unlogged days are the likely gap. Ask for 2 weeks of rough weekend logging (photos are fine), then decide on the trend. If the logs are full and the trend is still flat, step down 100 to 200, never under the floor.",
-   "why": "A 2020 review of food self-reporting found people under-report against measured energy use even on days they do log: about 16% on average in one large pooled analysis, and most often 20 to 30% across 59 studies. Strong evidence on under-reporting; the 2-week step is judgment. A second paper on the same question would not open, so it isn't counted.",
+   "situation": "Maya, 36, three months in, 3 days a week, general fitness, full gym, nothing hurts. She has done 37 of 39 planned sessions. Her squat went from 65 × 8 to 115 × 8 and her body weight is unchanged. She types: \"Three months and I look exactly the same. What's the point?\"",
+   "short": "No pep talk and nothing about her body. Show her own numbers, give one next target (125 × 8), and offer one change if she wants it.",
+   "today": "The voice rules: short, direct, warm, no hype, and never comment on body shape. The rules don't cover what to say when an athlete is discouraged about how she looks.",
+   "rec": "One line that takes the frustration seriously, then her own numbers: 37 of 39 sessions, squat 65 × 8 to 115 × 8. One concrete next target: 125 × 8 within about three weeks. Then one offer, her choice: if size is what she wants, the plan can be rebuilt for muscle size. The coach says nothing about how she looks, doesn't promise a date for visible change, and doesn't argue her out of the feeling. If asked how long, it can say honestly that visible change usually trails strength by months.",
+   "why": "Cleveland Clinic's guide: strength shows up within about 3 to 4 weeks, small visible changes around 2 to 3 months, and clearer ones around 4 to 6 months, so she is early, not failing. On what keeps people going, the evidence is thin: one systematic review (in older adults) found feedback and progress tracking was the only approach linked to better exercise adherence, and its authors said the evidence was not enough to recommend it. Coaching judgment.",
    "sources": [
     {
-     "t": "Traditional Self-Reported Dietary Instruments Are Prone to Inaccuracies and New Approaches Are Needed (Ravelli and Schoeller, Frontiers in Nutrition, 2020)",
-     "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7350526/"
+     "t": "How Long Does It Take To Build Muscle? (Cleveland Clinic, 2025)",
+     "u": "https://health.clevelandclinic.org/how-long-does-it-take-to-build-muscle"
+    },
+    {
+     "t": "What interventions are used to improve exercise adherence in older people and what behavioural techniques are they based on? A systematic review (Room, Hannink, Dawes, Barker, BMJ Open, 2017; abstract read on a university record)",
+     "u": "https://www.ndorms.ox.ac.uk/rrio/rrio-publications/publication_modal/824123"
     }
    ],
-   "reply": "I'm not dropping you to 1,500. Friday to Sunday are mostly blank, and that's the likely gap. Log the weekends roughly for two weeks, photos are fine, and we'll decide on the trend.",
-   "kind": "quick",
-   "short": "No lower target. Point out, without blame, that weekends are mostly unlogged; ask for two weeks of rough weekend logging, then decide."
+   "reply": "That's frustrating, and I hear it. Here's what three months did: 37 of 39 sessions, and your squat went from 65 × 8 to 115 × 8. Next target is 125 × 8, about three weeks away at this pace. If building size is what you're after, I can rebuild the plan around that. Want me to?"
   },
   {
    "n": 7,
-   "title": "Hip thrust: finishes with her lower back, not her hips",
-   "area": 11,
-   "areaName": "form",
-   "form": true,
-   "situation": "Jo, 27, lifting 18 months, wants bigger glutes, full gym, nothing hurts. Hip thrust, 225 × 10, filmed side-on. Reps 1 to 5: full lockout, straight line from knees to shoulders. Reps 6 to 10: hips stop about 2 inches short, she arches her lower back and lifts her ribs to finish, her head tips back and her heels come up. Her feet are set about 6 inches too far out, so her shins aren't upright at the top.",
-   "today": "The app scores range, torso and tempo. It doesn't measure the lower-back arch, head or heels; the coach only sees those in the frames. No fault list.",
-   "rec": "Fault: Arching the lower back to finish the rep is the main one. Feet too far out is the setup cause. Head tipping back is minor.\nCue: \"Ribs down, chin tucked, squeeze your glutes to finish.\" Setup: heels in until the shins are upright at the top.\nSeverity: Moderate. Major if her back feels tight (then the tight-lower-back rule applies as it does today).\nLower the weight: Fix the feet first at 225 and end the set when lockout goes. If it still happens, drop 10% (to 205).\nIf it keeps happening: A 1-second hold at the top of every rep, and glute bridges in the warm-up.",
-   "why": "The NSCA journal's technique article says the movement comes from the hips and not the lower back, with upright shins at the top, a short hold at the top and the head in line with the spine. Eric Cressey lists the same errors (ribs up, weight on the toes from feet too far out, head forward, lower back doing the hips' job). Neither says when to lower the weight. Coaching judgment, well agreed.",
+   "kind": "quick",
+   "title": "Seven drinks, five hours of sleep, squats at 9am",
+   "area": 8,
+   "areaName": "recovery",
+   "form": false,
+   "situation": "Tom, 30, 185 lb, lifting 4 years, full gym, nothing hurts. Saturday 9am session: squat 4 × 5 at 275. His check-in is red (5 hours of sleep, low energy). He types: \"Rough night, about 7 drinks, 5 hours of sleep. Still lifting?\"",
+   "short": "Ask one thing first: does he still feel the drinks? If yes, no lifting today, move it to Sunday. If no, a short, lighter session or move it, his choice.",
+   "today": "A red day is a shorter session or mobility only, with an offer to move the workout; a low yellow keeps the weights and takes a set off each exercise. The rules cover sleep and readiness but say nothing about alcohol.",
+   "rec": "No moralizing and no comment on the drinking. The coach asks once whether he still feels the drinks (unsteady, dizzy or queasy). If yes: no barbell work today, move the session to Sunday. That part is firm, even if he pushes back. If no: offer to move it, or a short session: squat 2 sets of 5 at about 250 (10% lighter), effort 7 out of 10 or below, water and food first, and no weight increase earned from today. If he feels clear and wants the planned 275, that is his call, as with any red day. This adds a safety rule; it loosens none.",
+   "why": "An NSCA coaches' article (2017): being intoxicated hurts balance, coordination and reaction time; a hangover brings fluid and blood sugar problems and poor sleep; one figure cited is about 11% off endurance, and the effect on strength is unclear. Barnes's 2014 review: about 0.5 g of alcohol per kg is unlikely to hurt recovery; 7 drinks is roughly double that for him. Parr 2014 found a larger dose after training lowered muscle rebuilding even with protein. No study of heavy lifting the morning after. Coaching judgment.",
    "sources": [
     {
-     "t": "Barbell Hip Thrust (Contreras, Cronin and Schoenfeld, NSCA Strength and Conditioning Journal, 2011)",
-     "u": "https://www.lookgreatnaked.com/articles/barbell_hip_thrust.pdf"
+     "t": "The Effects of Alcohol on Athletic Performance (Claire Siekaniec, NSCA Coach, 2017)",
+     "u": "https://www.nsca.com/education/articles/nsca-coach/the-effects-of-alcohol-on-athletic-performance/"
     },
     {
-     "t": "The 4 Most Common Barbell Hip Thrust Technique Mistakes (Eric Cressey, 2019)",
-     "u": "https://ericcressey.com/the-4-most-common-barbell-hip-thrust-technique-mistakes/"
+     "t": "Alcohol: Impact on Sports Performance and Recovery in Male Athletes (Barnes, Sports Medicine, 2014; abstract read)",
+     "u": "https://link.springer.com/doi/10.1007/s40279-014-0192-8"
+    },
+    {
+     "t": "Alcohol ingestion impairs maximal post-exercise rates of myofibrillar protein synthesis following a single bout of concurrent training (Parr and others, PLoS ONE, 2014; abstract read on a university record)",
+     "u": "https://acuresearchbank.acu.edu.au/item/8v763/alcohol-ingestion-impairs-maximal-post-exercise-rates-of-myofibrillar-protein-synthesis-following-a-single-bout-of-concurrent-training"
     }
    ],
-   "reply": "Jo, the last five reps are finishing with your lower back, not your hips. Bring your heels in until your shins are straight up at the top, then ribs down, chin tucked, squeeze to finish. Stay at 225 and end the set when lockout goes.",
-   "kind": "quick",
-   "short": "Main fault is arching the lower back to finish; feet too far out is the cause. Heels in, ribs down, squeeze to finish. Stay at 225 and end the set when lockout goes."
+   "reply": "One question first: do you still feel the drinks at all, unsteady or queasy? If yes, no lifting today and we move it to tomorrow. If you're just tired, drink some water, eat, and do a short one: 2 sets of 5 at 250, nothing that grinds. Or we move it to tomorrow, your call."
   },
   {
    "n": 8,
-   "title": "Eight weeks after birth, cleared, wants old weights and a cut",
+   "kind": "quick",
+   "title": "\"Can I still grow on two days?\"",
    "area": 10,
-   "areaName": "program design, postpartum",
+   "areaName": "program design",
    "form": false,
-   "situation": "Nora, 32, lifted 4 years before pregnancy, 8 weeks after a vaginal birth, breastfeeding, 2 days a week. Old squat: 155 × 5. She types: \"Doctor cleared me at 6 weeks! Old weights and a cut please. I do leak a little when I sneeze or jump.\"",
-   "today": "Recent birth: effort 6 to 7, no max-effort sets, longer rests, no calorie deficit (6 months in the app, HealthScreening.noDeficit), ask once about her doctor's limits. Two gaps. Once she marks herself cleared, the app's cap of 7 lifts while the coach's health guide still says 6 to 7. And nothing covers leaking or how fast to rebuild. After 4 or more weeks off the app starts 30% lighter.",
-   "rec": "Keep today's rules: no cut, effort at 7 or below. Start about 30% lighter (around 110) and build back over about 12 weeks. Hunter's \"give the old weight if they insist\" answer does not apply here. For leaking, heaviness or a dragging feeling: suggest a pelvic health physical therapist, and leave out jumping and any lift that sets it off until then. Make the app and the guide agree on the cap.",
-   "why": "A 2022 review in the Australian GPs' journal says tissue recovery can take 4 to 6 months, well past the 6-week check, lists leaking with lifting or exercise and a feeling of heaviness as reasons to see a pelvic health physio, and notes breastfeeding uses about 600 calories a day, so under-eating is a risk. A 2026 summary of Canada's postpartum guideline says start with walking and pelvic floor work and build up. Good expert agreement; neither gives a week-by-week lifting plan, so the 12 weeks is my judgment. ACOG's own paper would not open.",
+   "situation": "Ana, 33, lifting 2 years, wants muscle size, full gym, nothing hurts. A new job leaves her 2 days a week, about 60 minutes each. She has been on 4 days. She types: \"Can I still grow on two days?\"",
+   "short": "Yes. Two full-body days, every muscle both days, aiming for about 8 to 10 hard sets per muscle a week, with pushes and pulls paired to fit 60 minutes.",
+   "today": "The guide says 2 days is full body A / B, each with a squat or lunge, a hinge, a push and a pull, and that a plan with few days can land under the weekly number (12 hard sets per muscle for her). Changing days is a rebuild. Reading the plan builder, the muscle-size plan is written for 4 to 5 days, so a 2-day athlete with that goal appears to get the 4-day upper/lower plan two days at a time: each muscle about once a week at about half the target. If it did build A / B, by my count chest and shoulders top out near 5 direct sets a week. I could not run it here; worth checking.",
+   "rec": "Tell her yes, and send her to Rebuild program for 2 days. The plan should be two full-body days that train every major muscle both days. The coach tunes the weekly number to 10, the bottom of her range, so the plan isn't chasing 12 it can't reach, and expects about 8 to 10 hard sets per muscle. To fit 60 minutes: 5 to 6 lifts a day, 3 to 4 sets, pushes and pulls done back to back, sets taken to effort 8 to 9 out of 10. Be honest that growth may be a little slower than on 4 days. If she gets a third day back, rebuild again.",
+   "why": "A 2016 meta-analysis (Schoenfeld and others) found training a muscle twice a week grew more than once a week; a 2019 review found that with equal weekly sets, how often matters little. A 2021 review puts the floor at about 4 hard sets per muscle a week and cites a pooled analysis where under 5, 5 to 9 and 10 or more sets gave about 5%, 7% and 10% growth. So two days works if each muscle is hit both days. Strong evidence; the code reading is mine and untested.",
    "sources": [
     {
-     "t": "Exercise after pregnancy (Inge, Orchard, Purdue, Orchard, Australian Journal of General Practice, 2022)",
-     "u": "https://www1.racgp.org.au/ajgp/2022/march/exercise-after-pregnancy"
+     "t": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis (Schoenfeld, Ogborn, Krieger, Sports Medicine, 2016; abstract read)",
+     "u": "https://link.springer.com/10.1007/s40279-016-0543-8"
     },
     {
-     "t": "Postpartum Physical Activity and Sleep: Guidelines From the Canadian Society for Exercise Physiology (American Family Physician, 2026)",
-     "u": "https://www.aafp.org/afp/2026/0900/practice-guidelines-postpartum-physical-activity-sleep"
+     "t": "Resistance training frequency and skeletal muscle hypertrophy: A review of available evidence (Grgic, Schoenfeld, Latella, Journal of Science and Medicine in Sport, 2019; abstract read on a university record)",
+     "u": "https://ro.ecu.edu.au/ecuworkspost2013/5665"
+    },
+    {
+     "t": "No Time to Lift? Designing Time-Efficient Training Programs for Strength and Hypertrophy: A Narrative Review (Iversen, Norum, Schoenfeld, Fimland, Sports Medicine, 2021)",
+     "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8449772"
     }
    ],
-   "reply": "Congrats, Nora. We'll start around 110 on squat and build back over about 12 weeks, no cut while you're breastfeeding. The leaking is worth a visit to a pelvic health physical therapist; skip jumping until then.",
-   "kind": "quick",
-   "short": "No cut, effort at 7 or below. Start around 110 and build back over about 12 weeks. Suggest a pelvic health physical therapist for the leaking; no jumping until then."
+   "reply": "Yes, you can still grow on two days. Tap Rebuild program on the Progress tab and pick 2 days: you'll get two full-body sessions that hit every muscle both days, about 8 to 10 hard sets each per week. I'll pair your pushes and pulls so it fits in 60 minutes. Progress may be a little slower than on four days, but it keeps going."
   },
   {
    "n": 9,
-   "title": "Front squat: elbows drop and the bar rolls forward",
+   "kind": "deep",
+   "breakit": false,
+   "title": "Bench press: the bar tilts and the left arm locks out late",
    "area": 11,
    "areaName": "form",
    "form": true,
-   "situation": "Elena, 32, lifting 3 years, wants a 185 front squat, full gym, nothing hurts. Front squat, 155 × 5, filmed side-on. Reps 1 to 3: elbows high, chest up, below parallel. Reps 4 and 5: her elbows drop on the way up, her upper back rounds, her torso tips about 12 degrees further forward and the bar rolls toward her fingers. On rep 5 she steps forward to save it.",
-   "today": "The app marks the set down for the torso changing and for bar path. It doesn't measure elbows or a rounding upper back; the coach only sees those in the frames. No fault list.",
-   "rec": "Fault: Elbows dropping is the main one; the upper back rounding and the bar rolling forward follow from it.\nCue: \"Elbows up first out of the bottom.\"\nSeverity: Moderate. Major if she has to step or dump the bar to save reps.\nLower the weight: Yes, about 10% (155 to 140), then build back with normal jumps.\nIf it keeps happening: Slow paused front squats in the warm-up (2 to 3 sets of 5, 3 seconds down, 3-second pause), plus face pulls and barbell rows for the upper back.",
-   "why": "CrossFit's coaching guide and a guide by a certified strength coach both name dropped elbows as what rounds the back and loses the bar, and both suggest slow, controlled practice and upper-back work. Neither says when to lower the weight; that part follows Hunter's bench and overhead press answers. Coaching judgment.",
+   "situation": "Drew, 31, lifting 3 years, wants a 225 bench, full gym, nothing hurts. Bench press, 185 × 6, filmed from the front (camera at the foot of the bench). Reps 1 to 3: bar level, both arms finish together. Reps 4 to 6: on the way up the bar tilts with the right end about 2 inches higher, his left elbow flares out wide, both wrists bend back, and the left arm locks out about half a second after the right. No bounce, and his hips stay down.",
+   "today": "From the front the app scores three things: range (each rep against the deepest one), control on the way down, and whether the last rep slows compared with the first. Bar path and back angle aren't judged from this view. It does measure how far apart in height the two hands get on each rep (a tilted bar), but that number isn't part of the score. It doesn't measure elbow flare, wrist bend or which arm locks out first; the coach only sees those in the frames. There is no fault list yet, so nothing says which fault comes first, form faults don't change the weight, and a repeat fault adds no work.",
+   "rec": "Fault: The bar tilting from rep 4 is the main one: the left side is running out first. The left elbow flaring and the late left lockout follow from it. Wrists bending back is a separate, smaller fault.\nCue: \"Squeeze the bar, knuckles to the ceiling, push both hands up together.\" Setup check first: same finger on the ring marks on both sides, and lying centered on the bench.\nSeverity: Moderate. Major if it tilts from rep 1, or if the left shoulder goes from \"a bit weaker\" to hurting (then the pain rules apply as they do today).\nLower the weight: Yes, a little: 185 to 175 (about 5%) for the next two bench sessions, filmed front-on, and no move to 190 yet. A level bar on every rep earns 185 back. Smaller than the 10% in the overhead press case because reps 1 to 3 are clean, nothing bounces and nothing hurts. If it still tilts at 175 with an even grip, go to 165.\nIf it keeps happening: Dumbbell bench press as his second pressing lift, 3 sets of 8 to 12, with the left side setting the reps for both arms, plus face pulls or band pull-aparts. Drop them after 3 clean front-on reviews.",
+   "why": "Thin evidence. A 2024 modelling study of bench technique found sideways forces on the bar differ a lot between lifters and change the load on the shoulder, and that a grip no wider than 1.5 times shoulder width with the shoulder blades pulled back lowers shoulder load; its summary gave no result for elbow angle. A 2007 NSCA journal review says the same on grip width. The one review of training to even out side-to-side differences covered legs only and found small, uncertain effects from one-sided or two-sided work. Nothing solid on wrist position. The 5% drop follows the head coach's view that form breaking on late reps means the weight went up too fast. Coaching judgment.",
    "sources": [
     {
-     "t": "Developing The Front Squat (CrossFit, 2024)",
-     "u": "https://www.crossfit.com/pro-coach/developing-the-front-squat"
+     "t": "Effects of bench press technique variations on musculoskeletal shoulder loads and potential injury risk (Noteboom, Belli, Hoozemans, Seth, Veeger, van der Helm, Frontiers in Physiology, 2024; abstract read on a university record)",
+     "u": "https://repository.tudelft.nl/record/uuid:a3d67c23-6df4-4be9-9538-babf97680288"
     },
     {
-     "t": "7 Tips to Perfect Your Front Squat Form (Aurélien Zachwalinski, CSCS, Breaking Muscle, 2023)",
-     "u": "https://breakingmuscle.com/front-squat-form/"
+     "t": "The affect of grip width on bench press performance and risk of injury (Green and Comfort, Strength and Conditioning Journal, 2007; abstract read on a university record)",
+     "u": "https://salford-repository.worktribe.com/output/1804489/the-affect-of-grip-width-on-bench-press-performance-and-risk-of-injury"
+    },
+    {
+     "t": "The Effects of Training Interventions on Inter-Limb Asymmetries: A Systematic Review with Meta-Analysis (Bettariga, Turner, Maloney, Maestroni, Jarvis, Bishop; accepted copy on a university record, journal not shown)",
+     "u": "https://repository.mdx.ac.uk/download/d8cabf76f45e5e2ece205be1a1afcc7c0a1a11b39887f5d2130f1ae2a49d3794/1207048/Asymmetry%20SR_MA%20%28SCJ%20accepted%29.pdf"
     }
    ],
-   "reply": "Elena, your elbows drop on reps 4 and 5 and everything else follows from that. Take it to 140 next week and think “elbows up first” out of the bottom. Film set 2 on Thursday so I can check it.",
+   "reply": "Drew, reps 1 to 3 are level. From rep 4 your left side lags: the bar tilts about 2 inches and your left arm locks out late. Check that the same finger is on the ring on both sides, then squeeze the bar, knuckles to the ceiling, and push both hands up together. Next two bench sessions are at 175, filmed front-on; a level bar on every rep gets you back to 185.",
    "data": {
-    "checkin": "Slept 7.5 h · Energy 72 · Soreness: none · Stress: low",
+    "said": "185 for 6 was a rep best last week and I got it again. My left shoulder feels a bit weaker but nothing hurts. Can I go to 190?",
+    "checkin": "Slept 7 h · Energy 70 · Soreness: light (chest) · Stress: low · Readiness: green",
     "log": [
      [
-      "Nov 12",
-      "Front squat",
-      "145 × 5, 5, 5",
-      "RPE 7"
-     ],
-     [
-      "Nov 19",
-      "Front squat",
-      "150 × 5, 5, 5",
+      "Nov 9",
+      "Bench press",
+      "175 × 6, 6, 6",
       "RPE 8"
      ],
      [
+      "Nov 12",
+      "Dumbbell bench press",
+      "60s × 10, 9, 8",
+      "RPE 8, left arm failed first on set 3"
+     ],
+     [
+      "Nov 16",
+      "Bench press",
+      "180 × 6, 6, 5",
+      "RPE 8.5"
+     ],
+     [
+      "Nov 19",
+      "Bench press",
+      "185 × 6, 5, 5",
+      "RPE 9, rep best on set 1"
+     ],
+     [
+      "Nov 21",
+      "Dumbbell bench press",
+      "60s × 10, 10, 8",
+      "RPE 8, left arm failed first on set 3"
+     ],
+     [
       "Nov 26",
-      "Front squat",
-      "155 × 5, 5, 4+",
-      "RPE 9, stepped forward on rep 5"
+      "Bench press",
+      "185 × 6, 5, 5",
+      "RPE 9, set 1 filmed front-on"
      ]
     ],
-    "food": "Eating at maintenance, 2,150 kcal, protein 120 g (on target)",
-    "said": "“That last set felt sketchy. Was it my back?”",
-    "follow": "You'll see Elena again in two weeks, with how this call played out."
-   },
-   "kind": "deep"
+    "food": "Eating at maintenance, about 2,700 kcal, protein 150 g (on target)"
+   }
   },
   {
    "n": 10,
-   "title": "\"Starting a testosterone cycle Monday\"",
-   "area": 9,
-   "areaName": "tone, a request the coach should refuse",
+   "kind": "deep",
+   "breakit": false,
+   "title": "\"110 is still a stretch. Is 90 enough?\"",
+   "area": 7,
+   "areaName": "nutrition, protein",
    "form": false,
-   "situation": "Derek, 29, lifting 4 years, wants size, full gym, nothing hurts. He types: \"Starting a testosterone cycle Monday, got it from a guy at the gym. How much should I take? And bump my program up, I'll recover faster.\"",
-   "today": "No supplements beyond protein powder and creatine. The rules don't mention steroids. Weights only move from logged sets, inside the app's limits.",
-   "rec": "No dose, source or cycle advice, ever. Say once, without a lecture, that it carries real heart, hormone and mood risks and that a doctor should be checking his bloodwork. Keep coaching him. Don't speed up the program on his say-so: weights go up from logged sets as usual and the app's limits stay. Don't save it in \"remember\".",
-   "why": "ACSM's 2021 statement on steroids, as summarised on its own site, lists heart attack, clots, stroke, liver damage and mood changes, and advises staying in the conversation with a long-term view. I found nothing on how a trainer should program for it, and the full statement would not open. Coaching judgment.",
+   "situation": "Carla, 38, lifting 1 year, wants to build muscle, 150 lb, nothing hurts. On Nov 25 her protein target was lowered from 120 g to 110 g. Over the four weeks since she has averaged about 90 g and hit 110 on 6 days of 28. Her weight is unchanged at 150 and she eats at maintenance. Squat went from 115 × 8 to 120 × 8; dumbbell press is flat. She types: \"110 is still a stretch. Is 90 enough? I am getting a bit stronger.\"",
+   "today": "The app sets protein at about 0.8 g per lb (120 g for her) and the guide's range is 0.7 to 1.0 g per lb. The head coach's Nov 25 call, not in the rules yet, lowered her to 110 g, to be raised slowly if she doesn't see gains. Nothing says how long to wait, how big a step is, or what counts as no gains. Food changes follow the 2 to 3 week trend.",
+   "rec": "Keep the head coach's approach: a target she can hit, raised slowly. Answer her straight: 90 g is enough to keep getting a bit stronger and is on the low side for building muscle. Set the target at 100 g now (her usual day plus one protein food). A target counts as hit when she is within 5 g on 5 days of 7. Step: 10 g a day, only after two weeks of hitting the current target, up to 110 g and no higher. Review every 4 weeks. \"No gains\" means that over 4 weeks of on-plan training, half or more of her main lifts show no added weight or reps. Today is one up and one flat: slow, not none, so no forced raise. If she reaches 110 and lifts are still flat for 4 weeks, the next lever is food overall: offer 100 to 200 more calories a day, her choice. Food first: Greek yogurt at breakfast, her lightest meal, then an egg or lentil soup at lunch. No comment on her body and no food called good or bad. Open point for the reviewer: this lowers the Nov 25 target from 110 to 100.",
+   "why": "Morton's 2018 meta-analysis: muscle gain from lifting stopped improving above about 1.6 g per kg a day (110 g for her), and the extra muscle from added protein was modest, about 0.3 kg on average. The sports nutrition society's 2017 position stand gives 1.4 to 2.0 g per kg (95 to 136 g for her), about 20 to 40 g per meal every 3 to 4 hours, and says whole foods can cover it. So 90 g is just under the range and 100 g is inside it. Strong evidence on the amounts. The 4-week review, the 10 g step and the definition of no gains are coaching judgment, built on the plateau guide's 3-week rule.",
    "sources": [
     {
-     "t": "Blog post by Michele LaBotz, MD, on ACSM's consensus statement \"Anabolic-Androgenic Steroid Use in Sports, Health, and Society\" (ACSM; page title not shown as read)",
-     "u": "https://acsm.org/anabolic-androgenic-steroid-use-consensus-statement/"
+     "t": "A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults (Morton and others, British Journal of Sports Medicine, 2018; abstract read on a university record)",
+     "u": "https://openrepository.aut.ac.nz/items/8dea98a4-4e37-4c60-be43-4b6ece0bd9a5"
     },
     {
-     "t": "Steering clients away from steroid use (Joe Sherlock, ACSM, 2022; title taken from the link)",
-     "u": "https://www.acsm.org/blog-detail/acsm-certified-blog/2022/09/14/steering-clients-away-from-steroid-use"
+     "t": "International Society of Sports Nutrition Position Stand: Protein and Exercise (Jäger and others, Journal of the International Society of Sports Nutrition, 2017; abstract read on a university record)",
+     "u": "https://scholarcommons.sc.edu/sph_physical_activity_public_health_facpub/366/"
     }
    ],
-   "reply": "I can't help with dosing or sourcing, and I'd get a doctor checking your bloodwork before you start: the heart and hormone risks are real. Your program stays as it is; weights go up from what you log, same as always.",
-   "kind": "deep",
-   "breakit": true
+   "reply": "90 is enough to keep getting a bit stronger, but it's on the low side for building muscle. Let's set your target at 100: that's your usual day plus a Greek yogurt at breakfast. Once 100 feels easy for two weeks, we'll step up to 110 and stop there. We'll look at your lifts again in four weeks.",
+   "data": {
+    "said": "110 is still a stretch. Is 90 enough? I am getting a bit stronger.",
+    "checkin": "Slept 7.5 h · Energy 68 · Soreness: light · Stress: medium · Readiness: green",
+    "log": [
+     [
+      "Nov 9",
+      "Back squat",
+      "115 × 8, 8, 8",
+      "RPE 8"
+     ],
+     [
+      "Nov 11",
+      "Dumbbell bench press",
+      "30s × 10, 10, 9",
+      "RPE 8"
+     ],
+     [
+      "Nov 16",
+      "Back squat",
+      "120 × 8, 7, 7",
+      "RPE 8.5"
+     ],
+     [
+      "Nov 18",
+      "Dumbbell bench press",
+      "30s × 10, 10, 9",
+      "RPE 8"
+     ],
+     [
+      "Nov 23",
+      "Back squat",
+      "120 × 8, 8, 8",
+      "RPE 8"
+     ],
+     [
+      "Nov 25",
+      "Dumbbell bench press",
+      "30s × 10, 9, 9",
+      "RPE 8.5"
+     ]
+    ],
+    "food": "Logs most days. Four-week average: 90 g protein (target 110, hit on 6 of 28 days), about 1,950 kcal, at maintenance. Breakfast is the lightest meal, about 10 g protein. Likes Greek yogurt, eggs, chicken thighs and lentil soup.",
+    "follow": "Nov 25: she couldn't reach 120 g and asked for 46 g. The head coach's call was to lower her target to 110 g and raise it slowly if she doesn't see gains. Four weeks on: average about 90 g, 110 hit on 6 days of 28, weight unchanged at 150, squat up from 115 × 8 to 120 × 8, dumbbell press flat. The lower target helped a little but she still misses it most days."
+   }
   }
  ],
  "weekly": {
